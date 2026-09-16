@@ -191,6 +191,11 @@ class CleanURLHandler(SimpleHTTPRequestHandler):
         return p in ("/404", "/404.html")
 
     def end_headers(self):
+        if urlsplit(self.path).path == "/output/pdf/guide-de-marque-ferronnerie-du-rouret.pdf":
+            self.send_header(
+                "Content-Disposition",
+                'attachment; filename="guide-de-marque-ferronnerie-du-rouret.pdf"',
+            )
         if self.path.startswith("/assets/"):
             self.send_header("Cache-Control", "public, max-age=31536000, immutable")
         else:

@@ -1,12 +1,13 @@
 from pathlib import Path
 
 from reportlab.lib import colors
-from reportlab.lib.pagesizes import landscape, A4
+from reportlab.lib.pagesizes import A4
 from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
 from reportlab.pdfgen import canvas
 from reportlab.graphics import renderPDF
 from svglib.svglib import svg2rlg
+from PIL import Image, ImageOps
 
 ROOT = Path(__file__).resolve().parents[2]
 OUTPUT = ROOT / 'output/pdf/guide-de-marque-ferronnerie-du-rouret.pdf'
@@ -18,9 +19,8 @@ for weight in (400, 500, 600):
 ORANGE = colors.HexColor('#D9672B')
 CHARCOAL = colors.HexColor('#1C1F22')
 SLATE = colors.HexColor('#374151')
-MIST = colors.HexColor('#F3F6F7')
 WHITE = colors.white
-W, H = landscape(A4)
+W, H = A4
 c = canvas.Canvas(str(OUTPUT), pagesize=(W, H))
 c.setTitle('Identité visuelle - La Ferronnerie du Rouret')
 c.setAuthor('La Ferronnerie du Rouret')
@@ -32,63 +32,77 @@ def label(x, y, value, size=10, color=CHARCOAL, weight=400):
     c.drawString(x, y, value)
 
 
-# Vector logo from the website.
+def rounded_image(path, x, y, width, height, radius=8):
+    c.saveState()
+    mask = c.beginPath()
+    mask.roundRect(x, y, width, height, radius)
+    c.clipPath(mask, stroke=0)
+    c.drawImage(str(path), x, y, width, height, mask='auto')
+    c.restoreState()
+
+
+# Actual screen capture of the website header and hero.
+rounded_image(ROOT / 'tmp/pdfs/header-hero.png', 38, 555, W - 76, 249, 9)
+
+# Real completed works supplied for the site.
+photos = [
+    '/Users/sof/Downloads/Pink and Beige Skincare Product Video Promo (1)/5.jpg',
+    '/Users/sof/Downloads/Pink and Beige Skincare Product Video Promo (1) 2/6.jpg',
+    '/Users/sof/Downloads/Pink and Beige Skincare Product Video Promo (1)/7.jpg',
+]
+photo_w, photo_h, gap = 165, 92.8, 12
+for i, path in enumerate(photos):
+    x = 38 + i * (photo_w + gap)
+    rounded_image(path, x, 437, photo_w, photo_h, 7)
+
+# Correct service names with a small, text-free photograph.
+label(38, 407, 'NOS SERVICES', 9, ORANGE, 600)
+services = [
+    'Garde-corps',
+    'Portails',
+    'Portes métalliques',
+    'Clôtures',
+    'Pergolas & marquises',
+    "Rampes d'escalier",
+]
+for i, service in enumerate(services):
+    y = 375 - i * 27
+    c.setFillColor(ORANGE)
+    c.circle(42, y + 3, 2.5, stroke=0, fill=1)
+    label(53, y, service, 9.3, CHARCOAL, 500)
+
+service_photo = ROOT / 'assets/images/services/pergola-marquise-fer-forge-nice-750.webp'
+service_crop_path = ROOT / 'tmp/pdfs/services-small.png'
+with Image.open(service_photo) as source:
+    ImageOps.fit(source.convert('RGB'), (360, 465), method=Image.Resampling.LANCZOS).save(service_crop_path)
+rounded_image(service_crop_path, 173, 223, 120, 155, 8)
+
+# Website logo and two brand colors.
 logo = svg2rlg(str(ROOT / 'assets/images/logo-la-ferronnerie-du-rouret.svg'))
-scale = 130 / logo.width
+scale = 102 / logo.width
 c.saveState()
-c.translate(40, 451)
+c.translate(328, 308)
 c.scale(scale, scale)
 renderPDF.draw(logo, c, 0, 0)
 c.restoreState()
 
-label(210, 522, 'LA FERRONNERIE DU ROURET', 23, CHARCOAL, 600)
-label(210, 491, 'Identité visuelle', 15, ORANGE, 500)
-label(210, 466, "L'élégance du métal, la qualité garantie.", 11, SLATE, 400)
-c.setStrokeColor(ORANGE)
-c.setLineWidth(2.5)
-c.line(40, 444, W - 40, 444)
-
-# Three real photographs provided by the user.
-photos = [
-    ('/Users/sof/Downloads/Pink and Beige Skincare Product Video Promo (1)/5.jpg', 'PORTAIL'),
-    ('/Users/sof/Downloads/Pink and Beige Skincare Product Video Promo (1) 2/6.jpg', 'GARDE-CORPS'),
-    ('/Users/sof/Downloads/Pink and Beige Skincare Product Video Promo (1)/7.jpg', 'CLÔTURE'),
-]
-photo_w = 246
-photo_h = 138.375
-photo_gap = 12
-for i, (path, title) in enumerate(photos):
-    x = 40 + i * (photo_w + photo_gap)
-    c.drawImage(path, x, 284, width=photo_w, height=photo_h, preserveAspectRatio=True, anchor='c')
-    label(x, 266, title, 8.5, SLATE, 600)
-
-# Two brand colors and their meanings.
-card_y, card_h, card_w = 150, 96, 375
-for x in (40, 427):
-    c.setFillColor(MIST)
-    c.roundRect(x, card_y, card_w, card_h, 10, stroke=0, fill=1)
-
+label(320, 290, 'PALETTE', 9, ORANGE, 600)
 c.setFillColor(ORANGE)
-c.roundRect(54, 164, 67, 67, 7, stroke=0, fill=1)
-label(138, 218, 'Orange atelier', 13, CHARCOAL, 600)
-label(138, 198, '#D9672B', 10, ORANGE, 600)
-label(138, 178, 'Feu de la forge, énergie, accent.', 9.3, SLATE)
-
+c.roundRect(320, 249, 32, 32, 5, stroke=0, fill=1)
+label(362, 267, 'Orange atelier  #D9672B', 9, CHARCOAL, 600)
+label(362, 253, 'Feu de la forge et énergie.', 8, SLATE)
 c.setFillColor(CHARCOAL)
-c.roundRect(441, 164, 67, 67, 7, stroke=0, fill=1)
-label(525, 218, 'Charbon', 13, CHARCOAL, 600)
-label(525, 198, '#1C1F22', 10, CHARCOAL, 600)
-label(525, 178, 'Solidité, titres et lisibilité.', 9.3, SLATE)
+c.roundRect(320, 207, 32, 32, 5, stroke=0, fill=1)
+label(362, 225, 'Charbon  #1C1F22', 9, CHARCOAL, 600)
+label(362, 211, 'Solidité et lisibilité.', 8, SLATE)
 
-# Single concise type rule.
+# Single concise typography rule.
 c.setFillColor(CHARCOAL)
-c.roundRect(40, 65, W - 80, 65, 10, stroke=0, fill=1)
-label(57, 105, 'TYPOGRAPHIE', 9, colors.HexColor('#F6B287'), 600)
-label(171, 103, 'Inter', 18, WHITE, 500)
-label(171, 82, 'Titres 500  ·  Texte 400  ·  Boutons 600', 10, WHITE, 400)
+c.roundRect(38, 103, W - 76, 76, 10, stroke=0, fill=1)
+label(55, 151, 'TYPOGRAPHIE', 8.5, colors.HexColor('#F6B287'), 600)
+label(55, 121, 'Inter', 20, WHITE, 500)
+label(141, 124, 'Titres 500  ·  Texte 400  ·  Boutons 600', 9.5, WHITE, 400)
 
-label(40, 36, 'Photos réelles fournies par le client', 8, SLATE, 400)
-label(W - 112, 36, 'GUIDE EXPRESS', 8, SLATE, 600)
 c.showPage()
 c.save()
 print(OUTPUT)
