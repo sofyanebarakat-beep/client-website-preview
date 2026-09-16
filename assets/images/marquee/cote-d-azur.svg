@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="220" height="72" viewBox="0 0 220 72" role="img" aria-label="CÔTE D’AZUR SAVOIR-FAIRE">
+  <path d="M18 47V26l12-9 12 9v21M23 47V29l7-5 7 5v18M18 38h24M30 17v30" fill="none" stroke="#27332f" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="55" y="31" fill="#27332f" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="700" letter-spacing="1">CÔTE D’AZUR</text>
+  <text x="55" y="49" fill="#27332f" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="600" letter-spacing="1.1">SAVOIR-FAIRE</text>
+  <path d="M55 58h18" stroke="#244d9a" stroke-width="3"/><path d="M73 58h18" stroke="#e7e7df" stroke-width="3"/><path d="M91 58h18" stroke="#d2483e" stroke-width="3"/>
+</svg>

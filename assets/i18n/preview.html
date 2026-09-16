@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aperçu — sélecteur de langue</title>
+<meta name="robots" content="noindex,nofollow">
+<style>
+  body{font-family:-apple-system,Segoe UI,Roboto,sans-serif;margin:0;background:#f4f4f2;color:#141414}
+  .bar{display:flex;align-items:center;gap:14px;padding:16px 22px;background:#141414;color:#fff;flex-wrap:wrap}
+  .bar .logo{font-weight:800;letter-spacing:.5px;margin-right:auto}
+  .bar a.nav{color:#fff;text-decoration:none;font-weight:600;font-size:14px;opacity:.85}
+  /* mimics the real .rt-navbar-button-wraper CTA */
+  .rt-navbar-button-wraper .rt-text-style-button{display:inline-block;background:#d3f006;color:#141414;font-weight:700;
+    padding:11px 18px;border-radius:14px;font-size:14px}
+  main{max-width:720px;margin:40px auto;padding:0 20px}
+  h1{font-size:22px}
+  .card{background:#fff;border:1px solid #e4e4e0;border-radius:14px;padding:20px;margin-top:18px}
+</style>
+</head>
+<body>
+  <div class="bar">
+    <span class="logo">FERRONNIER NICE CÔTE D’AZUR</span>
+    <a class="nav" href="/about-us.html"><span>À propos</span></a>
+    <a class="nav" href="/service.html">Services</a>
+    <a class="nav" href="/blog.html">Actualités</a>
+    <!-- the language switcher is inserted right AFTER this block -->
+    <div class="rt-navbar-button-wraper">
+      <a class="rt-button" href="/devis/"><div class="rt-text-style-button">Devis gratuit</div></a>
+    </div>
+  </div>
+
+  <main>
+    <h1>Votre artisan ferronnier de confiance</h1>
+    <div class="card">
+      <p>Pourquoi nous choisir</p>
+      <p>Depuis plus de 15 ans, nous façonnons fer, acier et aluminium en pièces uniques, alliant robustesse et élégance.</p>
+      <p><strong>Liens utiles</strong> · <strong>Suivez-nous :</strong> · <strong>Conçu par :</strong></p>
+      <p>Quels sont les délais de fabrication ?</p>
+    </div>
+    <p style="color:#777;font-size:13px;margin-top:24px">
+      Cliquez sur le bouton 🇫🇷 FR en haut à droite pour changer de langue (FR / EN / IT).
+      Le choix est mémorisé et appliqué sur toutes les pages du site.
+    </p>
+  </main>
+
+  <script src="translations.js"></script>
+  <script src="i18n.js" defer></script>
+</body>
+</html>

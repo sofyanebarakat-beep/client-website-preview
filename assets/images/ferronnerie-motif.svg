@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="130" height="130" viewBox="0 0 130 130" role="img" aria-label="Motif de ferronnerie artisanale">
+  <rect width="130" height="130" fill="#e9ece7"/>
+  <circle cx="65" cy="65" r="46" fill="none" stroke="#27332f" stroke-width="4"/>
+  <path d="M65 21v88M21 65h88M65 65c-25-5-27-28-12-31 12-2 15 14 4 18M65 65c25-5 27-28 12-31-12-2-15 14-4 18M65 65c-25 5-27 28-12 31 12 2 15-14 4-18M65 65c25 5 27 28 12 31-12 2-15-14-4-18" fill="none" stroke="#27332f" stroke-width="3" stroke-linecap="round"/>
+  <circle cx="65" cy="65" r="7" fill="#27332f"/>
+</svg>
