@@ -25,6 +25,13 @@
 <link crossorigin="anonymous" href="https://cdn.prod.website-files.com/69a196b4902215f53ac6be15/css/flampt.webflow.shared.11c0c54a3.css" integrity="sha384-EcDFSjNxX6nV6xOjE94o0AWipQRzSygj9YfjfbrOq9Q7rg5Tbo9PwGnhS1uUYQRJ" rel="stylesheet" type="text/css"/>
 <style>@media (min-width:992px) {html.w-mod-js:not(.w-mod-ix) [data-w-id="01ddffd3-2356-35e5-1084-64384f5d8fab"] {width:30%;}html.w-mod-js:not(.w-mod-ix) [data-w-id="01ddffd3-2356-35e5-1084-64384f5d8fb0"] {opacity:0;}html.w-mod-js:not(.w-mod-ix) [data-w-id="01ddffd3-2356-35e5-1084-64384f5d9024"] {opacity:0;}html.w-mod-js:not(.w-mod-ix) [data-w-id="01ddffd3-2356-35e5-1084-64384f5d901f"] {width:30%;}html.w-mod-js:not(.w-mod-ix) [data-w-id="01ddffd3-2356-35e5-1084-64384f5d8ff6"] {width:100%;}html.w-mod-js:not(.w-mod-ix) [data-w-id="01ddffd3-2356-35e5-1084-64384f5d8ff8"] {opacity:1;}html.w-mod-js:not(.w-mod-ix) [data-w-id="fc22c8fd-3f15-7616-9b2b-e0472b560204"] {-webkit-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);}}@media (max-width:991px) and (min-width:768px) {html.w-mod-js:not(.w-mod-ix) [data-w-id="01ddffd3-2356-35e5-1084-64384f5d8fab"] {opacity:0;}html.w-mod-js:not(.w-mod-ix) [data-w-id="01ddffd3-2356-35e5-1084-64384f5d8ff6"] {opacity:0;}html.w-mod-js:not(.w-mod-ix) [data-w-id="01ddffd3-2356-35e5-1084-64384f5d901f"] {opacity:0;}html.w-mod-js:not(.w-mod-ix) [data-w-id="efefc54c-82e8-4882-c46d-fb57c4ae274a"] {opacity:0;}}@media (max-width:767px) and (min-width:480px) {html.w-mod-js:not(.w-mod-ix) [data-w-id="01ddffd3-2356-35e5-1084-64384f5d8fab"] {opacity:0;}html.w-mod-js:not(.w-mod-ix) [data-w-id="01ddffd3-2356-35e5-1084-64384f5d8ff6"] {opacity:0;}html.w-mod-js:not(.w-mod-ix) [data-w-id="01ddffd3-2356-35e5-1084-64384f5d901f"] {opacity:0;}html.w-mod-js:not(.w-mod-ix) [data-w-id="efefc54c-82e8-4882-c46d-fb57c4ae274a"] {opacity:0;}}@media (max-width:479px) {html.w-mod-js:not(.w-mod-ix) [data-w-id="01ddffd3-2356-35e5-1084-64384f5d8fab"] {opacity:0;}html.w-mod-js:not(.w-mod-ix) [data-w-id="01ddffd3-2356-35e5-1084-64384f5d8ff6"] {opacity:0;}html.w-mod-js:not(.w-mod-ix) [data-w-id="01ddffd3-2356-35e5-1084-64384f5d901f"] {opacity:0;}html.w-mod-js:not(.w-mod-ix) [data-w-id="efefc54c-82e8-4882-c46d-fb57c4ae274a"] {opacity:0;}}</style>
 <style>html.w-mod-js:not(.w-mod-ix3) :is(.rt-hero-background-image-wrapper-v1, [scroll-text="1"], [image-appear], .rt-scroll-button.rt-border-radius-full.rt-overflow-hidden, .rt-service-image, .rt-service-bottom-left-button-wrapper, .rt-service-arrow-icon-white) {visibility: hidden !important;}</style>
+<style>
+.rt-hero-right-content-wrapper {
+  display: flex !important;
+  background-color: #000 !important;
+  background-image: none !important;
+}
+</style>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="anonymous" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
@@ -122,17 +129,15 @@
 .rt-testimonial-slider-wrapper {
   min-width: 0;
 }
-@media (max-width: 991px) {
-  .rt-testimonial-slider-right,
-  .rt-testimonial-slider-wrapper,
-  .rt-testimonial-slider-mask,
-  .rt-testimonial-slider-mask .w-slide {
-    width: 100%;
-    min-width: 0;
-    max-width: 100%;
-  }
-  .rt-testimonial-slider-mask { overflow: hidden; }
+.rt-testimonial-slider-right,
+.rt-testimonial-slider-wrapper,
+.rt-testimonial-slider-mask,
+.rt-testimonial-slider-mask .w-slide {
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
 }
+.rt-testimonial-slider-mask { overflow: hidden; }
 .rt-service-bottom-top-wrapper:has(> :nth-child(3)){grid-template-columns:1fr 1fr 1fr}
 .rt-service-bottom-top-wrapper:has(> :nth-child(3)) .rt-service-collection-list-wrapper-v1,
 .rt-service-bottom-top-wrapper:has(> :nth-child(3)) .rt-service-bottom-top-left-outer{max-width:none}
