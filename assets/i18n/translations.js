@@ -926,4 +926,6 @@ window.SITE_TRANSLATIONS = {
   "Oui": { en: "Yes", it: "Sì" },
   "Non": { en: "No", it: "No" },
   "Monaco": { en: "Monaco", it: "Monaco" },
+  "Image précédente": { en: "Previous image", it: "Immagine precedente" },
+  "Image suivante": { en: "Next image", it: "Immagine successiva" },
 };
