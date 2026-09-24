@@ -164,20 +164,6 @@
 @media (max-width:479px){.gh-btn{flex:1 1 100%}.gh-content{bottom:6.5rem}.gh-lead{margin-bottom:1.25rem}}
 @media (prefers-reduced-motion:reduce){.gh-slide{transition:none}.gh-slide.is-active img{animation:none;transform:none}.gh-thumb.is-active .gh-thumb-bar{animation:none;transform:none}}
 </style>
-<style id="gh-header-css">
-/* hero starts at the very top of the page; the header floats over the photo */
-.rt-navbar-outer-wrapper-v1{position:fixed!important;top:0;left:0;right:0;z-index:60;background:transparent!important;align-items:stretch!important}
-.rt-navbar-outer-wrapper-v1 .rt-navbar-top{background:transparent}
-.rt-navbar-outer-wrapper-v1 .rt-top-navbar{background:rgba(16,18,20,.5)!important;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);transition:max-height .3s ease,opacity .3s ease,padding .3s ease;max-height:3rem;overflow:hidden}
-body.gh-scrolled .rt-navbar-outer-wrapper-v1 .rt-top-navbar{max-height:0;opacity:0;padding-top:0;padding-bottom:0}
-body .rt-navbar-outer-wrapper-v1 .rt-navbar-wrapper-v6{background-color:rgba(255,255,255,.9)!important;-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);margin:.6rem .75rem 0;width:auto!important;align-self:stretch;border:1px solid rgba(255,255,255,.55);border-radius:1rem;box-shadow:0 10px 30px rgba(0,0,0,.18)}
-body .rt-navbar-outer-wrapper-v1 .rt-navbar-v7{background:transparent!important}
-.rt-navbar-outer-wrapper-v1 .rt-navbar-box-shadow-v4{display:none}
-.gh-hero{height:clamp(38rem,100svh,72rem)!important}
-.gh-shade{background:linear-gradient(180deg,rgba(16,18,20,.4) 0,rgba(16,18,20,0) 22%),linear-gradient(90deg,rgba(16,18,20,.4) 0,rgba(16,18,20,.12) 34%,rgba(16,18,20,0) 58%),linear-gradient(0deg,rgba(16,18,20,.74) 0,rgba(16,18,20,.3) 22%,rgba(16,18,20,0) 42%)!important}
-@media (max-width:767px){.gh-slide img{object-position:var(--pos-m,var(--pos,50% 50%))}}
-@media (max-width:991px){.gh-hero{height:clamp(38rem,100svh,52rem)!important}body .rt-navbar-outer-wrapper-v1 .rt-navbar-wrapper-v6{margin:.5rem .5rem 0}}
-</style>
 <!-- i18n:head -->
 <meta name="i18n-lang" content="fr"/>
 <meta name="i18n-path" content="service-detail/complete-roof-replacement.html"/>
@@ -439,7 +425,7 @@ body .rt-navbar-outer-wrapper-v1 .rt-navbar-v7{background:transparent!important}
 </div>
 </div>
 <section class="gh-hero" data-gh-hero aria-roledescription="carousel" aria-label="Galerie de garde-corps">
-<div class="gh-slides"><div class="gh-slide is-active" role="group" aria-roledescription="slide" aria-label="Image 1 sur 4" style="--pos:34% 40%;--pos-m:78% 42%"><img alt="Muret en pierre surmonté d'une clôture métallique noire et d'un portail sur mesure" src="../assets/images/services/garde-corps-muret-pierre-portail-nice.webp" width="1774" height="887" decoding="async" fetchpriority="high"/></div><div class="gh-slide" role="group" aria-roledescription="slide" aria-label="Image 2 sur 4" style="--pos:42% 50%"><img alt="Pose d'un garde-corps en fer forgé" src="../assets/images/pose-garde-corps-fer-forge.jpg" width="1920" height="1080" decoding="async" loading="lazy"/></div><div class="gh-slide" role="group" aria-roledescription="slide" aria-label="Image 3 sur 4" style="--pos:50% 60%"><img alt="Garde-corps de terrasse en métal" src="../assets/images/features/garde-corps-terrasse.jpg" width="1920" height="1080" decoding="async" loading="lazy"/></div><div class="gh-slide" role="group" aria-roledescription="slide" aria-label="Image 4 sur 4" style="--pos:50% 55%"><img alt="Garde-corps extérieur en fer forgé" src="../assets/images/features/garde-corps-exterieur.jpg" width="1920" height="1080" decoding="async" loading="lazy"/></div></div>
+<div class="gh-slides"><div class="gh-slide is-active" role="group" aria-roledescription="slide" aria-label="Image 1 sur 4" style="--pos:66% 40%"><img alt="Muret en pierre surmonté d'une clôture métallique noire et d'un portail sur mesure" src="../assets/images/services/garde-corps-muret-pierre-portail-nice.webp" width="1774" height="887" decoding="async" fetchpriority="high"/></div><div class="gh-slide" role="group" aria-roledescription="slide" aria-label="Image 2 sur 4" style="--pos:42% 50%"><img alt="Pose d'un garde-corps en fer forgé" src="../assets/images/pose-garde-corps-fer-forge.jpg" width="1920" height="1080" decoding="async" loading="lazy"/></div><div class="gh-slide" role="group" aria-roledescription="slide" aria-label="Image 3 sur 4" style="--pos:50% 60%"><img alt="Garde-corps de terrasse en métal" src="../assets/images/features/garde-corps-terrasse.jpg" width="1920" height="1080" decoding="async" loading="lazy"/></div><div class="gh-slide" role="group" aria-roledescription="slide" aria-label="Image 4 sur 4" style="--pos:50% 55%"><img alt="Garde-corps extérieur en fer forgé" src="../assets/images/features/garde-corps-exterieur.jpg" width="1920" height="1080" decoding="async" loading="lazy"/></div></div>
 <div class="gh-shade" aria-hidden="true"></div>
 <div class="gh-content"><div class="gh-container">
 <div class="gh-tag"><span class="gh-dot"></span>Services</div>
@@ -834,10 +820,6 @@ r.addEventListener("pointerup",function(e){if(x0===null)return;var d=e.clientX-x
 window.addEventListener("load",function(){r.querySelectorAll('img[loading="lazy"]').forEach(function(im){im.loading="eager"})});
 if(userPaused){r.classList.add("is-paused");tg.setAttribute("aria-pressed","true")}else schedule();
 })();
-</script>
-<script>
-(function(){var b=document.body,t=false;function u(){var s=(window.pageYOffset||document.documentElement.scrollTop)>40;if(s!==t){t=s;b.classList.toggle("gh-scrolled",s)}}
-window.addEventListener("scroll",u,{passive:true});u();})();
 </script>
 </body>
 </html>
