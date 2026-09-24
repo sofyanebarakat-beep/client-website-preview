@@ -55,6 +55,12 @@ for page in PUBLIC_PAGES:
         errors.append(f"{name}: dofollow link to the template vendor")
     if re.search(r'<img [^>]*\salt="[A-Za-z0-9]+(?:-[A-Za-z0-9]+)+"', source):
         errors.append(f"{name}: image alt text is a template file name (use a description, or alt=\"\" if decorative)")
+    for tag in re.findall(r'<div class="gh-slide[ "][^>]*>\s*(<img\b[^>]*>)', source):
+        for need in ("alt=", "width=", "height=", "srcset="):
+            if need not in tag:
+                errors.append(f"{name}: hero slider image is missing {need[:-1]} ({tag[:80]}...)")
+        if re.search(r'src="[^"]*(?:IMG|DSC|image\d|Untitled)[^"]*"', tag, re.I):
+            errors.append(f"{name}: hero image file name is not descriptive")
     for block in re.findall(r'<script type="application/ld\+json">(.*?)</script>', source, re.S):
         try:
             data = json.loads(block)

@@ -322,7 +322,22 @@ def render(base, page, lang, dictionary, pages_set, translators):
 
 # ---------------------------------------------------------------- sitemap
 
-def build_sitemap(canon_by_page):
+def hero_images(base):
+    """Absolute image URLs + captions of the hero slider slides on a page (for the image sitemap)."""
+    out = []
+    for m in re.finditer(r'<div class="gh-slide[ "][^>]*>\s*(<img\b[^>]*>)', base):
+        tag = m.group(1)
+        src = attr_of(tag, "src") or ""
+        alt = html.unescape(attr_of(tag, "alt") or "")
+        # the sitemap lists the full-size file, not the -1280 candidate used as src
+        src = re.sub(r"-(?:320|800|1280)\.webp$", ".webp", src)
+        path = re.sub(r"^(?:\.\./)+", "", src)
+        if path.startswith("assets/") and alt:
+            out.append((SITE + "/" + path, alt))
+    return out
+
+
+def build_sitemap(canon_by_page, dictionary, extra_images):
     path = os.path.join(ROOT, "sitemap.xml")
     s = open(path, encoding="utf-8").read()
     if "xmlns:xhtml" not in s:
@@ -335,21 +350,40 @@ def build_sitemap(canon_by_page):
         rows.append('    <xhtml:link rel="alternate" hreflang="x-default" href="%s"/>\n' % lang_url(canon, "fr"))
         return "".join(rows)
 
+    def image_xml(loc, caption):
+        return "    <image:image><image:loc>%s</image:loc><image:caption>%s</image:caption></image:image>\n" % (
+            html.escape(loc), html.escape(caption, quote=False))
+
+    def translated(caption, lang):
+        entry = dictionary.get(norm(caption))
+        return entry[lang] if entry and entry.get(lang) else caption
+
     known = set(canon_by_page.values())
     out_blocks = []
     for b in fr_blocks:
         b = re.sub(r"    <xhtml:link[^>]*/>\n", "", b)
         loc = re.search(r"<loc>(.*?)</loc>", b).group(1)
         canon = urlsplit(loc).path or "/"
+        # merge hero-slider images into this page's image list (no duplicates)
+        have = set(re.findall(r"<image:loc>(.*?)</image:loc>", b))
+        for url, cap in extra_images.get(canon, []):
+            if html.escape(url) not in have and url not in have:
+                b = b.replace("  </url>", image_xml(url, cap) + "  </url>")
+        images = re.findall(r"<image:loc>(.*?)</image:loc><image:caption>(.*?)</image:caption>", b)
         if canon in known:
             b = b.replace("  </url>", alternates(canon) + "  </url>")
         out_blocks.append(b)
         if canon in known:
             lastmod = re.search(r"<lastmod>.*?</lastmod>", b)
             for l in GENERATED:
+                imgs = "".join(
+                    "    <image:image><image:loc>%s</image:loc><image:caption>%s</image:caption></image:image>\n"
+                    % (u, html.escape(translated(html.unescape(c), l), quote=False))
+                    for u, c in images
+                )
                 out_blocks.append(
-                    "  <url>\n    <loc>%s</loc>\n%s%s  </url>\n"
-                    % (lang_url(canon, l), ("    " + lastmod.group(0) + "\n") if lastmod else "", alternates(canon))
+                    "  <url>\n    <loc>%s</loc>\n%s%s%s  </url>\n"
+                    % (lang_url(canon, l), ("    " + lastmod.group(0) + "\n") if lastmod else "", imgs, alternates(canon))
                 )
     head = s[: s.index("  <url>")]
     open(path, "w", encoding="utf-8").write(head + "".join(out_blocks) + "</urlset>\n")
@@ -368,12 +402,16 @@ def main():
         shutil.rmtree(os.path.join(ROOT, l), ignore_errors=True)
 
     canon_by_page = {}
+    extra_images = {}
     for page in pages:
         src = open(os.path.join(ROOT, page), encoding="utf-8").read()
         base = normalise_base(src, page)
         c = canonical_path(base)
         if c and page not in FR_ONLY:
             canon_by_page[page] = c
+            imgs = hero_images(base)
+            if imgs:
+                extra_images[c] = imgs
         for lang in LANGS:
             if lang != "fr" and page in FR_ONLY:
                 continue
@@ -384,7 +422,7 @@ def main():
                 with open(dest, "w", encoding="utf-8") as f:
                     f.write(doc)
 
-    build_sitemap(canon_by_page)
+    build_sitemap(canon_by_page, dictionary, extra_images)
     total = sum(1 for p in pages if p not in FR_ONLY) * len(GENERATED)
     print("Built %d pages (%d French sources, %d generated)." % (total, len(pages), total))
     if report:
