@@ -113,14 +113,20 @@ class Translator:
         except ValueError:
             return body
 
-        def walk(o):
+        # Only human-readable fields: never schema keywords such as "@type": "Article".
+        text_keys = {"name", "description", "headline", "caption", "text", "alternativeHeadline", "abstract"}
+
+        def walk(o, key=None):
             if isinstance(o, str):
-                entry = self.d.get(norm(o))
-                return entry[self.lang] if entry and entry.get(self.lang) else o
+                if key in text_keys:
+                    entry = self.d.get(norm(o))
+                    if entry and entry.get(self.lang):
+                        return entry[self.lang]
+                return o
             if isinstance(o, list):
-                return [walk(x) for x in o]
+                return [walk(x, key) for x in o]
             if isinstance(o, dict):
-                return {k: walk(v) for k, v in o.items()}
+                return {k: walk(v, k) for k, v in o.items()}
             return o
 
         return json.dumps(walk(data), ensure_ascii=False, separators=(", ", ": "))

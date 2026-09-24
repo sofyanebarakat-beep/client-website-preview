@@ -2,6 +2,8 @@
 """Small, dependency-free SEO regression check for the static export."""
 
 from pathlib import Path
+import html
+import json
 import re
 import sys
 import xml.etree.ElementTree as ET
@@ -40,6 +42,32 @@ for page in PUBLIC_PAGES:
             errors.append(f"{page.relative_to(ROOT)}: expected 1 {label}, found {found}")
     if re.search(r'(?:href|src)="https://flampt\.webflow\.io', source):
         errors.append(f"{page.relative_to(ROOT)}: contains a Webflow demo-domain link")
+    name = page.relative_to(ROOT)
+    title = html.unescape((re.search(r"<title>(.*?)</title>", source, re.S) or [None, ""])[1])
+    if len(title) > 62:
+        errors.append(f"{name}: title is {len(title)} chars (max 62, Google truncates)")
+    desc = re.search(r'<meta content="([^"]*)" name="description"', source)
+    if desc and len(html.unescape(desc.group(1))) > 160:
+        errors.append(f"{name}: meta description is {len(html.unescape(desc.group(1)))} chars (max 160)")
+    if re.search(r'<meta content="[^"]*cdn\.prod\.website-files\.com[^"]*" (?:property="og:image"|name="twitter:image")', source):
+        errors.append(f"{name}: social image is a template stock photo hosted on the Webflow CDN")
+    if re.search(r'<a [^>]*href="https://(?:www\.)?(?:radianttemplates\.com|webflow\.com)[^"]*"(?![^>]*nofollow)', source):
+        errors.append(f"{name}: dofollow link to the template vendor")
+    if re.search(r'<img [^>]*\salt="[A-Za-z0-9]+(?:-[A-Za-z0-9]+)+"', source):
+        errors.append(f"{name}: image alt text is a template file name (use a description, or alt=\"\" if decorative)")
+    for block in re.findall(r'<script type="application/ld\+json">(.*?)</script>', source, re.S):
+        try:
+            data = json.loads(block)
+        except ValueError:
+            errors.append(f"{name}: invalid JSON-LD")
+            continue
+        for node in data.get("@graph", [data]):
+            if node.get("@type") == "WebSite" and not str(node.get("url", "")).startswith("https://"):
+                errors.append(f"{name}: WebSite JSON-LD url must be absolute")
+            if node.get("@type") == "LocalBusiness":
+                for key in ("telephone", "address", "url", "image", "sameAs"):
+                    if key not in node:
+                        errors.append(f"{name}: LocalBusiness JSON-LD is missing {key}")
 
 for page in (ROOT / "service-detail").glob("*.html"):
     source = page.read_text(encoding="utf-8")
