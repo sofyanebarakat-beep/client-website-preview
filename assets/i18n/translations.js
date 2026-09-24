@@ -1113,4 +1113,14 @@ window.SITE_TRANSLATIONS = {
   "Pergolas et marquises sur mesure à Nice": { en: "Custom pergolas and canopies in Nice", it: "Pergole e pensiline su misura a Nizza" },
   "Atelier de ferronnerie sur mesure à Nice : portails, garde-corps, clôtures, pergolas et escaliers. Devis gratuit sur la Côte d’Azur.": { en: "Custom ironwork workshop in Nice: gates, railings, fences, pergolas and staircases. Free quote on the French Riviera.", it: "Officina di ferro battuto su misura a Nizza: cancelli, parapetti, recinzioni, pergole e scale. Preventivo gratuito in Costa Azzurra." },
   "Délais, matériaux, finitions, devis : réponses claires à vos questions sur la ferronnerie sur mesure à Nice et sur la Côte d’Azur.": { en: "Lead times, materials, finishes, quotes: clear answers to your questions about custom ironwork in Nice and on the French Riviera.", it: "Tempi, materiali, finiture, preventivi: risposte chiare alle tue domande sul ferro battuto su misura a Nizza e in Costa Azzurra." },
+  /* ---- garde-corps hero slider ---- */
+  "Fer forgé, acier ou aluminium : des garde-corps conçus, fabriqués et posés par notre atelier.": { en: "Wrought iron, steel or aluminium: railings designed, made and installed by our workshop.", it: "Ferro battuto, acciaio o alluminio: parapetti progettati, realizzati e posati dalla nostra officina." },
+  "Galerie de garde-corps": { en: "Railings gallery", it: "Galleria di parapetti" },
+  "Pause du diaporama": { en: "Pause slideshow", it: "Pausa della presentazione" },
+  "Afficher l'image 1": { en: "Show image 1", it: "Mostra l'immagine 1" },
+  "Afficher l'image 2": { en: "Show image 2", it: "Mostra l'immagine 2" },
+  "Afficher l'image 3": { en: "Show image 3", it: "Mostra l'immagine 3" },
+  "Image 1 sur 3": { en: "Image 1 of 3", it: "Immagine 1 di 3" },
+  "Image 2 sur 3": { en: "Image 2 of 3", it: "Immagine 2 di 3" },
+  "Image 3 sur 3": { en: "Image 3 of 3", it: "Immagine 3 di 3" },
 };

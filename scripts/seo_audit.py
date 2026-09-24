@@ -72,6 +72,11 @@ for page in PUBLIC_PAGES:
 for page in (ROOT / "service-detail").glob("*.html"):
     source = page.read_text(encoding="utf-8")
     hero = re.search(r'<img[^>]+class="rt-hero-background-image"[^>]*>', source)
+    if not hero:  # image-slider hero: the first slide must be a local image with alt text
+        hero = re.search(r'<div class="gh-slide is-active"[^>]*>(<img[^>]*>)', source)
+        hero = re.match(r"(.*)", hero.group(1)) if hero and "/assets/images/" in hero.group(1) else None
+        if hero and 'alt="' in hero.group(0):
+            continue
     if not hero or '/assets/images/services/' not in hero.group(0) or 'alt="' not in hero.group(0):
         errors.append(f"{page.relative_to(ROOT)}: service hero is not a local crawlable image")
 
