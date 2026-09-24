@@ -135,6 +135,16 @@ class CleanURLHandler(SimpleHTTPRequestHandler):
         if rel in ("", "."):
             return os.path.join(ROOT, HOME_PAGE)
 
+        # Language folders (/en/, /it/) mirror the French clean URLs.
+        lang, _, lang_rest = rel.partition("/")
+        if lang in ("en", "it"):
+            lang_key = lang_rest.rstrip("/")
+            if not lang_key:
+                return os.path.join(ROOT, lang, HOME_PAGE)
+            lang_alias = ROUTE_ALIASES.get(lang_key)
+            if lang_alias:
+                return os.path.join(ROOT, lang, lang_alias)
+
         alias = ROUTE_ALIASES.get(rel.rstrip("/"))
         if alias:
             return os.path.join(ROOT, alias)
@@ -171,7 +181,7 @@ class CleanURLHandler(SimpleHTTPRequestHandler):
                 return candidate + ".html"
 
         # Nothing matched: hand back the 404 page path (status set in send_head).
-        return os.path.join(ROOT, NOT_FOUND_PAGE)
+        return os.path.join(ROOT, lang if lang in ("en", "it") else "", NOT_FOUND_PAGE)
 
     def send_head(self):
         requested_path = urlsplit(self.path).path
@@ -203,7 +213,7 @@ class CleanURLHandler(SimpleHTTPRequestHandler):
 
     def _asked_for_404(self):
         p = urlsplit(self.path).path.rstrip("/")
-        return p in ("/404", "/404.html")
+        return p in ("/404", "/404.html", "/en/404", "/en/404.html", "/it/404", "/it/404.html")
 
     def end_headers(self):
         if urlsplit(self.path).path == "/output/pdf/guide-de-marque-ferronnerie-du-rouret.pdf":

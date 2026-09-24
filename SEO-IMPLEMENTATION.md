@@ -38,3 +38,12 @@ These cannot be completed safely from the static website repository:
 - Publish useful advice addressing real customer questions about materials, maintenance, corrosion, planning and pricing.
 - Add unique location content only where the company has genuine experience and supporting photographs.
 - Review Search Console monthly for indexing issues, queries, click-through rate and Core Web Vitals.
+
+## Multilingual (FR / EN / IT)
+
+French pages at the repo root are the **source**. `/en/` and `/it/` are generated, fully translated static copies.
+
+- Edit French pages or `assets/i18n/translations.js`, then run `python3 scripts/build_i18n.py` (add `--report` to list French text that still has no translation). Never edit files under `en/` or `it/` by hand.
+- The build adds `hreflang` alternates, `og:locale`, self-referencing canonicals and a hidden `Langue` field on every form, and regenerates `sitemap.xml` with the three language versions of each page.
+- The navbar language switcher (`assets/i18n/i18n.js`) is a set of real links to the same page in the other languages.
+- Localised details: phone numbers use the international format in EN/IT, prices/dates follow each language's convention, and form phone/email fields get `inputmode`/`autocomplete` attributes.

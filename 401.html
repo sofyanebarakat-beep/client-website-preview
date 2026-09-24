@@ -106,12 +106,16 @@
     /* Safety net: never allow sideways scrolling / empty strip on the right */
     html, body { overflow-x: clip; max-width: 100%; }
   </style>
-<style id="i18n-early">.i18n-pending body{visibility:hidden}</style><script>try{if(localStorage.getItem("siteLang")&&localStorage.getItem("siteLang")!=="fr"){document.documentElement.classList.add("i18n-pending");setTimeout(function(){document.documentElement.classList.remove("i18n-pending")},3000)}}catch(e){}</script>
+<!-- i18n:head -->
+<meta name="i18n-lang" content="fr"/>
+<meta name="i18n-path" content="401.html"/>
+<meta name="i18n-root" content=""/>
+<!-- /i18n:head -->
 </head>
 <body>
 <div class="rt-utility-wrapper">
 <div class="rt-utlity-form w-password-page w-form">
-<form action="/.wf_auth" class="rt-utility-form w-password-page" data-name="Email Form" data-wf-element-id="69a522555728ef4ecacc0f9800000000000c" data-wf-page-id="69a522555728ef4ecacc0f95" id="email-form" method="post" name="email-form">
+<form action="/.wf_auth" class="rt-utility-form w-password-page" data-name="Email Form" data-wf-element-id="69a522555728ef4ecacc0f9800000000000c" data-wf-page-id="69a522555728ef4ecacc0f95" id="email-form" method="post" name="email-form"><input type="hidden" name="Langue" data-name="Langue" value="fr"/>
 <div class="rt-utility-icon-wrap">
 <div>
 <img alt="" height="46" src="https://cdn.prod.website-files.com/69a196b4902215f53ac6be15/69ca17f6e6a0c9bcf49a108a_password-lock-white-icon.svg" width="38"/>
@@ -160,8 +164,6 @@
 <script src="https://cdn.prod.website-files.com/gsap/3.15.0/gsap.min.js" type="text/javascript">
 </script>
 
-<script src="assets/i18n/translations.js">
-</script>
 <script src="assets/i18n/i18n.js" defer>
 </script>
 </body>

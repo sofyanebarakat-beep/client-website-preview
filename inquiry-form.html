@@ -114,7 +114,18 @@
     html, body { overflow-x: clip; max-width: 100%; }
   </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "LocalBusiness", "name": "La Ferronnerie du Rouret", "image": "https://cdn.prod.website-files.com/69a196b4902215f53ac6be15/69e1acb09504109b71d7aacc_Open%20graph%20image.webp", "url": "https://ferronnerie-rouret.com/", "telephone": "+33769871108", "email": "contact@ferronnerie-rouret.com", "address": {"@type": "PostalAddress", "streetAddress": "218 route de Turin", "postalCode": "06300", "addressLocality": "Nice", "addressRegion": "Provence-Alpes-Côte d.Azur", "addressCountry": "FR"}, "areaServed": ["Nice", "Antibes", "Cagnes-sur-Mer", "Mougins", "Saint-Paul-de-Vence", "Côte d'Azur"]}</script>
-<style id="i18n-early">.i18n-pending body{visibility:hidden}</style><script>try{if(localStorage.getItem("siteLang")&&localStorage.getItem("siteLang")!=="fr"){document.documentElement.classList.add("i18n-pending");setTimeout(function(){document.documentElement.classList.remove("i18n-pending")},3000)}}catch(e){}</script>
+<!-- i18n:head -->
+<meta name="i18n-lang" content="fr"/>
+<meta name="i18n-path" content="inquiry-form.html"/>
+<meta name="i18n-root" content=""/>
+<link href="https://ferronnerie-rouret.com/devis/" hreflang="fr" rel="alternate"/>
+<link href="https://ferronnerie-rouret.com/en/devis/" hreflang="en" rel="alternate"/>
+<link href="https://ferronnerie-rouret.com/it/devis/" hreflang="it" rel="alternate"/>
+<link href="https://ferronnerie-rouret.com/devis/" hreflang="x-default" rel="alternate"/>
+<meta content="fr_FR" property="og:locale"/>
+<meta content="en_GB" property="og:locale:alternate"/>
+<meta content="it_IT" property="og:locale:alternate"/>
+<!-- /i18n:head -->
 </head>
 <body>
 <div class="w-layout-vflex rt-navbar-outer-wrapper-v1" data-wf--rt-navbar-v1--variant="base">
@@ -410,11 +421,11 @@
 <p class="rt-gap-off" data-w-id="fa2cbdd9-c61a-d249-67f4-e0f24f17fdea" style="opacity:0">Contactez notre atelier pour une étude rapide et un devis gratuit.</p>
 </div>
 <div class="rt-form-block-v2 w-form">
-<form class="rt-form-v3" data-name="Demande de devis" data-turnstile-sitekey="0x4AAAAAAAQTptj2So4dx43e" data-wf-element-id="fa2cbdd9-c61a-d249-67f4-e0f24f17fe06" data-wf-page-id="69a5211a5e599b4ebd834ac7" id="wf-form-Demande-de-devis" method="get" name="wf-form-Demande-de-devis">
+<form class="rt-form-v3" data-name="Demande de devis" data-turnstile-sitekey="0x4AAAAAAAQTptj2So4dx43e" data-wf-element-id="fa2cbdd9-c61a-d249-67f4-e0f24f17fe06" data-wf-page-id="69a5211a5e599b4ebd834ac7" id="wf-form-Demande-de-devis" method="get" name="wf-form-Demande-de-devis"><input type="hidden" name="Langue" data-name="Langue" value="fr"/>
 <div class="w-layout-vflex rt-form-fields-wrapper rt-form-gap-v2">
-<input class="rt-form-text-field w-input" data-name="Nom complet" data-w-id="fa2cbdd9-c61a-d249-67f4-e0f24f17fe08" id="Nom-complet" maxlength="256" name="Nom-complet" placeholder="Nom complet*" required="" style="opacity:0" type="text"/>
-<input class="rt-form-text-field w-node-fa2cbdd9-c61a-d249-67f4-e0f24f17fe0a-bd834ac7 w-input" data-name="Téléphone" data-w-id="fa2cbdd9-c61a-d249-67f4-e0f24f17fe0a" id="Telephone" maxlength="256" name="Telephone" placeholder="Numéro de téléphone*" required="" style="opacity:0" type="tel"/>
-<input class="rt-form-text-field w-input" data-name="Email" data-w-id="fa2cbdd9-c61a-d249-67f4-e0f24f17fe09" id="Email" maxlength="256" name="Email" placeholder="Adresse e-mail*" required="" style="opacity:0" type="email"/>
+<input class="rt-form-text-field w-input" data-name="Nom complet" data-w-id="fa2cbdd9-c61a-d249-67f4-e0f24f17fe08" id="Nom-complet" maxlength="256" name="Nom-complet" placeholder="Nom complet*" required="" style="opacity:0" type="text" autocomplete="name"/>
+<input class="rt-form-text-field w-node-fa2cbdd9-c61a-d249-67f4-e0f24f17fe0a-bd834ac7 w-input" data-name="Téléphone" data-w-id="fa2cbdd9-c61a-d249-67f4-e0f24f17fe0a" id="Telephone" maxlength="256" name="Telephone" placeholder="Numéro de téléphone*" required="" style="opacity:0" type="tel" inputmode="tel" autocomplete="tel"/>
+<input class="rt-form-text-field w-input" data-name="Email" data-w-id="fa2cbdd9-c61a-d249-67f4-e0f24f17fe09" id="Email" maxlength="256" name="Email" placeholder="Adresse e-mail*" required="" style="opacity:0" type="email" autocomplete="email"/>
 <div class="rt-form-dropdown">
 <select class="rt-text-field-v5 rt-dropdown-v2 w-select" data-name="service" data-w-id="fa2cbdd9-c61a-d249-67f4-e0f24f17fe0c" id="service" name="service" style="opacity:0">
 <option value="">Type de projet</option>
@@ -703,8 +714,6 @@
 <script src="https://cdn.prod.website-files.com/gsap/3.15.0/gsap.min.js" type="text/javascript">
 </script>
 
-<script src="assets/i18n/translations.js">
-</script>
 <script src="assets/i18n/i18n.js" defer>
 </script>
 </body>

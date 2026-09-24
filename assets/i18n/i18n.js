@@ -1,24 +1,32 @@
 /*
- * Lightweight client-side language switcher for the (Webflow-exported) static site.
+ * Language switcher for the multilingual static site.
  *
- * - Languages: French (default / source), English, Italian.
- * - The page markup is authored in FRENCH; EN / IT come from window.SITE_TRANSLATIONS
- *   (see translations.js). Strings with no entry stay in French ("content later").
- * - The chosen language is saved in localStorage and applied on every page.
- * - A flag + code dropdown is injected into the navbar, right AFTER the "Devis gratuit" button.
+ * Each language has its own pre-translated pages (/ = FR, /en/, /it/) built by
+ * scripts/build_i18n.py, so switching is plain navigation to the same page in
+ * the other language — no runtime translation, no reload flash.
+ *
+ * Page metadata (added by the build script):
+ *   <meta name="i18n-lang"  content="fr|en|it">
+ *   <meta name="i18n-path"  content="blog-post/x.html">   page path from the site root
+ *   <meta name="i18n-root"  content="../">                relative path back to the site root
  */
 (function () {
   "use strict";
 
-  var STORAGE_KEY = "siteLang";
-  var SOURCE_LANG = "fr";
-  var DEFAULT_LANG = "fr";
+  function meta(name) {
+    var el = document.querySelector('meta[name="' + name + '"]');
+    return el ? el.getAttribute("content") : null;
+  }
 
-  /* Inline SVG flags – render identically on every OS (emoji flags don't show on Windows). */
+  var CURRENT = meta("i18n-lang");
+  var PAGE_PATH = meta("i18n-path");
+  var ROOT = meta("i18n-root");
+  if (!CURRENT || !PAGE_PATH || ROOT === null) return;
+
   var FLAGS = {
-    fr: '<svg viewBox="0 0 3 2" width="20" height="14" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="3" height="2" fill="#fff"/><rect width="1" height="2" fill="#002395"/><rect width="1" height="2" x="2" fill="#ED2939"/></svg>',
-    en: '<svg viewBox="0 0 60 30" width="20" height="14" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><clipPath id="i18n-uk"><rect width="60" height="30"/></clipPath><g clip-path="url(#i18n-uk)"><rect width="60" height="30" fill="#012169"/><path d="M0,0 60,30M60,0 0,30" stroke="#fff" stroke-width="6"/><path d="M0,0 60,30M60,0 0,30" stroke="#C8102E" stroke-width="4"/><path d="M30,0 V30M0,15 H60" stroke="#fff" stroke-width="10"/><path d="M30,0 V30M0,15 H60" stroke="#C8102E" stroke-width="6"/></g></svg>',
-    it: '<svg viewBox="0 0 3 2" width="20" height="14" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="3" height="2" fill="#fff"/><rect width="1" height="2" fill="#008C45"/><rect width="1" height="2" x="2" fill="#CD212A"/></svg>'
+    fr: '<svg viewBox="0 0 3 2" width="22" height="15" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false"><rect width="3" height="2" fill="#fff"/><rect width="1" height="2" fill="#002395"/><rect width="1" height="2" x="2" fill="#ED2939"/></svg>',
+    en: '<svg viewBox="0 0 60 30" width="22" height="15" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false"><clipPath id="i18n-uk"><rect width="60" height="30"/></clipPath><g clip-path="url(#i18n-uk)"><rect width="60" height="30" fill="#012169"/><path d="M0,0 60,30M60,0 0,30" stroke="#fff" stroke-width="6"/><path d="M0,0 60,30M60,0 0,30" stroke="#C8102E" stroke-width="4"/><path d="M30,0 V30M0,15 H60" stroke="#fff" stroke-width="10"/><path d="M30,0 V30M0,15 H60" stroke="#C8102E" stroke-width="6"/></g></svg>',
+    it: '<svg viewBox="0 0 3 2" width="22" height="15" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false"><rect width="3" height="2" fill="#fff"/><rect width="1" height="2" fill="#008C45"/><rect width="1" height="2" x="2" fill="#CD212A"/></svg>'
   };
 
   var LANGS = [
@@ -27,170 +35,53 @@
     { code: "it", label: "Italiano", short: "IT" }
   ];
 
-  var DICT = window.SITE_TRANSLATIONS || {};
+  var BUTTON_LABEL = {
+    fr: function (l) { return "Choisir la langue (actuellement : " + l + ")"; },
+    en: function (l) { return "Choose language (currently: " + l + ")"; },
+    it: function (l) { return "Scegli la lingua (attualmente: " + l + ")"; }
+  };
+  var MENU_LABEL = { fr: "Langues du site", en: "Site languages", it: "Lingue del sito" };
 
-  /* Remember the original (English) value of every node we touch so we can
-     switch back and forth without reloading the page. */
-  var originals = new WeakMap();
-
-  function getLang() {
-    var v;
-    try { v = localStorage.getItem(STORAGE_KEY); } catch (e) { v = null; }
-    if (v && LANGS.some(function (l) { return l.code === v; })) return v;
-    return DEFAULT_LANG;
+  function urlFor(code) {
+    return ROOT + (code === "fr" ? "" : code + "/") + PAGE_PATH;
   }
 
-  function setLang(code) {
-    try { localStorage.setItem(STORAGE_KEY, code); } catch (e) {}
+  function labelOf(code) {
+    for (var i = 0; i < LANGS.length; i++) if (LANGS[i].code === code) return LANGS[i];
+    return LANGS[0];
   }
 
-  function norm(s) {
-    return s.replace(/\s+/g, " ").trim();
-  }
-
-  function translateString(key, lang) {
-    if (lang === SOURCE_LANG) return null;      // French is the source language
-    var entry = DICT[key];
-    if (entry && entry[lang]) return entry[lang];
-    return null;
-  }
-
-  /* ---- apply translation to a single text node ---- */
-  function handleTextNode(node, lang) {
-    var raw = originals.has(node) ? originals.get(node) : node.nodeValue;
-    var key = norm(raw);
-    if (!key) return;
-    if (!originals.has(node)) originals.set(node, raw);
-
-    var lead = raw.match(/^\s*/)[0];
-    var trail = raw.match(/\s*$/)[0];
-    var translated = translateString(key, lang);
-    node.nodeValue = translated == null ? raw : (lead + translated + trail);
-  }
-
-  /* ---- apply translation to an attribute (placeholder / aria-label / value) ---- */
-  function handleAttr(el, attr, lang) {
-    var store = "__i18n_" + attr;
-    var raw = el[store] != null ? el[store] : el.getAttribute(attr);
-    if (raw == null) return;
-    var key = norm(raw);
-    if (!key) return;
-    if (el[store] == null) el[store] = raw;
-    var translated = translateString(key, lang);
-    el.setAttribute(attr, translated == null ? raw : translated);
-  }
-
-  var SKIP_TAGS = { SCRIPT: 1, STYLE: 1, NOSCRIPT: 1, CODE: 1, PRE: 1 };
-  var applying = false;
-
-  function translateTree(root, lang) {
-    if (!root) return;
-
-    if (root.nodeType === 3) { handleTextNode(root, lang); return; }
-    if (root.nodeType !== 1) return;
-    if (SKIP_TAGS[root.tagName]) return;
-    if (root.classList && root.classList.contains("lang-switch")) return;
-
-    var walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
-      acceptNode: function (n) {
-        var p = n.parentNode;
-        while (p && p.nodeType === 1) {
-          if (SKIP_TAGS[p.tagName]) return NodeFilter.FILTER_REJECT;
-          if (p.classList && p.classList.contains("lang-switch")) return NodeFilter.FILTER_REJECT;
-          p = p.parentNode;
-        }
-        return n.nodeValue && n.nodeValue.trim()
-          ? NodeFilter.FILTER_ACCEPT
-          : NodeFilter.FILTER_REJECT;
-      }
-    });
-    var textNodes = [];
-    while (walker.nextNode()) textNodes.push(walker.currentNode);
-    textNodes.forEach(function (n) { handleTextNode(n, lang); });
-
-    var withPlaceholder = root.querySelectorAll("[placeholder]");
-    for (var i = 0; i < withPlaceholder.length; i++) handleAttr(withPlaceholder[i], "placeholder", lang);
-
-    var withAria = root.querySelectorAll("[aria-label]");
-    for (var j = 0; j < withAria.length; j++) handleAttr(withAria[j], "aria-label", lang);
-
-    var inputs = root.querySelectorAll('input[type="submit"], input[type="button"], input[type="reset"]');
-    for (var k = 0; k < inputs.length; k++) handleAttr(inputs[k], "value", lang);
-
-    var withAlt = root.querySelectorAll("img[alt]");
-    for (var a = 0; a < withAlt.length; a++) handleAttr(withAlt[a], "alt", lang);
-
-    var withTitle = root.querySelectorAll("[title]");
-    for (var t = 0; t < withTitle.length; t++) handleAttr(withTitle[t], "title", lang);
-  }
-
-  var META_SELECTOR = 'meta[name="description"], meta[property="og:title"], meta[property="og:description"], ' +
-    'meta[name="twitter:title"], meta[name="twitter:description"]';
-
-  function translateMeta(lang) {
-    var metas = document.querySelectorAll(META_SELECTOR);
-    for (var m = 0; m < metas.length; m++) handleAttr(metas[m], "content", lang);
-  }
-
-  function applyLanguage(lang) {
-    applying = true;
-    document.documentElement.setAttribute("lang", lang);
-
-    // <title>
-    if (document.title) {
-      var t = document.createTextNode(document.title);
-      // reuse the text-node machinery on a detached node
-      handleTextNode(t, lang);
-      if (t.nodeValue !== document.title) document.title = t.nodeValue;
-    }
-
-    translateMeta(lang);
-    translateTree(document.body, lang);
-    updateSwitchUI(lang);
-    // let mutation events from our own writes settle
-    setTimeout(function () { applying = false; }, 0);
-  }
-
-  /* ---------------- Switcher UI ---------------- */
+  var switchEls = [];
+  var uid = 0;
 
   function injectStyles() {
     if (document.getElementById("lang-switch-styles")) return;
     var css =
       '.lang-switch{position:relative;display:inline-flex;align-items:center;font-family:inherit;margin-left:12px;z-index:900}' +
       '.lang-switch *{box-sizing:border-box}' +
-      /* trigger: a plain circle, sized to roughly match the "Devis gratuit" button height,
-         a touch larger for an easier tap target — flag only, no code / no caret */
-      '.lang-switch__btn{display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto;' +
-      'cursor:pointer;border:1px solid rgba(0,0,0,.15);background:#fff;color:#111;border-radius:50%;' +
-      'width:2.75rem;height:2.75rem;padding:0;transition:box-shadow .15s ease,border-color .15s ease}' +
+      '.lang-switch__btn{display:inline-flex;align-items:center;gap:8px;flex:0 0 auto;height:2.75rem;padding:0 .8rem 0 .7rem;' +
+      'cursor:pointer;border:1px solid rgba(0,0,0,.15);background:#fff;color:#111;border-radius:999px;font:inherit;' +
+      'font-size:14px;font-weight:700;letter-spacing:.02em;transition:box-shadow .15s ease,border-color .15s ease}' +
       '.lang-switch__btn:hover{border-color:rgba(0,0,0,.35);box-shadow:0 2px 10px rgba(0,0,0,.12)}' +
-      '.lang-switch__flag{display:inline-flex;line-height:0;border-radius:3px;overflow:hidden;' +
-      'box-shadow:0 0 0 1px rgba(0,0,0,.12)}' +
+      '.lang-switch__btn:focus-visible,.lang-switch__item:focus-visible{outline:3px solid #D9672B;outline-offset:2px}' +
+      '.lang-switch__flag{display:inline-flex;line-height:0;border-radius:3px;overflow:hidden;box-shadow:0 0 0 1px rgba(0,0,0,.14)}' +
       '.lang-switch__flag svg{display:block}' +
-      /* trigger: the active flag fills the whole circular button edge-to-edge (cropped via
-         preserveAspectRatio="slice"), no white padding / own border around it */
-      '.lang-switch__btn .lang-switch__flag{width:100%;height:100%;border-radius:50%;box-shadow:none}' +
-      '.lang-switch__btn .lang-switch__flag svg{width:100%;height:100%}' +
-      '.lang-switch__menu{position:absolute;top:calc(100% + 8px);right:0;min-width:170px;background:#fff;color:#111;' +
-      'border:1px solid rgba(0,0,0,.12);border-radius:12px;box-shadow:0 12px 30px rgba(0,0,0,.18);padding:6px;' +
-      'display:none;flex-direction:column}' +
+      '.lang-switch__caret{width:10px;height:10px;transition:transform .15s ease}' +
+      '.lang-switch.is-open .lang-switch__caret{transform:rotate(180deg)}' +
+      '.lang-switch__menu{position:absolute;top:calc(100% + 8px);right:0;min-width:190px;margin:0;list-style:none;background:#fff;color:#111;' +
+      'border:1px solid rgba(0,0,0,.12);border-radius:12px;box-shadow:0 12px 30px rgba(0,0,0,.18);padding:6px;display:none;flex-direction:column}' +
       '.lang-switch.is-open .lang-switch__menu{display:flex}' +
-      '.lang-switch__item{display:flex;align-items:center;gap:10px;width:100%;background:none;border:0;cursor:pointer;' +
-      'text-align:left;padding:10px 12px;border-radius:8px;font-size:14px;font-weight:600;color:#111}' +
+      '.lang-switch__item{display:flex;align-items:center;gap:10px;width:100%;text-decoration:none;padding:10px 12px;border-radius:8px;' +
+      'font-size:14px;font-weight:600;color:#111}' +
       '.lang-switch__item:hover{background:rgba(0,0,0,.06)}' +
-      '.lang-switch__item.is-active{background:rgba(0,0,0,.09)}' +
-      '.lang-switch__check{margin-left:auto;font-size:13px;opacity:.7}' +
-      /* desktop: compact the "Devis gratuit" CTA and keep the switch glued to it */
+      '.lang-switch__item[aria-current="true"]{background:rgba(0,0,0,.09)}' +
+      '.lang-switch__code{margin-left:auto;font-size:12px;font-weight:700;opacity:.65;letter-spacing:.04em}' +
       '@media (min-width:992px){' +
       '.rt-navbar-button-wraper{display:flex;align-items:center;gap:8px}' +
       '.rt-navbar-button-wraper .lang-switch{margin-left:0}' +
       '.rt-navbar-button-wraper .rt-button{padding-left:1rem!important;padding-right:1rem!important}' +
       '.rt-navbar-button-wraper .rt-text-style-button{white-space:nowrap}}' +
-      /* mobile: the theme hides the CTA wrapper; the switch is moved out (placeSwitch) */
-      /* and pinned just left of the hamburger button */
       '@media (max-width:991px){.rt-navbar-wrapper-v4>.lang-switch{margin-left:auto;margin-right:6px}}' +
-      /* hero CTAs: keep "Demander un devis" / "Voir nos réalisations" side by side */
-      /* and each button's own text on a single line, even on small phones */
       '.rt-hero-button-wrapper{flex-direction:row!important;flex-wrap:wrap!important}' +
       '.rt-hero-button-wrapper>div{flex:0 0 auto!important}' +
       '.rt-hero-button-wrapper .rt-text-style-button{white-space:nowrap}';
@@ -200,10 +91,17 @@
     document.head.appendChild(style);
   }
 
-  var switchEls = [];
+  function setOpen(wrap, open, focusTarget) {
+    var btn = wrap.querySelector(".lang-switch__btn");
+    wrap.classList.toggle("is-open", open);
+    btn.setAttribute("aria-expanded", open ? "true" : "false");
+    if (open && focusTarget) focusTarget.focus();
+  }
 
   function buildSwitch() {
-    var current = getLang();
+    var current = labelOf(CURRENT);
+    var id = "lang-menu-" + (++uid);
+
     var wrap = document.createElement("div");
     wrap.className = "lang-switch";
 
@@ -212,36 +110,62 @@
     btn.className = "lang-switch__btn";
     btn.setAttribute("aria-haspopup", "true");
     btn.setAttribute("aria-expanded", "false");
-    // circle, flag only — the language name still reaches screen readers / hover via aria-label+title
-    btn.innerHTML = '<span class="lang-switch__flag" data-flag></span>';
+    btn.setAttribute("aria-controls", id);
+    btn.setAttribute("aria-label", BUTTON_LABEL[CURRENT](current.label));
+    btn.innerHTML =
+      '<span class="lang-switch__flag">' + FLAGS[current.code] + "</span>" +
+      "<span>" + current.short + "</span>" +
+      '<svg class="lang-switch__caret" viewBox="0 0 10 10" aria-hidden="true" focusable="false"><path d="M1 3l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>';
 
-    var menu = document.createElement("div");
+    var menu = document.createElement("ul");
     menu.className = "lang-switch__menu";
-    menu.setAttribute("role", "menu");
+    menu.id = id;
+    menu.setAttribute("aria-label", MENU_LABEL[CURRENT]);
 
+    var links = [];
     LANGS.forEach(function (l) {
-      var item = document.createElement("button");
-      item.type = "button";
-      item.className = "lang-switch__item" + (l.code === current ? " is-active" : "");
-      item.setAttribute("role", "menuitem");
-      item.dataset.code = l.code;
-      item.innerHTML =
+      var li = document.createElement("li");
+      var a = document.createElement("a");
+      a.className = "lang-switch__item";
+      a.href = urlFor(l.code);
+      a.lang = l.code;
+      a.setAttribute("hreflang", l.code);
+      if (l.code === CURRENT) a.setAttribute("aria-current", "true");
+      a.innerHTML =
         '<span class="lang-switch__flag">' + FLAGS[l.code] + "</span>" +
         "<span>" + l.label + "</span>" +
-        '<span class="lang-switch__check" aria-hidden="true">' + (l.code === current ? "✓" : "") + "</span>";
-      item.addEventListener("click", function () {
-        close(wrap, btn);
-        if (l.code === getLang()) return;
-        setLang(l.code);
-        window.location.reload();
-      });
-      menu.appendChild(item);
+        '<span class="lang-switch__code" aria-hidden="true">' + l.short + "</span>";
+      li.appendChild(a);
+      menu.appendChild(li);
+      links.push(a);
     });
+
+    function currentIndex() {
+      for (var i = 0; i < links.length; i++) if (links[i] === document.activeElement) return i;
+      return -1;
+    }
 
     btn.addEventListener("click", function (e) {
       e.stopPropagation();
-      var open = wrap.classList.toggle("is-open");
-      btn.setAttribute("aria-expanded", open ? "true" : "false");
+      var open = !wrap.classList.contains("is-open");
+      setOpen(wrap, open, open ? links[LANGS.indexOf(current)] || links[0] : null);
+    });
+
+    btn.addEventListener("keydown", function (e) {
+      if (e.key === "ArrowDown" || e.key === "ArrowUp") {
+        e.preventDefault();
+        setOpen(wrap, true, e.key === "ArrowDown" ? links[0] : links[links.length - 1]);
+      }
+    });
+
+    menu.addEventListener("keydown", function (e) {
+      var i = currentIndex();
+      if (e.key === "ArrowDown") { e.preventDefault(); links[(i + 1) % links.length].focus(); }
+      else if (e.key === "ArrowUp") { e.preventDefault(); links[(i - 1 + links.length) % links.length].focus(); }
+      else if (e.key === "Home") { e.preventDefault(); links[0].focus(); }
+      else if (e.key === "End") { e.preventDefault(); links[links.length - 1].focus(); }
+      else if (e.key === "Escape") { e.preventDefault(); setOpen(wrap, false); btn.focus(); }
+      else if (e.key === "Tab") { setOpen(wrap, false); }
     });
 
     wrap.appendChild(btn);
@@ -250,37 +174,8 @@
     return wrap;
   }
 
-  function close(wrap, btn) {
-    wrap.classList.remove("is-open");
-    if (btn) btn.setAttribute("aria-expanded", "false");
-  }
-
-  function updateSwitchUI(lang) {
-    var meta = LANGS.filter(function (l) { return l.code === lang; })[0] || LANGS[0];
-    switchEls.forEach(function (wrap) {
-      var f = wrap.querySelector("[data-flag]");
-      if (f) f.innerHTML = FLAGS[meta.code] || "";
-      var btn = wrap.querySelector(".lang-switch__btn");
-      if (btn) {
-        var label = "Langue : " + meta.label;
-        btn.setAttribute("aria-label", label);
-        btn.title = label;
-      }
-      var items = wrap.querySelectorAll(".lang-switch__item");
-      for (var i = 0; i < items.length; i++) {
-        var active = items[i].dataset.code === lang;
-        items[i].classList.toggle("is-active", active);
-        var chk = items[i].querySelector(".lang-switch__check");
-        if (chk) chk.textContent = active ? "✓" : "";
-      }
-    });
-  }
-
   var MOBILE_MQ = "(max-width:991px)";
 
-  /* Desktop: switch lives INSIDE the CTA wrapper, glued to the "Devis gratuit"
-     button. Mobile: the theme hides that wrapper, so move the switch out to sit
-     just left of the hamburger button. */
   function placeSwitch(sw, ctaWrap) {
     var isMobile = window.matchMedia(MOBILE_MQ).matches;
     var hamburger = ctaWrap.parentNode.querySelector(".rt-mobile-list-button");
@@ -307,58 +202,24 @@
         })(sw, anchors[i]);
       }
     } else {
-      // Fallback: fixed top-right corner
-      var sw2 = buildSwitch();
-      sw2.style.position = "fixed";
-      sw2.style.top = "16px";
-      sw2.style.right = "16px";
-      sw2.style.zIndex = "9999";
-      document.body.appendChild(sw2);
+      var fallback = buildSwitch();
+      fallback.style.position = "fixed";
+      fallback.style.top = "16px";
+      fallback.style.right = "16px";
+      fallback.style.zIndex = "9999";
+      document.body.appendChild(fallback);
     }
 
     document.addEventListener("click", function () {
-      switchEls.forEach(function (w) { close(w, w.querySelector(".lang-switch__btn")); });
+      switchEls.forEach(function (w) { setOpen(w, false); });
     });
   }
 
-  /* ---------------- Re-translate Webflow-injected / cloned content ---------------- */
-  function observe() {
-    if (!window.MutationObserver) return;
-    var pending = null;
-    var obs = new MutationObserver(function (muts) {
-      if (applying) return;
-      var lang = getLang();
-      if (lang === SOURCE_LANG) return;
-      for (var i = 0; i < muts.length; i++) {
-        var added = muts[i].addedNodes;
-        for (var j = 0; j < added.length; j++) {
-          var n = added[j];
-          if (n.nodeType === 1 || n.nodeType === 3) {
-            if (n.nodeType === 1 && n.classList && n.classList.contains("lang-switch")) continue;
-            (function (node) {
-              if (pending) clearTimeout(pending);
-              pending = setTimeout(function () {
-                applying = true;
-                translateTree(node, getLang());
-                setTimeout(function () { applying = false; }, 0);
-              }, 50);
-            })(n);
-          }
-        }
-      }
-    });
-    obs.observe(document.body, { childList: true, subtree: true });
-  }
-
-  /* ---------------- init ---------------- */
   function init() {
     if (window.__i18nInit) return;
     window.__i18nInit = true;
     injectStyles();
     mountSwitch();
-    applyLanguage(getLang());
-    document.documentElement.classList.remove("i18n-pending");
-    observe();
   }
 
   if (document.readyState === "loading") {

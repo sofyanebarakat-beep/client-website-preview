@@ -113,7 +113,18 @@
     /* Safety net: never allow sideways scrolling / empty strip on the right */
     html, body { overflow-x: clip; max-width: 100%; }
   </style>
-<style id="i18n-early">.i18n-pending body{visibility:hidden}</style><script>try{if(localStorage.getItem("siteLang")&&localStorage.getItem("siteLang")!=="fr"){document.documentElement.classList.add("i18n-pending");setTimeout(function(){document.documentElement.classList.remove("i18n-pending")},3000)}}catch(e){}</script>
+<!-- i18n:head -->
+<meta name="i18n-lang" content="fr"/>
+<meta name="i18n-path" content="faq.html"/>
+<meta name="i18n-root" content=""/>
+<link href="https://ferronnerie-rouret.com/faq.html" hreflang="fr" rel="alternate"/>
+<link href="https://ferronnerie-rouret.com/en/faq.html" hreflang="en" rel="alternate"/>
+<link href="https://ferronnerie-rouret.com/it/faq.html" hreflang="it" rel="alternate"/>
+<link href="https://ferronnerie-rouret.com/faq.html" hreflang="x-default" rel="alternate"/>
+<meta content="fr_FR" property="og:locale"/>
+<meta content="en_GB" property="og:locale:alternate"/>
+<meta content="it_IT" property="og:locale:alternate"/>
+<!-- /i18n:head -->
 </head>
 <body>
 <div class="w-layout-vflex rt-navbar-outer-wrapper-v1" data-wf--rt-navbar-v1--variant="base">
@@ -582,8 +593,6 @@
 <script src="https://cdn.prod.website-files.com/gsap/3.15.0/gsap.min.js" type="text/javascript">
 </script>
 
-<script src="assets/i18n/translations.js">
-</script>
 <script src="assets/i18n/i18n.js" defer>
 </script>
 </body>

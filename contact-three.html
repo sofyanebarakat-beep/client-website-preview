@@ -114,7 +114,18 @@
     html, body { overflow-x: clip; max-width: 100%; }
   </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "LocalBusiness", "name": "La Ferronnerie du Rouret", "image": "https://cdn.prod.website-files.com/69a196b4902215f53ac6be15/69e1acb09504109b71d7aacc_Open%20graph%20image.webp", "url": "https://ferronnerie-rouret.com/", "telephone": "+33769871108", "email": "contact@ferronnerie-rouret.com", "address": {"@type": "PostalAddress", "streetAddress": "218 route de Turin", "postalCode": "06300", "addressLocality": "Nice", "addressRegion": "Provence-Alpes-Côte d.Azur", "addressCountry": "FR"}, "areaServed": ["Nice", "Antibes", "Cagnes-sur-Mer", "Mougins", "Saint-Paul-de-Vence", "Côte d'Azur"]}</script>
-<style id="i18n-early">.i18n-pending body{visibility:hidden}</style><script>try{if(localStorage.getItem("siteLang")&&localStorage.getItem("siteLang")!=="fr"){document.documentElement.classList.add("i18n-pending");setTimeout(function(){document.documentElement.classList.remove("i18n-pending")},3000)}}catch(e){}</script>
+<!-- i18n:head -->
+<meta name="i18n-lang" content="fr"/>
+<meta name="i18n-path" content="contact-three.html"/>
+<meta name="i18n-root" content=""/>
+<link href="https://ferronnerie-rouret.com/contact/" hreflang="fr" rel="alternate"/>
+<link href="https://ferronnerie-rouret.com/en/contact/" hreflang="en" rel="alternate"/>
+<link href="https://ferronnerie-rouret.com/it/contact/" hreflang="it" rel="alternate"/>
+<link href="https://ferronnerie-rouret.com/contact/" hreflang="x-default" rel="alternate"/>
+<meta content="fr_FR" property="og:locale"/>
+<meta content="en_GB" property="og:locale:alternate"/>
+<meta content="it_IT" property="og:locale:alternate"/>
+<!-- /i18n:head -->
 </head>
 <body>
 <section class="rt-navbar-top">
@@ -368,14 +379,14 @@
 <div class="w-layout-vflex rt-hero-v4-form-wrap">
 <div class="w-layout-hflex">
 <div class="rt-from-wrapper rt-gap-off w-form">
-<form class="rt-form" data-name="Contact V3 Form" data-turnstile-sitekey="0x4AAAAAAAQTptj2So4dx43e" data-wf-element-id="6d122b8b-5b77-64d9-48df-fcc7e3a3066f" data-wf-page-id="69a52114980eb03041756400" id="wf-form-Contact-V3-Form" method="get" name="wf-form-Contact-V3-Form">
+<form class="rt-form" data-name="Contact V3 Form" data-turnstile-sitekey="0x4AAAAAAAQTptj2So4dx43e" data-wf-element-id="6d122b8b-5b77-64d9-48df-fcc7e3a3066f" data-wf-page-id="69a52114980eb03041756400" id="wf-form-Contact-V3-Form" method="get" name="wf-form-Contact-V3-Form"><input type="hidden" name="Langue" data-name="Langue" value="fr"/>
 <div class="w-layout-vflex rt-form-wrapper">
 <div class="w-layout-hflex rt-form-row" data-w-id="6d122b8b-5b77-64d9-48df-fcc7e3a30670" style="opacity:0">
 <input class="rt-text-field rt w-input" data-name="Name" id="name" maxlength="256" name="name" placeholder="Votre nom*" required="" type="text"/>
-<input class="rt-text-field rt w-input" data-name="Email" id="email" maxlength="256" name="email" placeholder="Adresse e-mail*" required="" type="email"/>
+<input class="rt-text-field rt w-input" data-name="Email" id="email" maxlength="256" name="email" placeholder="Adresse e-mail*" required="" type="email" autocomplete="email"/>
 </div>
 <div class="w-layout-hflex rt-form-row rt" data-w-id="6d122b8b-5b77-64d9-48df-fcc7e3a30673" style="opacity:0">
-<input class="rt-text-field rt w-input" data-name="Phone Number" id="contact" maxlength="256" name="Phone-Number" placeholder="Numéro de téléphone*" required="" type="tel"/>
+<input class="rt-text-field rt w-input" data-name="Phone Number" id="contact" maxlength="256" name="Phone-Number" placeholder="Numéro de téléphone*" required="" type="tel" inputmode="tel" autocomplete="tel"/>
 <div class="rt-form-dropdown rt">
 <select class="rt-select-option w-select" data-name="Select service" id="Select-service" name="Select-service" required="">
 <option value="Select service">Type de projet*</option>
@@ -584,8 +595,6 @@
 <script src="https://cdn.prod.website-files.com/gsap/3.15.0/gsap.min.js" type="text/javascript">
 </script>
 
-<script src="assets/i18n/translations.js">
-</script>
 <script src="assets/i18n/i18n.js" defer>
 </script>
 </body>

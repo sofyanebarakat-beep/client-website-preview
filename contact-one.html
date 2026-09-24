@@ -111,7 +111,18 @@
     /* Safety net: never allow sideways scrolling / empty strip on the right */
     html, body { overflow-x: clip; max-width: 100%; }
   </style>
-<style id="i18n-early">.i18n-pending body{visibility:hidden}</style><script>try{if(localStorage.getItem("siteLang")&&localStorage.getItem("siteLang")!=="fr"){document.documentElement.classList.add("i18n-pending");setTimeout(function(){document.documentElement.classList.remove("i18n-pending")},3000)}}catch(e){}</script>
+<!-- i18n:head -->
+<meta name="i18n-lang" content="fr"/>
+<meta name="i18n-path" content="contact-one.html"/>
+<meta name="i18n-root" content=""/>
+<link href="https://ferronnerie-rouret.com/contact/" hreflang="fr" rel="alternate"/>
+<link href="https://ferronnerie-rouret.com/en/contact/" hreflang="en" rel="alternate"/>
+<link href="https://ferronnerie-rouret.com/it/contact/" hreflang="it" rel="alternate"/>
+<link href="https://ferronnerie-rouret.com/contact/" hreflang="x-default" rel="alternate"/>
+<meta content="fr_FR" property="og:locale"/>
+<meta content="en_GB" property="og:locale:alternate"/>
+<meta content="it_IT" property="og:locale:alternate"/>
+<!-- /i18n:head -->
 </head>
 <body>
 <section class="rt-navbar-top">
@@ -352,11 +363,11 @@
 <p class="rt-gap-off" data-w-id="d20eb97b-a89f-650f-cf3c-be4b1d9bfd9a" style="opacity:0">Une question, un projet de portail ou de garde-corps ? Remplissez le formulaire ci-dessous, nous vous recontactons rapidement.</p>
 </div>
 <div class="rt-form-block-v2 w-form">
-<form class="rt-form-v3" data-name="Email Form" data-turnstile-sitekey="0x4AAAAAAAQTptj2So4dx43e" data-wf-element-id="cc8eb607-cfbb-361b-ab1c-6d8aba973527" data-wf-page-id="69a520d8042cac727fdd6f0d" id="email-form" method="get" name="email-form">
+<form class="rt-form-v3" data-name="Email Form" data-turnstile-sitekey="0x4AAAAAAAQTptj2So4dx43e" data-wf-element-id="cc8eb607-cfbb-361b-ab1c-6d8aba973527" data-wf-page-id="69a520d8042cac727fdd6f0d" id="email-form" method="get" name="email-form"><input type="hidden" name="Langue" data-name="Langue" value="fr"/>
 <div class="w-layout-vflex rt-form-fields-wrapper rt-form-gap rt">
 <input class="rt-form-text-field w-input" data-name="Full name" data-w-id="cc8eb607-cfbb-361b-ab1c-6d8aba973529" id="Full-name" maxlength="256" name="Full-name" placeholder="Nom complet*" required="" style="opacity:0" type="text"/>
-<input class="rt-form-text-field w-input" data-name="Email" data-w-id="cc8eb607-cfbb-361b-ab1c-6d8aba97352a" id="Email" maxlength="256" name="Email" placeholder="Adresse e-mail*" required="" style="opacity:0" type="email"/>
-<input class="rt-form-text-field w-input" data-name="Phone" data-w-id="cc8eb607-cfbb-361b-ab1c-6d8aba97352b" id="Phone" maxlength="256" name="Phone" placeholder="Numéro de téléphone*" required="" style="opacity:0" type="tel"/>
+<input class="rt-form-text-field w-input" data-name="Email" data-w-id="cc8eb607-cfbb-361b-ab1c-6d8aba97352a" id="Email" maxlength="256" name="Email" placeholder="Adresse e-mail*" required="" style="opacity:0" type="email" autocomplete="email"/>
+<input class="rt-form-text-field w-input" data-name="Phone" data-w-id="cc8eb607-cfbb-361b-ab1c-6d8aba97352b" id="Phone" maxlength="256" name="Phone" placeholder="Numéro de téléphone*" required="" style="opacity:0" type="tel" inputmode="tel" autocomplete="tel"/>
 </div>
 <div class="rt-form-dropdown">
 <select class="rt-text-field-v2 rt-dropdown-v2 w-select" data-name="Select service" data-w-id="cc8eb607-cfbb-361b-ab1c-6d8aba97352d" id="Select-service" name="Select-service" required="" style="opacity:0">
@@ -563,8 +574,6 @@
 <script src="https://cdn.prod.website-files.com/gsap/3.15.0/gsap.min.js" type="text/javascript">
 </script>
 
-<script src="assets/i18n/translations.js">
-</script>
 <script src="assets/i18n/i18n.js" defer>
 </script>
 </body>
