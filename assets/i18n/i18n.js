@@ -116,6 +116,20 @@
 
     var inputs = root.querySelectorAll('input[type="submit"], input[type="button"], input[type="reset"]');
     for (var k = 0; k < inputs.length; k++) handleAttr(inputs[k], "value", lang);
+
+    var withAlt = root.querySelectorAll("img[alt]");
+    for (var a = 0; a < withAlt.length; a++) handleAttr(withAlt[a], "alt", lang);
+
+    var withTitle = root.querySelectorAll("[title]");
+    for (var t = 0; t < withTitle.length; t++) handleAttr(withTitle[t], "title", lang);
+  }
+
+  var META_SELECTOR = 'meta[name="description"], meta[property="og:title"], meta[property="og:description"], ' +
+    'meta[name="twitter:title"], meta[name="twitter:description"]';
+
+  function translateMeta(lang) {
+    var metas = document.querySelectorAll(META_SELECTOR);
+    for (var m = 0; m < metas.length; m++) handleAttr(metas[m], "content", lang);
   }
 
   function applyLanguage(lang) {
@@ -130,6 +144,7 @@
       if (t.nodeValue !== document.title) document.title = t.nodeValue;
     }
 
+    translateMeta(lang);
     translateTree(document.body, lang);
     updateSwitchUI(lang);
     // let mutation events from our own writes settle
