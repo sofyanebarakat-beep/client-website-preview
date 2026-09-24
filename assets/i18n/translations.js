@@ -1123,4 +1123,10 @@ window.SITE_TRANSLATIONS = {
   "Image 1 sur 3": { en: "Image 1 of 3", it: "Immagine 1 di 3" },
   "Image 2 sur 3": { en: "Image 2 of 3", it: "Immagine 2 di 3" },
   "Image 3 sur 3": { en: "Image 3 of 3", it: "Immagine 3 di 3" },
+  "Image 4 sur 4": { en: "Image 4 of 4", it: "Immagine 4 di 4" },
+  "Image 1 sur 4": { en: "Image 1 of 4", it: "Immagine 1 di 4" },
+  "Image 2 sur 4": { en: "Image 2 of 4", it: "Immagine 2 di 4" },
+  "Image 3 sur 4": { en: "Image 3 of 4", it: "Immagine 3 di 4" },
+  "Afficher l'image 4": { en: "Show image 4", it: "Mostra l'immagine 4" },
+  "Muret en pierre surmonté d'une clôture métallique noire et d'un portail sur mesure": { en: "Stone wall topped with a black metal fence and a custom gate", it: "Muro in pietra sormontato da una recinzione metallica nera e da un cancello su misura" },
 };
