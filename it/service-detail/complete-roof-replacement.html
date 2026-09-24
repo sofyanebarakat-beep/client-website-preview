@@ -159,10 +159,25 @@
 .gh-arrow:hover{background:#D9672B;border-color:#D9672B}
 .gh-pause svg{width:.85rem;height:.85rem}
 .gh-ico-play{display:none}.gh-hero.is-paused .gh-ico-play{display:block}.gh-hero.is-paused .gh-ico-pause{display:none}
-.rt-installation{position:relative;z-index:5;margin-top:-2.5rem}
 @media (max-width:991px){.gh-hero{height:clamp(36rem,90vh,52rem)}.gh-thumbs{display:none}.gh-controls-inner{justify-content:space-between}.gh-content{bottom:7rem}}
 @media (max-width:479px){.gh-btn{flex:1 1 100%}.gh-content{bottom:6.5rem}.gh-lead{margin-bottom:1.25rem}}
 @media (prefers-reduced-motion:reduce){.gh-slide{transition:none}.gh-slide.is-active img{animation:none;transform:none}.gh-thumb.is-active .gh-thumb-bar{animation:none;transform:none}}
+</style>
+<style id="gh-sections-css">
+.gh-hero + section{position:relative;z-index:5;margin-top:-2.5rem;background:#fff}
+.gh-why .rt-why-choose-left-top-item-one{opacity:.45;transition:opacity .3s ease}
+.gh-why .rt-why-choose-left-top-item-one:hover,.gh-why .rt-why-choose-left-top-item-one.is-active{opacity:1}
+.gh-why .rt-why-choose-left-top-item-one:focus-visible{outline:3px solid #D9672B;outline-offset:2px}
+.gh-why .rt-why-choose-left-text{transition:transform .35s ease}
+.gh-why .rt-why-choose-left-top-item-one.is-active .rt-why-choose-left-text{transform:translateX(1.5625rem)}
+.gh-why .rt-why-choose-us-absolute-inner-line{width:0;transition:width .5s ease}
+.gh-why .rt-why-choose-left-top-item-one.is-active .rt-why-choose-us-absolute-inner-line{width:100%}
+.gh-why .rt-image-mask-wrapper img{opacity:0;transition:opacity .7s ease}
+.gh-why .rt-image-mask-wrapper img.is-on{opacity:1}
+.gh-marquee .rt-marquee-train-v1{animation:gh-marquee 42s linear infinite;will-change:transform}
+.gh-marquee:hover .rt-marquee-train-v1{animation-play-state:paused}
+@keyframes gh-marquee{from{transform:translateX(0)}to{transform:translateX(-100%)}}
+@media (prefers-reduced-motion:reduce){.gh-marquee .rt-marquee-train-v1{animation:none}}
 </style>
 <!-- i18n:head -->
 <meta name="i18n-lang" content="it"/>
@@ -438,6 +453,197 @@
 <div class="gh-thumbs"><button type="button" class="gh-thumb is-active" data-i="0" aria-label="Mostra l&#x27;immagine 1" aria-current="true"><img alt="" src="../../assets/images/services/garde-corps-muret-pierre-portail-nice.webp" width="160" height="90" loading="lazy"/><span class="gh-thumb-bar"></span></button><button type="button" class="gh-thumb" data-i="1" aria-label="Mostra l&#x27;immagine 2"><img alt="" src="../../assets/images/services/portail-blanc-motifs-echecs-nice.webp" width="160" height="90" loading="lazy"/><span class="gh-thumb-bar"></span></button><button type="button" class="gh-thumb" data-i="2" aria-label="Mostra l&#x27;immagine 3"><img alt="" src="../../assets/images/services/portail-fer-forge-volutes-villa-nice.webp" width="160" height="90" loading="lazy"/><span class="gh-thumb-bar"></span></button><button type="button" class="gh-thumb" data-i="3" aria-label="Mostra l&#x27;immagine 4"><img alt="" src="../../assets/images/services/portail-battant-gris-ornements-dores-nice.webp" width="160" height="90" loading="lazy"/><span class="gh-thumb-bar"></span></button><button type="button" class="gh-thumb" data-i="4" aria-label="Mostra l&#x27;immagine 5"><img alt="" src="../../assets/images/services/portillon-fer-forge-serrure-code-nice.webp" width="160" height="90" loading="lazy"/><span class="gh-thumb-bar"></span></button><button type="button" class="gh-thumb" data-i="5" aria-label="Mostra l&#x27;immagine 6"><img alt="" src="../../assets/images/services/portail-noir-murs-pierre-nice.webp" width="160" height="90" loading="lazy"/><span class="gh-thumb-bar"></span></button><button type="button" class="gh-thumb" data-i="6" aria-label="Mostra l&#x27;immagine 7"><img alt="" src="../../assets/images/pose-garde-corps-fer-forge.jpg" width="160" height="90" loading="lazy"/><span class="gh-thumb-bar"></span></button><button type="button" class="gh-thumb" data-i="7" aria-label="Mostra l&#x27;immagine 8"><img alt="" src="../../assets/images/features/garde-corps-terrasse.jpg" width="160" height="90" loading="lazy"/><span class="gh-thumb-bar"></span></button><button type="button" class="gh-thumb" data-i="8" aria-label="Mostra l&#x27;immagine 9"><img alt="" src="../../assets/images/features/garde-corps-exterieur.jpg" width="160" height="90" loading="lazy"/><span class="gh-thumb-bar"></span></button><button type="button" class="gh-thumb" data-i="9" aria-label="Mostra l&#x27;immagine 10"><img alt="" src="../../assets/images/services/cloture-muret-pierre-portail-nice.webp" width="160" height="90" loading="lazy"/><span class="gh-thumb-bar"></span></button></div>
 <div class="gh-nav"><button type="button" class="gh-arrow" data-gh-prev aria-label="Immagine precedente">&#8249;</button><button type="button" class="gh-arrow gh-pause" data-gh-toggle aria-label="Pausa della presentazione" aria-pressed="false"><svg class="gh-ico-pause" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2.5 1h2.5v10H2.5zM7 1h2.5v10H7z" fill="currentColor"/></svg><svg class="gh-ico-play" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M3 1.2v9.6L10.6 6z" fill="currentColor"/></svg></button><button type="button" class="gh-arrow" data-gh-next aria-label="Immagine successiva">&#8250;</button></div>
 </div></div>
+</section>
+<section class="rt-why-choose gh-why rt-border-radius-top-right-left">
+<div class="w-layout-blockcontainer rt-container w-container">
+<div class="w-layout-vflex rt-why-choose-main">
+<div class="w-layout-vflex rt-why-choose-top-content rt-top-content-gap rt-mobile-gap-decrease">
+<div class="w-layout-hflex rt-hero-top-subtext rt-tag-box-gap-h2">
+<div class="rt-round rt-background-color-neon-lime rt-border-radius-full">
+</div>
+<div class="rt-text-style-h6 rt-font-weight-regular">Perché sceglierci</div>
+</div>
+<div class="rt-position-relative rt-overflow-hidden">
+<h2 class="rt-gap-off">La Ferronnerie du Rouret è specializzata nella progettazione e realizzazione di opere metalliche su misura: cancelli, parapetti, recinzioni e strutture in ferro battuto.</h2>
+</div>
+</div>
+<div class="w-layout-hflex rt-why-choose-bottom">
+<div class="w-layout-vflex rt-why-choose-bottom-left">
+<div class="w-layout-vflex rt-why-choose-left-top-item">
+<div role="button" tabindex="0" data-i="0" class="w-layout-hflex rt-why-choose-left-top-item-one is-active rt-position-relative rt-1">
+<div class="w-layout-hflex rt-why-choose-left-text rt-1">
+<div class="rt-text-style-h5">01</div>
+<div class="rt-text-style-h3">Sicurezza rafforzata</div>
+</div>
+<div class="rt-why-choose-border-line">
+<div class="rt-why-choose-us-absolute-inner-line rt-1">
+</div>
+</div>
+</div>
+<div role="button" tabindex="0" data-i="1" class="w-layout-hflex rt-why-choose-left-top-item-one rt-position-relative rt-2">
+<div class="w-layout-hflex rt-why-choose-left-text rt-2">
+<div class="rt-text-style-h5">02</div>
+<div class="rt-text-style-h3">Fabbricazione su misura</div>
+</div>
+<div class="rt-why-choose-border-line">
+<div class="rt-why-choose-us-absolute-inner-line rt-2">
+</div>
+</div>
+</div>
+<div role="button" tabindex="0" data-i="2" class="w-layout-hflex rt-why-choose-left-top-item-one rt-position-relative rt-3">
+<div class="w-layout-hflex rt-why-choose-left-text rt-3">
+<div class="rt-text-style-h5">03</div>
+<div class="rt-text-style-h3">Ampia scelta di design e colori (RAL)</div>
+</div>
+<div class="rt-why-choose-border-line">
+<div class="rt-why-choose-us-absolute-inner-line rt-3">
+</div>
+</div>
+</div>
+<div role="button" tabindex="0" data-i="3" class="w-layout-hflex rt-why-choose-left-top-item-one rt-position-relative rt-4">
+<div class="w-layout-hflex rt-why-choose-left-text rt-4">
+<div class="rt-text-style-h5">04</div>
+<div class="rt-text-style-h3">Finiture di alta gamma</div>
+</div>
+<div class="rt-why-choose-border-line">
+<div class="rt-why-choose-us-absolute-inner-line rt-4">
+</div>
+</div>
+</div>
+<div role="button" tabindex="0" data-i="4" class="w-layout-hflex rt-why-choose-left-top-item-one rt-position-relative rt-5">
+<div class="w-layout-hflex rt-why-choose-left-text rt-5">
+<div class="rt-text-style-h5">05</div>
+<div class="rt-text-style-h3">Materiali di qualità e finiture curate</div>
+</div>
+<div class="rt-why-choose-border-line">
+<div class="rt-why-choose-us-absolute-inner-line rt-5">
+</div>
+</div>
+</div>
+<div role="button" tabindex="0" data-i="5" class="w-layout-hflex rt-why-choose-left-top-item-one rt-position-relative rt-6">
+<div class="w-layout-hflex rt-why-choose-left-text rt-6">
+<div class="rt-text-style-h5">06</div>
+<div class="rt-text-style-h3">Posa a cura del nostro team</div>
+</div>
+<div class="rt-why-choose-border-line">
+<div class="rt-why-choose-us-absolute-inner-line rt-6">
+</div>
+</div>
+</div>
+<div role="button" tabindex="0" data-i="6" class="w-layout-hflex rt-why-choose-left-top-item-one rt-position-relative rt-7">
+<div class="w-layout-hflex rt-why-choose-left-text rt-7">
+<div class="rt-text-style-h5">07</div>
+<div class="rt-text-style-h3">Lavoriamo: acciaio, inox e alluminio</div>
+</div>
+<div class="rt-why-choose-border-line">
+<div class="rt-why-choose-us-absolute-inner-line rt-7">
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="rt-why-choose-bottom-right rt-overflow-hidden rt-border-radius">
+<div class="rt-image-mask-wrapper rt-mask-v2">
+<img alt="Saldatura di un motivo di cancello in ferro battuto in un&#x27;officina" class="rt-why-choose-image-one is-on" loading="lazy" src="../../assets/images/atelier-ferronnier-soudure.jpg" width="750"/>
+<img alt="Misurazione di un cancello in ferro battuto in un&#x27;officina" class="rt-why-choose-image-two" loading="lazy" src="../../assets/images/atelier-ferronnier-mesure.jpg" width="750"/>
+<img alt="Campioni di finiture colorate per ferro battuto su misura" class="rt-why-choose-image-three" loading="lazy" src="../../assets/images/ferronnerie-finitions-ral.jpg" width="750"/>
+<img alt="Posa di un parapetto in ferro battuto su una terrazza mediterranea" class="rt-why-choose-image-four" loading="lazy" src="../../assets/images/pose-garde-corps-fer-forge.jpg" width="750"/>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="rt-marquee-v1 rt-position-relative gh-marquee" aria-label="Il savoir-faire del ferro battuto francese">
+<div class="w-layout-vflex rt-marquee-main-wrapper">
+<div class="rt-top-content-gap">
+<div class="rt-text-style-h6">Il savoir-faire del ferro battuto francese</div>
+</div>
+<div class="w-layout-hflex rt-marquee-train-wrapper-v1">
+<div class="w-layout-hflex rt-marquee-train-v1" marquee="">
+<div class="rt-client-logo-wrapper-v1">
+<img alt="FERRO BATTUTO FRANCESE" loading="lazy" src="../../assets/images/marquee/ferronnerie-francaise.svg"/>
+</div>
+<div class="rt-client-logo-wrapper-v1">
+<img alt="OFFICINA DEL ROURET" loading="lazy" src="../../assets/images/marquee/atelier-du-rouret.svg"/>
+</div>
+<div class="rt-client-logo-wrapper-v1">
+<img alt="CARPENTERIA METALLICA SU MISURA" loading="lazy" src="../../assets/images/marquee/metallerie-sur-mesure.svg"/>
+</div>
+<div class="rt-client-logo-wrapper-v1">
+<img alt="FERRO BATTUTO ARTIGIANALE" loading="lazy" src="../../assets/images/marquee/fer-forge-artisanal.svg"/>
+</div>
+<div class="rt-client-logo-wrapper-v1">
+<img alt="CANCELLI E RECINZIONI" loading="lazy" src="../../assets/images/marquee/portails-clotures.svg"/>
+</div>
+<div class="rt-client-logo-wrapper-v1">
+<img alt="PARAPETTI SU MISURA" loading="lazy" src="../../assets/images/marquee/garde-corps.svg"/>
+</div>
+<div class="rt-client-logo-wrapper-v1">
+<img alt="SCALE METALLICHE" loading="lazy" src="../../assets/images/marquee/escaliers-metalliques.svg"/>
+</div>
+<div class="rt-client-logo-wrapper-v1">
+<img alt="SAVOIR-FAIRE COSTA AZZURRA" loading="lazy" src="../../assets/images/marquee/cote-d-azur.svg"/>
+</div>
+</div>
+<div class="w-layout-hflex rt-marquee-train-v1" marquee="">
+<div class="rt-client-logo-wrapper-v1">
+<img alt="FERRO BATTUTO FRANCESE" loading="lazy" src="../../assets/images/marquee/ferronnerie-francaise.svg"/>
+</div>
+<div class="rt-client-logo-wrapper-v1">
+<img alt="OFFICINA DEL ROURET" loading="lazy" src="../../assets/images/marquee/atelier-du-rouret.svg"/>
+</div>
+<div class="rt-client-logo-wrapper-v1">
+<img alt="CARPENTERIA METALLICA SU MISURA" loading="lazy" src="../../assets/images/marquee/metallerie-sur-mesure.svg"/>
+</div>
+<div class="rt-client-logo-wrapper-v1">
+<img alt="FERRO BATTUTO ARTIGIANALE" loading="lazy" src="../../assets/images/marquee/fer-forge-artisanal.svg"/>
+</div>
+<div class="rt-client-logo-wrapper-v1">
+<img alt="CANCELLI E RECINZIONI" loading="lazy" src="../../assets/images/marquee/portails-clotures.svg"/>
+</div>
+<div class="rt-client-logo-wrapper-v1">
+<img alt="PARAPETTI SU MISURA" loading="lazy" src="../../assets/images/marquee/garde-corps.svg"/>
+</div>
+<div class="rt-client-logo-wrapper-v1">
+<img alt="SCALE METALLICHE" loading="lazy" src="../../assets/images/marquee/escaliers-metalliques.svg"/>
+</div>
+<div class="rt-client-logo-wrapper-v1">
+<img alt="SAVOIR-FAIRE COSTA AZZURRA" loading="lazy" src="../../assets/images/marquee/cote-d-azur.svg"/>
+</div>
+</div>
+<div class="w-layout-hflex rt-marquee-train-v1" marquee="">
+<div class="rt-client-logo-wrapper-v1">
+<img alt="FERRO BATTUTO FRANCESE" loading="lazy" src="../../assets/images/marquee/ferronnerie-francaise.svg"/>
+</div>
+<div class="rt-client-logo-wrapper-v1">
+<img alt="OFFICINA DEL ROURET" loading="lazy" src="../../assets/images/marquee/atelier-du-rouret.svg"/>
+</div>
+<div class="rt-client-logo-wrapper-v1">
+<img alt="CARPENTERIA METALLICA SU MISURA" loading="lazy" src="../../assets/images/marquee/metallerie-sur-mesure.svg"/>
+</div>
+<div class="rt-client-logo-wrapper-v1">
+<img alt="FERRO BATTUTO ARTIGIANALE" loading="lazy" src="../../assets/images/marquee/fer-forge-artisanal.svg"/>
+</div>
+<div class="rt-client-logo-wrapper-v1">
+<img alt="CANCELLI E RECINZIONI" loading="lazy" src="../../assets/images/marquee/portails-clotures.svg"/>
+</div>
+<div class="rt-client-logo-wrapper-v1">
+<img alt="PARAPETTI SU MISURA" loading="lazy" src="../../assets/images/marquee/garde-corps.svg"/>
+</div>
+<div class="rt-client-logo-wrapper-v1">
+<img alt="SCALE METALLICHE" loading="lazy" src="../../assets/images/marquee/escaliers-metalliques.svg"/>
+</div>
+<div class="rt-client-logo-wrapper-v1">
+<img alt="SAVOIR-FAIRE COSTA AZZURRA" loading="lazy" src="../../assets/images/marquee/cote-d-azur.svg"/>
+</div>
+</div>
+</div>
+</div>
+<div class="rt-marquee-left-linear">
+</div>
+<div class="rt-marquee-right-linear">
+</div>
 </section>
 <section class="rt-installation rt-border-radius-top-right-left">
 <div class="w-layout-blockcontainer rt-container w-container">
@@ -821,6 +1027,19 @@ r.addEventListener("pointerup",function(e){if(x0===null)return;var d=e.clientX-x
 function warm(k){var im=s[(k+s.length)%s.length].querySelector("img");if(im&&im.loading==="lazy")im.loading="eager"}
 window.addEventListener("load",function(){warm(i+1);warm(i+2)});
 if(userPaused){r.classList.add("is-paused");tg.setAttribute("aria-pressed","true")}else schedule();
+})();
+</script>
+<script>
+(function(){var r=document.querySelector(".gh-why");if(!r)return;
+var it=r.querySelectorAll(".rt-why-choose-left-top-item-one"),im=r.querySelectorAll(".rt-image-mask-wrapper img");
+var cur=0,t=null,hold=false,vis=false,rm=window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+function set(n){cur=(n+it.length)%it.length;var k=Math.min(im.length-1,Math.floor(cur*im.length/it.length));
+it.forEach(function(e,j){e.classList.toggle("is-active",j===cur)});im.forEach(function(e,j){e.classList.toggle("is-on",j===k)})}
+function tick(){clearInterval(t);if(!rm&&vis&&!hold)t=setInterval(function(){set(cur+1)},4200)}
+it.forEach(function(e,j){e.addEventListener("mouseenter",function(){set(j)});e.addEventListener("click",function(){set(j)});e.addEventListener("focus",function(){set(j)});
+e.addEventListener("keydown",function(ev){if(ev.key==="Enter"||ev.key===" "){ev.preventDefault();set(j)}})});
+r.addEventListener("mouseenter",function(){hold=true;tick()});r.addEventListener("mouseleave",function(){hold=false;tick()});
+if("IntersectionObserver"in window){new IntersectionObserver(function(es){vis=es[0].isIntersecting;tick()},{threshold:.3}).observe(r)}else{vis=true;tick()}
 })();
 </script>
 </body>
