@@ -233,7 +233,7 @@
         close(wrap, btn);
         if (l.code === getLang()) return;
         setLang(l.code);
-        applyLanguage(l.code);
+        window.location.reload();
       });
       menu.appendChild(item);
     });
@@ -357,6 +357,7 @@
     injectStyles();
     mountSwitch();
     applyLanguage(getLang());
+    document.documentElement.classList.remove("i18n-pending");
     observe();
   }
 
