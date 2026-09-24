@@ -129,6 +129,9 @@
       max-width: 100%;
     }
     .rt-testimonial-slider-mask { overflow: hidden; }
+
+    /* Safety net: never allow sideways scrolling / empty strip on the right */
+    html, body { overflow-x: clip; max-width: 100%; }
   </style>
 </head>
 <body>

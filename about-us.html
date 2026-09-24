@@ -117,6 +117,9 @@
       max-width: 100%;
     }
     .rt-testimonial-slider-mask { overflow: hidden; }
+
+    /* Safety net: never allow sideways scrolling / empty strip on the right */
+    html, body { overflow-x: clip; max-width: 100%; }
   </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "LocalBusiness", "name": "La Ferronnerie du Rouret", "image": "https://cdn.prod.website-files.com/69a196b4902215f53ac6be15/69e1acb09504109b71d7aacc_Open%20graph%20image.webp", "url": "https://ferronnerie-rouret.com/", "telephone": "+33769871108", "email": "contact@ferronnerie-rouret.com", "address": {"@type": "PostalAddress", "streetAddress": "218 route de Turin", "postalCode": "06300", "addressLocality": "Nice", "addressRegion": "Provence-Alpes-Côte d.Azur", "addressCountry": "FR"}, "areaServed": ["Nice", "Antibes", "Cagnes-sur-Mer", "Mougins", "Saint-Paul-de-Vence", "Côte d'Azur"]}</script>
 </head>

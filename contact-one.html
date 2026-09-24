@@ -107,6 +107,9 @@
     .rt-portfolio-button::before {
       background: linear-gradient(135deg, rgba(255,255,255,0.18), rgba(255,255,255,0.04)) !important;
     }
+
+    /* Safety net: never allow sideways scrolling / empty strip on the right */
+    html, body { overflow-x: clip; max-width: 100%; }
   </style>
 </head>
 <body>

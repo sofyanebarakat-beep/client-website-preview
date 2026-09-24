@@ -111,6 +111,9 @@
     .rt-portfolio-button::before {
       background: linear-gradient(135deg, rgba(255,255,255,0.18), rgba(255,255,255,0.04)) !important;
     }
+
+    /* Safety net: never allow sideways scrolling / empty strip on the right */
+    html, body { overflow-x: clip; max-width: 100%; }
   </style>
   <link as="image" href="../assets/images/services/portail-sur-mesure-nice-1536.webp" imagesizes="100vw" imagesrcset="../assets/images/services/portail-sur-mesure-nice-768.webp 768w, ../assets/images/services/portail-sur-mesure-nice-1536.webp 1536w" rel="preload" type="image/webp"/>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"ImageObject","contentUrl":"https://ferronnerie-rouret.com/assets/images/services/portail-sur-mesure-nice-1536.webp","url":"https://ferronnerie-rouret.com/assets/images/services/portail-sur-mesure-nice-1536.webp","width":1536,"height":1152,"caption":"Portail métallique blanc sur mesure installé à Nice sur la Côte d’Azur","representativeOfPage":true}</script>
