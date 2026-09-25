@@ -1442,4 +1442,6 @@ window.SITE_TRANSLATIONS = {
   "Une parfaite stabilité": { en: "Perfect stability", it: "Una perfetta stabilità" },
   "Éléments décoratifs en fer forgé": { en: "Wrought iron decorative elements", it: "Elementi decorativi in ferro battuto" },
   "Étude du projet et prise de mesures": { en: "Project study and measurements", it: "Studio del progetto e rilievo delle misure" },
+  "Clôture en fer forgé noir à pointes fleurdelisées entre deux piliers en brique": { en: "Black wrought iron fence with fleur-de-lis finials between two brick pillars", it: "Recinzione in ferro battuto nero con punte a giglio tra due pilastri in mattoni" },
+  "Clôture à barreaux noirs et pointes de lance posée sur muret entre piliers en brique": { en: "Black barred fence with spear-point finials on a low wall between brick pillars", it: "Recinzione a barre nere con punte di lancia su muretto tra pilastri in mattoni" },
 };
