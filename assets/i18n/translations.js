@@ -1178,4 +1178,11 @@ window.SITE_TRANSLATIONS = {
   "Design personnalisable": { en: "Customisable design", it: "Design personalizzabile" },
   "Valorisation de votre propriété": { en: "Adds value to your property", it: "Valorizzazione della tua proprietà" },
   "Compatible avec la motorisation": { en: "Motorisation compatible", it: "Compatibile con la motorizzazione" },
+  "Tous": { en: "All", it: "Tutti" },
+  "Filtrer les articles par catégorie": { en: "Filter articles by category", it: "Filtra gli articoli per categoria" },
+  "Clôture": { en: "Fence", it: "Recinzione" },
+  "Marquise": { en: "Canopy", it: "Pensilina" },
+  "Grille de défense": { en: "Security grille", it: "Grata di sicurezza" },
+  "Escalier & rambarde": { en: "Staircase & handrail", it: "Scala e ringhiera" },
+  "Meuble": { en: "Furniture", it: "Mobile" },
 };

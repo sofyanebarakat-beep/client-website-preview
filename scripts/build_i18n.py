@@ -114,7 +114,7 @@ class Translator:
             return body
 
         # Only human-readable fields: never schema keywords such as "@type": "Article".
-        text_keys = {"name", "description", "headline", "caption", "text", "alternativeHeadline", "abstract"}
+        text_keys = {"name", "description", "headline", "caption", "text", "alternativeHeadline", "abstract", "articleSection"}
 
         def walk(o, key=None):
             if isinstance(o, str):
