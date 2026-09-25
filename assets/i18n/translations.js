@@ -1263,4 +1263,7 @@ window.SITE_TRANSLATIONS = {
   "Image 4 sur 6": { en: "Image 4 of 6", it: "Immagine 4 di 6" },
   "Image 5 sur 6": { en: "Image 5 of 6", it: "Immagine 5 di 6" },
   "Image 6 sur 6": { en: "Image 6 of 6", it: "Immagine 6 di 6" },
+  "Portail blanc sur mesure aux pièces d'échecs découpées": { en: "Custom white gate with cut-out chess pieces", it: "Cancello bianco su misura con pezzi degli scacchi ritagliati" },
+  "Portail en fer forgé à volutes, finition haut de gamme": { en: "Scrolled wrought iron gate, premium finish", it: "Cancello in ferro battuto a volute, finitura di alta gamma" },
+  "Portail gris anthracite en acier aux ornements dorés": { en: "Charcoal grey steel gate with golden ornaments", it: "Cancello in acciaio grigio antracite con ornamenti dorati" },
 };

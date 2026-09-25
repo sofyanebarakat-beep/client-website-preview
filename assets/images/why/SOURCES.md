@@ -6,9 +6,8 @@ License for every image: [Unsplash License](https://unsplash.com/license) — fr
 | File | Photographer | Original |
 |---|---|---|
 | securite-cloture-fer-forge-pointes | Joshua Olsen | https://unsplash.com/photos/oVueqggYsbU |
-| fabrication-sur-mesure-releve-cotes-atelier | Spencer Davis | https://unsplash.com/photos/QTKwYmMumfk |
 | choix-couleurs-nuancier-thermolaquage | Mika Baumeister | https://unsplash.com/photos/PtabTe6iJ_8 |
-| finitions-fer-forge-volutes-detail | Markus Winkler | https://unsplash.com/photos/c-YIR7UPuXk |
 | materiaux-acier-inox-barres-qualite | Kasper Gant | https://unsplash.com/photos/2YXyyg5bLLg |
 | installation-pose-ouvrage-metallique-chantier | Marianna Krzakiewicz | https://unsplash.com/photos/XPgJ19A7WnU |
-| acier-inox-aluminium-metal-brosse | apryan widodo | https://unsplash.com/photos/tRrIXmtOmL4 |
+
+Note: the images for "Fabrication sur mesure", "Finitions haut de gamme" and "Acier, inox et aluminium" are the workshop's own project photos (same as the hero slider), cropped to 3:4.
