@@ -1257,4 +1257,10 @@ window.SITE_TRANSLATIONS = {
   "Barres d'acier inoxydable stockées en atelier": { en: "Stainless steel bars stored in a workshop", it: "Barre in acciaio inox stoccate in officina" },
   "Ouvrier en tenue de sécurité posant un ouvrage métallique": { en: "Worker in safety gear fitting a metal structure", it: "Operaio in tenuta di sicurezza che posa un'opera metallica" },
   "Surface d'aluminium brossé : acier, inox et aluminium": { en: "Brushed aluminium surface: steel, stainless steel and aluminium", it: "Superficie di alluminio spazzolato: acciaio, inox e alluminio" },
+  "Image 1 sur 6": { en: "Image 1 of 6", it: "Immagine 1 di 6" },
+  "Image 2 sur 6": { en: "Image 2 of 6", it: "Immagine 2 di 6" },
+  "Image 3 sur 6": { en: "Image 3 of 6", it: "Immagine 3 di 6" },
+  "Image 4 sur 6": { en: "Image 4 of 6", it: "Immagine 4 di 6" },
+  "Image 5 sur 6": { en: "Image 5 of 6", it: "Immagine 5 di 6" },
+  "Image 6 sur 6": { en: "Image 6 of 6", it: "Immagine 6 di 6" },
 };
