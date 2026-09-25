@@ -26,6 +26,9 @@ import re
 import shutil
 import subprocess
 import sys
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import build_blog
 from urllib.parse import urlsplit
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -393,6 +396,7 @@ def build_sitemap(canon_by_page, dictionary, extra_images):
 
 def main():
     report = "--report" in sys.argv
+    build_blog.main()
     dictionary = load_dictionary()
     pages = list_pages()
     pages_set = set(pages) - FR_ONLY

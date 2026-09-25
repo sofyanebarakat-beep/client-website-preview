@@ -116,17 +116,45 @@
     html, body { overflow-x: clip; max-width: 100%; }
   </style>
 <script type="application/ld+json">{"@type": "LocalBusiness", "@id": "https://ferronnerie-rouret.com/#business", "name": "La Ferronnerie du Rouret", "url": "https://ferronnerie-rouret.com/", "image": "https://ferronnerie-rouret.com/assets/images/og-la-ferronnerie-du-rouret.jpg", "logo": "https://ferronnerie-rouret.com/assets/images/logo-la-ferronnerie-du-rouret.svg", "telephone": "+33769871108", "email": "contact@ferronnerie-rouret.com", "priceRange": "€€€", "address": {"@type": "PostalAddress", "streetAddress": "218 route de Turin", "postalCode": "06300", "addressLocality": "Nice", "addressRegion": "Provence-Alpes-Côte d’Azur", "addressCountry": "FR"}, "sameAs": ["https://www.facebook.com/profile.php?id=61590937673669", "https://x.com/FERRONRRIE", "https://www.youtube.com/channel/UCqDWAFJjuhxUY1mqDzkmYrQ"], "areaServed": ["Nice", "Antibes", "Cagnes-sur-Mer", "Mougins", "Saint-Paul-de-Vence", "Côte d'Azur", "Alpes-Maritimes", "Cannes", "Monaco", "Saint-Laurent-du-Var", "Villefranche-sur-Mer"]}</script>
-<style id="gh-filter-css">
-.gh-filter{display:flex;flex-wrap:wrap;justify-content:center;gap:.6rem;margin-top:1.75rem}
-.gh-chip{cursor:pointer;border:1px solid rgba(28,31,34,.25);background:#fff;color:#1C1F22;border-radius:999px;padding:.6rem 1.1rem;font:inherit;font-size:.95rem;font-weight:500;line-height:1.2;transition:background .2s,border-color .2s,color .2s,transform .2s}
+<style id="gh-blog-list-css">
+.gh-toolbar{display:flex;flex-direction:column;align-items:center;gap:1.25rem;margin-top:1.75rem;width:100%}
+.gh-search{position:relative;width:min(100%,32rem)}
+.gh-search input{width:100%;height:3.1rem;padding:0 2.75rem 0 2.75rem;border:1px solid rgba(28,31,34,.25);border-radius:999px;background:#fff;font:inherit;font-size:1rem;color:#1C1F22}
+.gh-search input:focus{outline:3px solid #F6B287;border-color:#D9672B}
+.gh-search svg{position:absolute;left:1rem;top:50%;width:1.1rem;height:1.1rem;transform:translateY(-50%);color:#374151;pointer-events:none}
+.gh-search button{position:absolute;right:.5rem;top:50%;transform:translateY(-50%);width:2.1rem;height:2.1rem;border:0;border-radius:50%;background:transparent;font-size:1.3rem;line-height:1;color:#374151;cursor:pointer}
+.gh-search button[hidden]{display:none}
+.gh-filter{display:flex;flex-wrap:wrap;justify-content:center;gap:.6rem}
+.gh-chip{cursor:pointer;border:1px solid rgba(28,31,34,.25);background:#fff;color:#1C1F22;border-radius:999px;padding:.55rem 1rem;font:inherit;font-size:.95rem;font-weight:500;line-height:1.2;display:inline-flex;align-items:center;gap:.5rem;transition:background .2s,border-color .2s,color .2s,transform .2s}
+.gh-chip .gh-n{font-size:.78rem;font-weight:600;min-width:1.4rem;padding:.15rem .4rem;border-radius:999px;background:#F3F6F7;color:#374151;text-align:center}
 .gh-chip:hover{border-color:#D9672B;transform:translateY(-1px)}
 .gh-chip.is-active{background:#D9672B;border-color:#D9672B;color:#fff}
-.gh-chip:focus-visible{outline:3px solid #F6B287;outline-offset:2px}
-.gh-count{margin:1rem 0 0;font-size:.95rem;color:#374151;text-align:center}
+.gh-chip.is-active .gh-n{background:rgba(255,255,255,.25);color:#fff}
+.gh-chip:focus-visible,.gh-feature a:focus-visible{outline:3px solid #F6B287;outline-offset:2px}
+.gh-count{margin:0;font-size:.95rem;color:#374151;text-align:center}
+.gh-empty{text-align:center;padding:3rem 1rem;color:#374151;font-size:1.05rem}
+.gh-empty[hidden]{display:none}
+.gh-feature{display:grid;grid-template-columns:1.25fr 1fr;gap:2.5rem;align-items:center;margin:2.5rem 0 3rem;padding:1rem;border-radius:1.5rem;background:#F3F6F7}
+.gh-feature[hidden]{display:none}
+.gh-feature-img{display:block;overflow:hidden;border-radius:1rem}
+.gh-feature-img img{display:block;width:100%;height:auto;transition:transform .6s ease}
+.gh-feature:hover .gh-feature-img img{transform:scale(1.04)}
+.gh-badge{display:inline-block;padding:.4rem .8rem;border-radius:999px;background:#D9672B;color:#fff;font-size:.8rem;font-weight:600;letter-spacing:.03em;text-transform:uppercase}
+.gh-feature-body{display:flex;flex-direction:column;gap:1rem;align-items:flex-start;padding:1rem 1.25rem 1rem 0}
+.gh-feature h3{margin:0;font-size:clamp(1.6rem,2.6vw,2.4rem);line-height:1.15;font-weight:500;letter-spacing:-.02em}
+.gh-feature h3 a{color:inherit;text-decoration:none}
+.gh-feature p{margin:0;color:#374151;line-height:1.6}
+.gh-more-link{font-weight:600;color:#B9551F;text-decoration:none}
+.gh-more-link:hover{text-decoration:underline}
+.gh-meta{display:flex;align-items:center;gap:.75rem;flex-wrap:wrap}
+.gh-read{font-size:.9rem;color:#374151}
+.gh-read::before{content:"·";margin-right:.75rem}
 .gh-cats{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.6rem}
-.gh-cats span{font-size:.8rem;line-height:1;padding:.35rem .65rem;border-radius:999px;background:#F3F6F7;color:#374151}
+.gh-cats span,.gh-cats a{font-size:.8rem;line-height:1;padding:.35rem .65rem;border-radius:999px;background:#F3F6F7;color:#374151;text-decoration:none}
+.gh-feature .gh-cats span{background:#fff}
 .gh-cats .gh-more{background:transparent;padding-left:.2rem}
 .rt-blog-collection-item[hidden]{display:none!important}
+@media (max-width:991px){.gh-feature{grid-template-columns:1fr;gap:1.25rem}.gh-feature-body{padding:0 .5rem .75rem}}
 @media (max-width:767px){.gh-filter{justify-content:flex-start}}
 </style>
 <!-- i18n:head -->
@@ -407,171 +435,10 @@
 </div>
 </div>
 <div class="rt-hero-background-image-wrapper-v1">
-<img alt="Construction worker wearing a yellow hard hat and safety vest using a power drill on a metal roof." class="rt-hero-background-image w-variant-02f5dbb7-1f6e-1146-7e76-3a19f31af7f2" sizes="(max-width: 3840px) 100vw, 3840px" src="https://cdn.prod.website-files.com/69a196b4902215f53ac6be15/69c3cf8f3d6c0d1b810486a8_Blog-banner.webp" srcset="https://cdn.prod.website-files.com/69a196b4902215f53ac6be15/69c3cf8f3d6c0d1b810486a8_Blog-banner-p-500.webp 500w, https://cdn.prod.website-files.com/69a196b4902215f53ac6be15/69c3cf8f3d6c0d1b810486a8_Blog-banner-p-800.webp 800w, https://cdn.prod.website-files.com/69a196b4902215f53ac6be15/69c3cf8f3d6c0d1b810486a8_Blog-banner-p-1080.webp 1080w, https://cdn.prod.website-files.com/69a196b4902215f53ac6be15/69c3cf8f3d6c0d1b810486a8_Blog-banner-p-1600.webp 1600w, https://cdn.prod.website-files.com/69a196b4902215f53ac6be15/69c3cf8f3d6c0d1b810486a8_Blog-banner-p-2000.webp 2000w, https://cdn.prod.website-files.com/69a196b4902215f53ac6be15/69c3cf8f3d6c0d1b810486a8_Blog-banner-p-2600.webp 2600w, https://cdn.prod.website-files.com/69a196b4902215f53ac6be15/69c3cf8f3d6c0d1b810486a8_Blog-banner-p-3200.webp 3200w, https://cdn.prod.website-files.com/69a196b4902215f53ac6be15/69c3cf8f3d6c0d1b810486a8_Blog-banner.webp 3840w"/>
+<img alt="Metalworking with a grinder, with sparks" class="rt-hero-background-image w-variant-02f5dbb7-1f6e-1146-7e76-3a19f31af7f2" src="../assets/images/blog/banner-atelier-ferronnerie-1920.webp" width="1920" height="800" fetchpriority="high" decoding="async"/>
 </div>
 </section>
-<section class="rt-blog-card-section rt-border-radius-top-right-left">
-<div class="w-layout-blockcontainer rt-container w-container">
-<div class="w-layout-vflex rt-blog-card-main">
-<div class="w-layout-vflex rt-blog-card-top-content rt-text-center rt-top-content-gap">
-<div class="w-layout-hflex rt-hero-top-subtext rt-tag-box-gap-h2" data-w-id="e32b9530-d34f-84a0-5169-5a2771e6d073" style="opacity:0">
-<div class="rt-round rt-background-color-neon-lime rt-border-radius-full">
-</div>
-<div class="rt-text-style-h6 rt-font-weight-regular">News</div>
-</div>
-<h2 class="rt-gap-off" data-w-id="e32b9530-d34f-84a0-5169-5a2771e6d077" style="opacity:0">Tips and news from the workshop</h2><div class="gh-filter" role="group" aria-label="Filter articles by category"><button type="button" class="gh-chip is-active" data-cat="all" aria-pressed="true">All</button><button type="button" class="gh-chip" data-cat="portail" aria-pressed="false">Gate</button><button type="button" class="gh-chip" data-cat="cloture" aria-pressed="false">Fence</button><button type="button" class="gh-chip" data-cat="garde-corps" aria-pressed="false">Railings</button><button type="button" class="gh-chip" data-cat="pergola" aria-pressed="false">Pergola</button><button type="button" class="gh-chip" data-cat="marquise" aria-pressed="false">Canopy</button><button type="button" class="gh-chip" data-cat="grille-defense" aria-pressed="false">Security grille</button><button type="button" class="gh-chip" data-cat="escalier-rambarde" aria-pressed="false">Staircase &amp; handrail</button><button type="button" class="gh-chip" data-cat="meuble" aria-pressed="false">Furniture</button></div><p class="gh-count" role="status" aria-live="polite" data-gh-count></p>
-</div>
-<div class="rt-blog-collection-listwrapper w-dyn-list">
-<div class="rt-blog-card-bottom-content-wrapper w-dyn-items" role="list">
-<div class="rt-blog-collection-item w-dyn-item" data-cats="portail cloture garde-corps grille-defense" role="listitem">
-<div class="w-layout-vflex rt-blog-card-item-one" data-w-id="9597e62f-3f0e-01ad-f9c6-797cc4e9a5ca" style="opacity:0">
-<a class="rt-blog-card-image-wrapper rt-overflow-hidden rt-border-radius w-inline-block" href="blog-post/essential-roof-maintenance-tips-every-homeowner-should-know-to-protect.html">
-<img alt="Maintaining your outdoor ironwork: the essential steps" class="rt-blog-card-image" data-w-id="9597e62f-3f0e-01ad-f9c6-797cc4e9a5cc" loading="lazy" src="../assets/images/blog/entretien-ferronnerie.webp"/>
-</a>
-<div class="rt-blog-publish-date">30 March 2026</div><div class="gh-cats"><span>Gate</span><span>Fence</span><span>Railings</span><span class="gh-more" aria-hidden="true">+1</span></div>
-<a class="rt-blog-title-wrapper w-inline-block" href="blog-post/essential-roof-maintenance-tips-every-homeowner-should-know-to-protect.html">
-<div class="rt-text-style-h5">Maintaining your outdoor ironwork: the essential steps</div>
-</a>
-<div class="rt-blog-card-item-border-line">
-<div class="rt-blog-card-item-border-inner-line" data-w-id="9597e62f-3f0e-01ad-f9c6-797cc4e9a5d2">
-</div>
-</div>
-</div>
-</div>
-<div class="rt-blog-collection-item w-dyn-item" data-cats="portail cloture grille-defense" role="listitem">
-<div class="w-layout-vflex rt-blog-card-item-one" data-w-id="9597e62f-3f0e-01ad-f9c6-797cc4e9a5ca" style="opacity:0">
-<a class="rt-blog-card-image-wrapper rt-overflow-hidden rt-border-radius w-inline-block" href="blog-post/how-to-spot-roof-damage-early-and-prevent-costly-issues-before-its-too-late.html">
-<img alt="Spotting corrosion on an iron gate before it&#x27;s too late" class="rt-blog-card-image" data-w-id="9597e62f-3f0e-01ad-f9c6-797cc4e9a5cc" loading="lazy" src="../assets/images/blog/corrosion-portail.webp"/>
-</a>
-<div class="rt-blog-publish-date">30 March 2026</div><div class="gh-cats"><span>Gate</span><span>Fence</span><span>Security grille</span></div>
-<a class="rt-blog-title-wrapper w-inline-block" href="blog-post/how-to-spot-roof-damage-early-and-prevent-costly-issues-before-its-too-late.html">
-<div class="rt-text-style-h5">Spotting corrosion on an iron gate before it's too late</div>
-</a>
-<div class="rt-blog-card-item-border-line">
-<div class="rt-blog-card-item-border-inner-line" data-w-id="9597e62f-3f0e-01ad-f9c6-797cc4e9a5d2">
-</div>
-</div>
-</div>
-</div>
-<div class="rt-blog-collection-item w-dyn-item" data-cats="portail garde-corps escalier-rambarde meuble" role="listitem">
-<div class="w-layout-vflex rt-blog-card-item-one" data-w-id="9597e62f-3f0e-01ad-f9c6-797cc4e9a5ca" style="opacity:0">
-<a class="rt-blog-card-image-wrapper rt-overflow-hidden rt-border-radius w-inline-block" href="blog-post/top-5-roofing-materials-for-durability-style-and-ultimate-home-protection.html">
-<img alt="5 finishes that enhance and protect artistic ironwork" class="rt-blog-card-image" data-w-id="9597e62f-3f0e-01ad-f9c6-797cc4e9a5cc" loading="lazy" src="../assets/images/blog/finitions-fer-forge.webp"/>
-</a>
-<div class="rt-blog-publish-date">30 March 2026</div><div class="gh-cats"><span>Gate</span><span>Railings</span><span>Staircase &amp; handrail</span><span class="gh-more" aria-hidden="true">+1</span></div>
-<a class="rt-blog-title-wrapper w-inline-block" href="blog-post/top-5-roofing-materials-for-durability-style-and-ultimate-home-protection.html">
-<div class="rt-text-style-h5">5 finishes that enhance and protect artistic ironwork</div>
-</a>
-<div class="rt-blog-card-item-border-line">
-<div class="rt-blog-card-item-border-inner-line" data-w-id="9597e62f-3f0e-01ad-f9c6-797cc4e9a5d2">
-</div>
-</div>
-</div>
-</div>
-<div class="rt-blog-collection-item w-dyn-item" data-cats="portail cloture" role="listitem">
-<div class="w-layout-vflex rt-blog-card-item-one" data-w-id="9597e62f-3f0e-01ad-f9c6-797cc4e9a5ca" style="opacity:0">
-<a class="rt-blog-card-image-wrapper rt-overflow-hidden rt-border-radius w-inline-block" href="blog-post/top-signs-your-roof-needs-immediate-repair-before-major-damage.html">
-<img alt="Blog card image" class="rt-blog-card-image" data-w-id="9597e62f-3f0e-01ad-f9c6-797cc4e9a5cc" loading="lazy" sizes="(max-width: 767px) 100vw, (max-width: 991px) 728px, 940px" src="https://cdn.prod.website-files.com/69afefea240028b43eb9fe5f/69aff689de8da9339b91154b_Blog%20Image%20Three.webp" srcset="https://cdn.prod.website-files.com/69afefea240028b43eb9fe5f/69aff689de8da9339b91154b_Blog%20Image%20Three-p-500.webp 500w, https://cdn.prod.website-files.com/69afefea240028b43eb9fe5f/69aff689de8da9339b91154b_Blog%20Image%20Three-p-800.webp 800w, https://cdn.prod.website-files.com/69afefea240028b43eb9fe5f/69aff689de8da9339b91154b_Blog%20Image%20Three.webp 980w"/>
-</a>
-<div class="rt-blog-publish-date">30 March 2026</div><div class="gh-cats"><span>Gate</span><span>Fence</span></div>
-<a class="rt-blog-title-wrapper w-inline-block" href="blog-post/top-signs-your-roof-needs-immediate-repair-before-major-damage.html">
-<div class="rt-text-style-h5">Signs that a gate needs to be restored without delay</div>
-</a>
-<div class="rt-blog-card-item-border-line">
-<div class="rt-blog-card-item-border-inner-line" data-w-id="9597e62f-3f0e-01ad-f9c6-797cc4e9a5d2">
-</div>
-</div>
-</div>
-</div>
-<div class="rt-blog-collection-item w-dyn-item" data-cats="portail cloture garde-corps pergola marquise meuble" role="listitem">
-<div class="w-layout-vflex rt-blog-card-item-one" data-w-id="9597e62f-3f0e-01ad-f9c6-797cc4e9a5ca" style="opacity:0">
-<a class="rt-blog-card-image-wrapper rt-overflow-hidden rt-border-radius w-inline-block" href="blog-post/how-to-choose-the-right-roofing-material-for-your-home-today.html">
-<img alt="Blog card image" class="rt-blog-card-image" data-w-id="9597e62f-3f0e-01ad-f9c6-797cc4e9a5cc" loading="lazy" sizes="(max-width: 767px) 100vw, (max-width: 991px) 728px, 940px" src="https://cdn.prod.website-files.com/69afefea240028b43eb9fe5f/69aff7842b16afa2fc186e6d_Blog%20Image%20eleven.webp" srcset="https://cdn.prod.website-files.com/69afefea240028b43eb9fe5f/69aff7842b16afa2fc186e6d_Blog%20Image%20eleven-p-500.webp 500w, https://cdn.prod.website-files.com/69afefea240028b43eb9fe5f/69aff7842b16afa2fc186e6d_Blog%20Image%20eleven-p-800.webp 800w, https://cdn.prod.website-files.com/69afefea240028b43eb9fe5f/69aff7842b16afa2fc186e6d_Blog%20Image%20eleven.webp 980w"/>
-</a>
-<div class="rt-blog-publish-date">30 March 2026</div><div class="gh-cats"><span>Gate</span><span>Fence</span><span>Railings</span><span class="gh-more" aria-hidden="true">+3</span></div>
-<a class="rt-blog-title-wrapper w-inline-block" href="blog-post/how-to-choose-the-right-roofing-material-for-your-home-today.html">
-<div class="rt-text-style-h5">Wrought iron, steel or aluminium: how to choose the right metal</div>
-</a>
-<div class="rt-blog-card-item-border-line">
-<div class="rt-blog-card-item-border-inner-line" data-w-id="9597e62f-3f0e-01ad-f9c6-797cc4e9a5d2">
-</div>
-</div>
-</div>
-</div>
-<div class="rt-blog-collection-item w-dyn-item" data-cats="portail garde-corps escalier-rambarde pergola" role="listitem">
-<div class="w-layout-vflex rt-blog-card-item-one" data-w-id="9597e62f-3f0e-01ad-f9c6-797cc4e9a5ca" style="opacity:0">
-<a class="rt-blog-card-image-wrapper rt-overflow-hidden rt-border-radius w-inline-block" href="blog-post/benefits-of-professional-roof-installation-for-long-term-protection.html">
-<img alt="Blog card image" class="rt-blog-card-image" data-w-id="9597e62f-3f0e-01ad-f9c6-797cc4e9a5cc" loading="lazy" sizes="(max-width: 767px) 100vw, (max-width: 991px) 728px, 940px" src="https://cdn.prod.website-files.com/69afefea240028b43eb9fe5f/69aff767632b8ffd7c046ba2_Blog%20Image%20ten.webp" srcset="https://cdn.prod.website-files.com/69afefea240028b43eb9fe5f/69aff767632b8ffd7c046ba2_Blog%20Image%20ten-p-500.webp 500w, https://cdn.prod.website-files.com/69afefea240028b43eb9fe5f/69aff767632b8ffd7c046ba2_Blog%20Image%20ten-p-800.webp 800w, https://cdn.prod.website-files.com/69afefea240028b43eb9fe5f/69aff767632b8ffd7c046ba2_Blog%20Image%20ten.webp 980w"/>
-</a>
-<div class="rt-blog-publish-date">30 March 2026</div><div class="gh-cats"><span>Gate</span><span>Railings</span><span>Staircase &amp; handrail</span><span class="gh-more" aria-hidden="true">+1</span></div>
-<a class="rt-blog-title-wrapper w-inline-block" href="blog-post/benefits-of-professional-roof-installation-for-long-term-protection.html">
-<div class="rt-text-style-h5">The benefits of having your ironwork installed by a craftsman</div>
-</a>
-<div class="rt-blog-card-item-border-line">
-<div class="rt-blog-card-item-border-inner-line" data-w-id="9597e62f-3f0e-01ad-f9c6-797cc4e9a5d2">
-</div>
-</div>
-</div>
-</div>
-<div class="rt-blog-collection-item w-dyn-item" data-cats="portail cloture garde-corps grille-defense pergola marquise" role="listitem">
-<div class="w-layout-vflex rt-blog-card-item-one" data-w-id="9597e62f-3f0e-01ad-f9c6-797cc4e9a5ca" style="opacity:0">
-<a class="rt-blog-card-image-wrapper rt-overflow-hidden rt-border-radius w-inline-block" href="blog-post/seasonal-roof-maintenance-checklist-for-homeowners-to-protect-your-home-year-round.html">
-<img alt="Blog card image" class="rt-blog-card-image" data-w-id="9597e62f-3f0e-01ad-f9c6-797cc4e9a5cc" loading="lazy" sizes="(max-width: 767px) 100vw, (max-width: 991px) 728px, 940px" src="https://cdn.prod.website-files.com/69afefea240028b43eb9fe5f/69aff742e4127efc60e1b44b_Blog%20Image%20nine.webp" srcset="https://cdn.prod.website-files.com/69afefea240028b43eb9fe5f/69aff742e4127efc60e1b44b_Blog%20Image%20nine-p-500.webp 500w, https://cdn.prod.website-files.com/69afefea240028b43eb9fe5f/69aff742e4127efc60e1b44b_Blog%20Image%20nine-p-800.webp 800w, https://cdn.prod.website-files.com/69afefea240028b43eb9fe5f/69aff742e4127efc60e1b44b_Blog%20Image%20nine.webp 980w"/>
-</a>
-<div class="rt-blog-publish-date">30 March 2026</div><div class="gh-cats"><span>Gate</span><span>Fence</span><span>Railings</span><span class="gh-more" aria-hidden="true">+3</span></div>
-<a class="rt-blog-title-wrapper w-inline-block" href="blog-post/seasonal-roof-maintenance-checklist-for-homeowners-to-protect-your-home-year-round.html">
-<div class="rt-text-style-h5">The seasonal maintenance calendar for your ironwork</div>
-</a>
-<div class="rt-blog-card-item-border-line">
-<div class="rt-blog-card-item-border-inner-line" data-w-id="9597e62f-3f0e-01ad-f9c6-797cc4e9a5d2">
-</div>
-</div>
-</div>
-</div>
-<div class="rt-blog-collection-item w-dyn-item" data-cats="portail cloture garde-corps pergola marquise" role="listitem">
-<div class="w-layout-vflex rt-blog-card-item-one" data-w-id="9597e62f-3f0e-01ad-f9c6-797cc4e9a5ca" style="opacity:0">
-<a class="rt-blog-card-image-wrapper rt-overflow-hidden rt-border-radius w-inline-block" href="blog-post/how-weather-conditions-affect-the-lifespan-of-your-roof-and-durability.html">
-<img alt="Blog card image" class="rt-blog-card-image" data-w-id="9597e62f-3f0e-01ad-f9c6-797cc4e9a5cc" loading="lazy" sizes="(max-width: 767px) 100vw, (max-width: 991px) 728px, 940px" src="https://cdn.prod.website-files.com/69afefea240028b43eb9fe5f/69aff725bb05824066c124ef_Blog%20Image%20eight.webp" srcset="https://cdn.prod.website-files.com/69afefea240028b43eb9fe5f/69aff725bb05824066c124ef_Blog%20Image%20eight-p-500.webp 500w, https://cdn.prod.website-files.com/69afefea240028b43eb9fe5f/69aff725bb05824066c124ef_Blog%20Image%20eight-p-800.webp 800w, https://cdn.prod.website-files.com/69afefea240028b43eb9fe5f/69aff725bb05824066c124ef_Blog%20Image%20eight.webp 980w"/>
-</a>
-<div class="rt-blog-publish-date">30 March 2026</div><div class="gh-cats"><span>Gate</span><span>Fence</span><span>Railings</span><span class="gh-more" aria-hidden="true">+2</span></div>
-<a class="rt-blog-title-wrapper w-inline-block" href="blog-post/how-weather-conditions-affect-the-lifespan-of-your-roof-and-durability.html">
-<div class="rt-text-style-h5">The Riviera sea air and the lifespan of your metalwork</div>
-</a>
-<div class="rt-blog-card-item-border-line">
-<div class="rt-blog-card-item-border-inner-line" data-w-id="9597e62f-3f0e-01ad-f9c6-797cc4e9a5d2">
-</div>
-</div>
-</div>
-</div>
-<div class="rt-blog-collection-item w-dyn-item" data-cats="garde-corps escalier-rambarde" role="listitem">
-<div class="w-layout-vflex rt-blog-card-item-one" data-w-id="9597e62f-3f0e-01ad-f9c6-797cc4e9a5ca" style="opacity:0">
-<a class="rt-blog-card-image-wrapper rt-overflow-hidden rt-border-radius w-inline-block" href="blog-post/common-roofing-mistakes-homeowners-should-avoid-during-installation-projects.html">
-<img alt="Blog card image" class="rt-blog-card-image" data-w-id="9597e62f-3f0e-01ad-f9c6-797cc4e9a5cc" loading="lazy" sizes="(max-width: 767px) 100vw, (max-width: 991px) 728px, 940px" src="https://cdn.prod.website-files.com/69afefea240028b43eb9fe5f/69aff70be8e45cfe462021bb_Blog%20Image%20seven.webp" srcset="https://cdn.prod.website-files.com/69afefea240028b43eb9fe5f/69aff70be8e45cfe462021bb_Blog%20Image%20seven-p-500.webp 500w, https://cdn.prod.website-files.com/69afefea240028b43eb9fe5f/69aff70be8e45cfe462021bb_Blog%20Image%20seven-p-800.webp 800w, https://cdn.prod.website-files.com/69afefea240028b43eb9fe5f/69aff70be8e45cfe462021bb_Blog%20Image%20seven.webp 980w"/>
-</a>
-<div class="rt-blog-publish-date">30 March 2026</div><div class="gh-cats"><span>Railings</span><span>Staircase &amp; handrail</span></div>
-<a class="rt-blog-title-wrapper w-inline-block" href="blog-post/common-roofing-mistakes-homeowners-should-avoid-during-installation-projects.html">
-<div class="rt-text-style-h5">Mistakes to avoid when installing a railing</div>
-</a>
-<div class="rt-blog-card-item-border-line">
-<div class="rt-blog-card-item-border-inner-line" data-w-id="9597e62f-3f0e-01ad-f9c6-797cc4e9a5d2">
-</div>
-</div>
-</div>
-</div>
-</div>
-<div aria-label="List" class="w-pagination-wrapper rt-blog-pagination" role="navigation">
-<a aria-label="Next Page" class="w-pagination-next rt-blog-pagination-next-button rt-border-radius-large" href="?f74df39b_page=2">
-<div class="rt-text-color-deep-plum w-inline-block">Next</div>
-<div class="w-layout-vflex">
-<img alt="" loading="lazy" src="https://cdn.prod.website-files.com/69a196b4902215f53ac6be15/69affb7ee7fabb5ce02aa7f7_Vector%20(74).svg"/>
-</div>
-</a>
-<link href="?f74df39b_page=2" rel="prerender"/>
-</div>
-</div>
-</div>
-</div>
-</section>
+<section class="rt-blog-card-section rt-border-radius-top-right-left"><!-- blog:list --><div class="w-layout-blockcontainer rt-container w-container"><div class="w-layout-vflex rt-blog-card-main" data-gh-blog><div class="w-layout-vflex rt-blog-card-top-content rt-text-center rt-top-content-gap"><div class="w-layout-hflex rt-hero-top-subtext rt-tag-box-gap-h2"><div class="rt-round rt-background-color-neon-lime rt-border-radius-full"></div><div class="rt-text-style-h6 rt-font-weight-regular">News</div></div><h2 class="rt-gap-off">Tips and news from the workshop</h2><div class="gh-toolbar"><div class="gh-search" role="search"><svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><circle cx="9" cy="9" r="6" fill="none" stroke="currentColor" stroke-width="2"/><path d="M14 14l4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><input type="search" placeholder="Search for an article" aria-label="Search for an article" autocomplete="off"/><button type="button" aria-label="Clear search" hidden>&times;</button></div><div class="gh-filter" role="group" aria-label="Filter articles by category"><button type="button" class="gh-chip is-active" data-cat="all" aria-pressed="true">All<span class="gh-n">9</span></button><button type="button" class="gh-chip" data-cat="portail" aria-pressed="false">Gate<span class="gh-n">8</span></button><button type="button" class="gh-chip" data-cat="cloture" aria-pressed="false">Fence<span class="gh-n">6</span></button><button type="button" class="gh-chip" data-cat="garde-corps" aria-pressed="false">Railings<span class="gh-n">7</span></button><button type="button" class="gh-chip" data-cat="pergola" aria-pressed="false">Pergola<span class="gh-n">4</span></button><button type="button" class="gh-chip" data-cat="marquise" aria-pressed="false">Canopy<span class="gh-n">3</span></button><button type="button" class="gh-chip" data-cat="grille-defense" aria-pressed="false">Security grille<span class="gh-n">3</span></button><button type="button" class="gh-chip" data-cat="escalier-rambarde" aria-pressed="false">Staircase &amp; handrail<span class="gh-n">3</span></button><button type="button" class="gh-chip" data-cat="meuble" aria-pressed="false">Furniture<span class="gh-n">2</span></button></div><p class="gh-count" role="status" aria-live="polite" data-gh-count></p></div></div><article class="gh-feature" data-slug="how-to-choose-the-right-roofing-material-for-your-home-today"><a class="gh-feature-img" href="blog-post/how-to-choose-the-right-roofing-material-for-your-home-today.html" tabindex="-1" aria-hidden="true"><img alt="" src="../assets/images/blog/choisir-metal-ferronnerie-1280.webp" width="1280" height="776" decoding="async"/></a><div class="gh-feature-body"><span class="gh-badge">Featured</span><div class="gh-cats"><span>Gate</span><span>Fence</span><span>Railings</span><span class="gh-more" aria-hidden="true">+3</span></div><h3><a href="blog-post/how-to-choose-the-right-roofing-material-for-your-home-today.html">Wrought iron, steel or aluminium: how to choose the right metal</a></h3><p>Practical guide to choosing the right material and design for your ironwork project in Nice.</p><div class="gh-meta"><div class="rt-blog-publish-date">30 March 2026</div><div class="gh-read">2 min read</div></div><a class="gh-more-link" href="blog-post/how-to-choose-the-right-roofing-material-for-your-home-today.html">Read the article →</a></div></article><div class="rt-blog-collection-listwrapper w-dyn-list"><div class="rt-blog-card-bottom-content-wrapper w-dyn-items" role="list"><div class="rt-blog-collection-item w-dyn-item" role="listitem" data-cats="portail cloture garde-corps grille-defense" data-slug="essential-roof-maintenance-tips-every-homeowner-should-know-to-protect"><div class="w-layout-vflex rt-blog-card-item-one"><a class="rt-blog-card-image-wrapper rt-overflow-hidden rt-border-radius w-inline-block" href="blog-post/essential-roof-maintenance-tips-every-homeowner-should-know-to-protect.html"><img alt="Maintaining your outdoor ironwork: the essential steps" class="rt-blog-card-image" loading="lazy" decoding="async" src="../assets/images/blog/entretien-ferronnerie-exterieure-800.webp" width="800" height="533"/></a><div class="gh-meta"><div class="rt-blog-publish-date">30 March 2026</div><div class="gh-read">2 min read</div></div><div class="gh-cats"><span>Gate</span><span>Fence</span><span>Railings</span><span class="gh-more" aria-hidden="true">+1</span></div><a class="rt-blog-title-wrapper w-inline-block" href="blog-post/essential-roof-maintenance-tips-every-homeowner-should-know-to-protect.html"><div class="rt-text-style-h5">Maintaining your outdoor ironwork: the essential steps</div></a><div class="rt-blog-card-item-border-line"><div class="rt-blog-card-item-border-inner-line"></div></div></div></div><div class="rt-blog-collection-item w-dyn-item" role="listitem" data-cats="portail cloture grille-defense" data-slug="how-to-spot-roof-damage-early-and-prevent-costly-issues-before-its-too-late"><div class="w-layout-vflex rt-blog-card-item-one"><a class="rt-blog-card-image-wrapper rt-overflow-hidden rt-border-radius w-inline-block" href="blog-post/how-to-spot-roof-damage-early-and-prevent-costly-issues-before-its-too-late.html"><img alt="Spotting corrosion on an iron gate before it&#x27;s too late" class="rt-blog-card-image" loading="lazy" decoding="async" src="../assets/images/blog/corrosion-portail-fer-800.webp" width="800" height="533"/></a><div class="gh-meta"><div class="rt-blog-publish-date">30 March 2026</div><div class="gh-read">2 min read</div></div><div class="gh-cats"><span>Gate</span><span>Fence</span><span>Security grille</span></div><a class="rt-blog-title-wrapper w-inline-block" href="blog-post/how-to-spot-roof-damage-early-and-prevent-costly-issues-before-its-too-late.html"><div class="rt-text-style-h5">Spotting corrosion on an iron gate before it's too late</div></a><div class="rt-blog-card-item-border-line"><div class="rt-blog-card-item-border-inner-line"></div></div></div></div><div class="rt-blog-collection-item w-dyn-item" role="listitem" data-cats="portail garde-corps escalier-rambarde meuble" data-slug="top-5-roofing-materials-for-durability-style-and-ultimate-home-protection"><div class="w-layout-vflex rt-blog-card-item-one"><a class="rt-blog-card-image-wrapper rt-overflow-hidden rt-border-radius w-inline-block" href="blog-post/top-5-roofing-materials-for-durability-style-and-ultimate-home-protection.html"><img alt="5 finishes that enhance and protect artistic ironwork" class="rt-blog-card-image" loading="lazy" decoding="async" src="../assets/images/blog/finitions-ferronnerie-art-800.webp" width="800" height="533"/></a><div class="gh-meta"><div class="rt-blog-publish-date">30 March 2026</div><div class="gh-read">2 min read</div></div><div class="gh-cats"><span>Gate</span><span>Railings</span><span>Staircase &amp; handrail</span><span class="gh-more" aria-hidden="true">+1</span></div><a class="rt-blog-title-wrapper w-inline-block" href="blog-post/top-5-roofing-materials-for-durability-style-and-ultimate-home-protection.html"><div class="rt-text-style-h5">5 finishes that enhance and protect artistic ironwork</div></a><div class="rt-blog-card-item-border-line"><div class="rt-blog-card-item-border-inner-line"></div></div></div></div><div class="rt-blog-collection-item w-dyn-item" role="listitem" data-cats="portail cloture" data-slug="top-signs-your-roof-needs-immediate-repair-before-major-damage"><div class="w-layout-vflex rt-blog-card-item-one"><a class="rt-blog-card-image-wrapper rt-overflow-hidden rt-border-radius w-inline-block" href="blog-post/top-signs-your-roof-needs-immediate-repair-before-major-damage.html"><img alt="Signs that a gate needs to be restored without delay" class="rt-blog-card-image" loading="lazy" decoding="async" src="../assets/images/blog/portail-a-restaurer-meulage-800.webp" width="800" height="533"/></a><div class="gh-meta"><div class="rt-blog-publish-date">30 March 2026</div><div class="gh-read">2 min read</div></div><div class="gh-cats"><span>Gate</span><span>Fence</span></div><a class="rt-blog-title-wrapper w-inline-block" href="blog-post/top-signs-your-roof-needs-immediate-repair-before-major-damage.html"><div class="rt-text-style-h5">Signs that a gate needs to be restored without delay</div></a><div class="rt-blog-card-item-border-line"><div class="rt-blog-card-item-border-inner-line"></div></div></div></div><div class="rt-blog-collection-item w-dyn-item" role="listitem" data-cats="portail cloture garde-corps pergola marquise meuble" data-slug="how-to-choose-the-right-roofing-material-for-your-home-today"><div class="w-layout-vflex rt-blog-card-item-one"><a class="rt-blog-card-image-wrapper rt-overflow-hidden rt-border-radius w-inline-block" href="blog-post/how-to-choose-the-right-roofing-material-for-your-home-today.html"><img alt="Wrought iron, steel or aluminium: how to choose the right metal" class="rt-blog-card-image" loading="lazy" decoding="async" src="../assets/images/blog/choisir-metal-ferronnerie-800.webp" width="800" height="533"/></a><div class="gh-meta"><div class="rt-blog-publish-date">30 March 2026</div><div class="gh-read">2 min read</div></div><div class="gh-cats"><span>Gate</span><span>Fence</span><span>Railings</span><span class="gh-more" aria-hidden="true">+3</span></div><a class="rt-blog-title-wrapper w-inline-block" href="blog-post/how-to-choose-the-right-roofing-material-for-your-home-today.html"><div class="rt-text-style-h5">Wrought iron, steel or aluminium: how to choose the right metal</div></a><div class="rt-blog-card-item-border-line"><div class="rt-blog-card-item-border-inner-line"></div></div></div></div><div class="rt-blog-collection-item w-dyn-item" role="listitem" data-cats="portail garde-corps escalier-rambarde pergola" data-slug="benefits-of-professional-roof-installation-for-long-term-protection"><div class="w-layout-vflex rt-blog-card-item-one"><a class="rt-blog-card-image-wrapper rt-overflow-hidden rt-border-radius w-inline-block" href="blog-post/benefits-of-professional-roof-installation-for-long-term-protection.html"><img alt="The benefits of having your ironwork installed by a craftsman" class="rt-blog-card-image" loading="lazy" decoding="async" src="../assets/images/blog/avantages-ferronnerie-artisan-800.webp" width="800" height="533"/></a><div class="gh-meta"><div class="rt-blog-publish-date">30 March 2026</div><div class="gh-read">2 min read</div></div><div class="gh-cats"><span>Gate</span><span>Railings</span><span>Staircase &amp; handrail</span><span class="gh-more" aria-hidden="true">+1</span></div><a class="rt-blog-title-wrapper w-inline-block" href="blog-post/benefits-of-professional-roof-installation-for-long-term-protection.html"><div class="rt-text-style-h5">The benefits of having your ironwork installed by a craftsman</div></a><div class="rt-blog-card-item-border-line"><div class="rt-blog-card-item-border-inner-line"></div></div></div></div><div class="rt-blog-collection-item w-dyn-item" role="listitem" data-cats="portail cloture garde-corps grille-defense pergola marquise" data-slug="seasonal-roof-maintenance-checklist-for-homeowners-to-protect-your-home-year-round"><div class="w-layout-vflex rt-blog-card-item-one"><a class="rt-blog-card-image-wrapper rt-overflow-hidden rt-border-radius w-inline-block" href="blog-post/seasonal-roof-maintenance-checklist-for-homeowners-to-protect-your-home-year-round.html"><img alt="The seasonal maintenance calendar for your ironwork" class="rt-blog-card-image" loading="lazy" decoding="async" src="../assets/images/blog/calendrier-entretien-ferronnerie-800.webp" width="800" height="533"/></a><div class="gh-meta"><div class="rt-blog-publish-date">30 March 2026</div><div class="gh-read">2 min read</div></div><div class="gh-cats"><span>Gate</span><span>Fence</span><span>Railings</span><span class="gh-more" aria-hidden="true">+3</span></div><a class="rt-blog-title-wrapper w-inline-block" href="blog-post/seasonal-roof-maintenance-checklist-for-homeowners-to-protect-your-home-year-round.html"><div class="rt-text-style-h5">The seasonal maintenance calendar for your ironwork</div></a><div class="rt-blog-card-item-border-line"><div class="rt-blog-card-item-border-inner-line"></div></div></div></div><div class="rt-blog-collection-item w-dyn-item" role="listitem" data-cats="portail cloture garde-corps pergola marquise" data-slug="how-weather-conditions-affect-the-lifespan-of-your-roof-and-durability"><div class="w-layout-vflex rt-blog-card-item-one"><a class="rt-blog-card-image-wrapper rt-overflow-hidden rt-border-radius w-inline-block" href="blog-post/how-weather-conditions-affect-the-lifespan-of-your-roof-and-durability.html"><img alt="The Riviera sea air and the lifespan of your metalwork" class="rt-blog-card-image" loading="lazy" decoding="async" src="../assets/images/blog/air-marin-durabilite-ferronnerie-800.webp" width="800" height="533"/></a><div class="gh-meta"><div class="rt-blog-publish-date">30 March 2026</div><div class="gh-read">2 min read</div></div><div class="gh-cats"><span>Gate</span><span>Fence</span><span>Railings</span><span class="gh-more" aria-hidden="true">+2</span></div><a class="rt-blog-title-wrapper w-inline-block" href="blog-post/how-weather-conditions-affect-the-lifespan-of-your-roof-and-durability.html"><div class="rt-text-style-h5">The Riviera sea air and the lifespan of your metalwork</div></a><div class="rt-blog-card-item-border-line"><div class="rt-blog-card-item-border-inner-line"></div></div></div></div><div class="rt-blog-collection-item w-dyn-item" role="listitem" data-cats="garde-corps escalier-rambarde" data-slug="common-roofing-mistakes-homeowners-should-avoid-during-installation-projects"><div class="w-layout-vflex rt-blog-card-item-one"><a class="rt-blog-card-image-wrapper rt-overflow-hidden rt-border-radius w-inline-block" href="blog-post/common-roofing-mistakes-homeowners-should-avoid-during-installation-projects.html"><img alt="Mistakes to avoid when installing a railing" class="rt-blog-card-image" loading="lazy" decoding="async" src="../assets/images/blog/erreurs-pose-garde-corps-800.webp" width="800" height="533"/></a><div class="gh-meta"><div class="rt-blog-publish-date">30 March 2026</div><div class="gh-read">2 min read</div></div><div class="gh-cats"><span>Railings</span><span>Staircase &amp; handrail</span></div><a class="rt-blog-title-wrapper w-inline-block" href="blog-post/common-roofing-mistakes-homeowners-should-avoid-during-installation-projects.html"><div class="rt-text-style-h5">Mistakes to avoid when installing a railing</div></a><div class="rt-blog-card-item-border-line"><div class="rt-blog-card-item-border-inner-line"></div></div></div></div></div></div><p class="gh-empty" hidden>No articles match your search.</p></div></div><!-- /blog:list --></section>
 <section class="rt-footer-v1 rt-border-radius-top-right-left">
 <div class="rt-footer-bottom-wrapper">
 <div class="w-layout-blockcontainer rt-container w-container">
@@ -697,17 +564,31 @@
 
 <script src="../assets/i18n/i18n.js" defer>
 </script>
-<script>
-(function(){var bar=document.querySelector(".gh-filter");if(!bar)return;
-var chips=bar.querySelectorAll(".gh-chip"),items=document.querySelectorAll(".rt-blog-collection-item[data-cats]"),cnt=document.querySelector("[data-gh-count]");
+<script id="gh-blog-list-js">
+(function(){var root=document.querySelector("[data-gh-blog]");if(!root)return;
+var chips=root.querySelectorAll(".gh-chip"),items=root.querySelectorAll(".rt-blog-collection-item[data-cats]"),cnt=root.querySelector("[data-gh-count]"),
+feat=root.querySelector(".gh-feature"),empty=root.querySelector(".gh-empty"),q=root.querySelector(".gh-search input"),clr=root.querySelector(".gh-search button");
 var lang=(document.documentElement.getAttribute("lang")||"fr").slice(0,2);
-var T={fr:["article","articles","Aucun article dans cette catégorie pour le moment."],en:["article","articles","No articles in this category yet."],it:["articolo","articoli","Nessun articolo in questa categoria al momento."]}[lang]||["article","articles",""];
-function apply(cat,push){var n=0;items.forEach(function(it){var ok=cat==="all"||(" "+it.getAttribute("data-cats")+" ").indexOf(" "+cat+" ")>-1;it.hidden=!ok;if(ok)n++});
+var T={fr:["article","articles"],en:["article","articles"],it:["articolo","articoli"]}[lang]||["article","articles"];
+function norm(s){return (s||"").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"")}
+var text=[];items.forEach(function(it){text.push(norm(it.textContent))});
+var cat="all",query="",slug=feat?feat.getAttribute("data-slug"):null;
+function apply(push){var n=0;
+items.forEach(function(it,i){var okC=cat==="all"||(" "+it.getAttribute("data-cats")+" ").indexOf(" "+cat+" ")>-1;
+var okQ=!query||query.split(" ").every(function(w){return text[i].indexOf(w)>-1});
+var showFeat=feat&&cat==="all"&&!query&&it.getAttribute("data-slug")===slug;
+var ok=okC&&okQ&&!showFeat;it.hidden=!ok;if(okC&&okQ)n++});
+if(feat)feat.hidden=!(cat==="all"&&!query);
 chips.forEach(function(c){var on=c.getAttribute("data-cat")===cat;c.classList.toggle("is-active",on);c.setAttribute("aria-pressed",on?"true":"false")});
-if(cnt)cnt.textContent=n?(n+" "+(n===1?T[0]:T[1])):T[2];
-if(push){try{history.replaceState(null,"",cat==="all"?location.pathname+location.search:"#"+cat)}catch(e){}}}
-chips.forEach(function(c){c.addEventListener("click",function(){apply(c.getAttribute("data-cat"),true)})});
-function fromHash(){var h=decodeURIComponent((location.hash||"").slice(1));var ok=Array.prototype.some.call(chips,function(c){return c.getAttribute("data-cat")===h});apply(ok?h:"all",false)}
+if(clr)clr.hidden=!query;
+if(cnt)cnt.textContent=n+" "+(n===1?T[0]:T[1]);
+if(empty)empty.hidden=n>0;
+if(push){try{history.replaceState(null,"",cat==="all"?location.pathname:"#"+cat)}catch(e){}}}
+chips.forEach(function(c){c.addEventListener("click",function(){cat=c.getAttribute("data-cat");apply(true)})});
+if(q){q.addEventListener("input",function(){query=norm(q.value).trim();apply(false)});
+q.addEventListener("keydown",function(e){if(e.key==="Escape"&&q.value){q.value="";query="";apply(false)}})}
+if(clr)clr.addEventListener("click",function(){q.value="";query="";apply(false);q.focus()});
+function fromHash(){var h=decodeURIComponent((location.hash||"").slice(1));var ok=Array.prototype.some.call(chips,function(c){return c.getAttribute("data-cat")===h});cat=ok?h:"all";apply(false)}
 window.addEventListener("hashchange",fromHash);fromHash();})();
 </script>
 </body>

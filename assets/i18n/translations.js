@@ -1185,4 +1185,13 @@ window.SITE_TRANSLATIONS = {
   "Grille de défense": { en: "Security grille", it: "Grata di sicurezza" },
   "Escalier & rambarde": { en: "Staircase & handrail", it: "Scala e ringhiera" },
   "Meuble": { en: "Furniture", it: "Mobile" },
+  "À la une": { en: "Featured", it: "In evidenza" },
+  "Lire l'article →": { en: "Read the article →", it: "Leggi l'articolo →" },
+  "Rechercher un article": { en: "Search for an article", it: "Cerca un articolo" },
+  "Effacer la recherche": { en: "Clear search", it: "Cancella la ricerca" },
+  "Aucun article ne correspond à votre recherche.": { en: "No articles match your search.", it: "Nessun articolo corrisponde alla tua ricerca." },
+  "À lire aussi": { en: "You may also like", it: "Da leggere anche" },
+  "Tous les articles →": { en: "All articles →", it: "Tutti gli articoli →" },
+  "Fil d'Ariane": { en: "Breadcrumb", it: "Briciole di pane" },
+  "2 min de lecture": { en: "2 min read", it: "2 min di lettura" },
 };
