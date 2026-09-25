@@ -1250,4 +1250,11 @@ window.SITE_TRANSLATIONS = {
   "Garde-corps de balcon en métal sur mesure": { en: "Metal terrace railing", it: "Parapetto da terrazza in metallo" },
   "25 septembre 2026": { en: "25 September 2026", it: "25 settembre 2026" },
   "Atelier de ferronnerie d'art à Nice": { en: "Artistic ironwork workshop in Nice", it: "Officina di ferro battuto artistico a Nizza" },
+  "Clôture en fer forgé noire à pointes de lance protégeant une propriété": { en: "Black wrought iron fence with spear tips protecting a property", it: "Recinzione in ferro battuto nero con punte a lancia a protezione di una proprietà" },
+  "Ouvrier prenant les mesures d'un cadre métallique en atelier": { en: "Worker measuring a metal frame in a workshop", it: "Operaio che prende le misure di un telaio metallico in officina" },
+  "Nuancier de couleurs déployé en éventail pour choisir une teinte": { en: "Colour fan deck spread out to choose a shade", it: "Mazzetta di colori aperta a ventaglio per scegliere una tinta" },
+  "Détail d'une rambarde en fer forgé à volutes et fleurs": { en: "Detail of a wrought iron railing with scrolls and flowers", it: "Dettaglio di una ringhiera in ferro battuto con volute e fiori" },
+  "Barres d'acier inoxydable stockées en atelier": { en: "Stainless steel bars stored in a workshop", it: "Barre in acciaio inox stoccate in officina" },
+  "Ouvrier en tenue de sécurité posant un ouvrage métallique": { en: "Worker in safety gear fitting a metal structure", it: "Operaio in tenuta di sicurezza che posa un'opera metallica" },
+  "Surface d'aluminium brossé : acier, inox et aluminium": { en: "Brushed aluminium surface: steel, stainless steel and aluminium", it: "Superficie di alluminio spazzolato: acciaio, inox e alluminio" },
 };
