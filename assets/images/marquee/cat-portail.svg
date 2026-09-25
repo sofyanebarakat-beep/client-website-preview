@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="220" height="72" viewBox="0 0 220 72" role="img" aria-label="PORTAIL">
+  <g fill="none" stroke="#27332f" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" transform="translate(0 2)"><path d="M14 49V21M46 49V21M12 21h4M44 21h4" /><path d="M19 45V29q11-11 22 0v16M30 22v23M24.5 32v13M35.5 32v13M19 45h22" /></g>
+  <text x="60" y="40" fill="#27332f" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="700" letter-spacing="1.2">PORTAIL</text>
+  <path d="M60 50h18" stroke="#244d9a" stroke-width="3"/><path d="M78 50h18" stroke="#e7e7df" stroke-width="3"/><path d="M96 50h18" stroke="#d2483e" stroke-width="3"/>
+</svg>

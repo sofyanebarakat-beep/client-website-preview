@@ -307,6 +307,12 @@ def render(base, page, lang, dictionary, pages_set, translators):
         tr = translators[lang]
         doc = translate_document(doc, tr)
         doc = rewrite_paths(doc, page, pages_set, lang)
+        # marquee category cards carry their title inside the SVG: use the language's own file
+        doc = re.sub(
+            r"(assets/images/marquee/cat-[a-z-]+)\.svg",
+            lambda m: m.group(1) + "." + lang + ".svg" if os.path.exists(os.path.join(ROOT, m.group(1) + "." + lang + ".svg")) else m.group(0),
+            doc,
+        )
         doc = re.sub(r'(<html\b[^>]*\blang=")fr(")', r"\g<1>%s\g<2>" % lang, doc, count=1)
         if canon:
             url = lang_url(canon, lang)

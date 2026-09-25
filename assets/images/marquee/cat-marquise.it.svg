@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="220" height="72" viewBox="0 0 220 72" role="img" aria-label="PENSILINA">
+  <g fill="none" stroke="#27332f" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" transform="translate(0 2)"><path d="M12 27h36l-4-9H16zM16 27l7 7M44 27l-7 7" /><path d="M22 49V34h16v15M22 49h16M30 34v15" /></g>
+  <text x="60" y="40" fill="#27332f" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="700" letter-spacing="1.2">PENSILINA</text>
+  <path d="M60 50h18" stroke="#244d9a" stroke-width="3"/><path d="M78 50h18" stroke="#e7e7df" stroke-width="3"/><path d="M96 50h18" stroke="#d2483e" stroke-width="3"/>
+</svg>
