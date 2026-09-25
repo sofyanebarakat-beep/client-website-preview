@@ -57,6 +57,9 @@ ROUTE_ALIASES = {
     "conseils/checklist-entretien-ferronnerie": "blog-post/seasonal-roof-maintenance-checklist-for-homeowners-to-protect-your-home-year-round.html",
     "conseils/meilleurs-materiaux-ferronnerie": "blog-post/top-5-roofing-materials-for-durability-style-and-ultimate-home-protection.html",
     "conseils/quand-reparer-ferronnerie": "blog-post/top-signs-your-roof-needs-immediate-repair-before-major-damage.html",
+    "conseils/normes-garde-corps-hauteur-ecartement-resistance": "blog-post/normes-garde-corps-hauteur-ecartement-resistance.html",
+    "conseils/remplissage-garde-corps-barreaux-cables-tole-verre": "blog-post/remplissage-garde-corps-barreaux-cables-tole-verre.html",
+    "conseils/garde-corps-terrasse-balcon-escalier-differences": "blog-post/garde-corps-terrasse-balcon-escalier-differences.html",
 }
 
 # Legacy/template and previously published URLs permanently redirect here.
@@ -118,6 +121,9 @@ PERMANENT_REDIRECTS = {
     "/blog-post/seasonal-roof-maintenance-checklist-for-homeowners-to-protect-your-home-year-round.html": "/conseils/checklist-entretien-ferronnerie/",
     "/blog-post/top-5-roofing-materials-for-durability-style-and-ultimate-home-protection.html": "/conseils/meilleurs-materiaux-ferronnerie/",
     "/blog-post/top-signs-your-roof-needs-immediate-repair-before-major-damage.html": "/conseils/quand-reparer-ferronnerie/",
+    "/blog-post/normes-garde-corps-hauteur-ecartement-resistance.html": "/conseils/normes-garde-corps-hauteur-ecartement-resistance/",
+    "/blog-post/remplissage-garde-corps-barreaux-cables-tole-verre.html": "/conseils/remplissage-garde-corps-barreaux-cables-tole-verre/",
+    "/blog-post/garde-corps-terrasse-balcon-escalier-differences.html": "/conseils/garde-corps-terrasse-balcon-escalier-differences/",
 }
 
 

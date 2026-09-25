@@ -34,6 +34,12 @@ LABEL = dict(CATEGORIES)
 
 # slug (file name without .html) -> categories (main one first), image source, image base name
 ARTICLES = [
+    ("normes-garde-corps-hauteur-ecartement-resistance",
+     ["garde-corps", "escalier-rambarde"], "assets/images/features/garde-corps-terrasse.jpg", "normes-garde-corps-securite"),
+    ("remplissage-garde-corps-barreaux-cables-tole-verre",
+     ["garde-corps", "escalier-rambarde"], "assets/images/features/garde-corps-exterieur.jpg", "remplissage-garde-corps-fer-forge"),
+    ("garde-corps-terrasse-balcon-escalier-differences",
+     ["garde-corps", "escalier-rambarde"], "assets/images/services/rampe-escalier-metal-sur-mesure-nice-1386.webp", "garde-corps-terrasse-balcon-escalier"),
     ("essential-roof-maintenance-tips-every-homeowner-should-know-to-protect",
      ["portail", "cloture", "garde-corps", "grille-defense"], "assets/images/blog/entretien-ferronnerie.webp", "entretien-ferronnerie-exterieure"),
     ("how-to-spot-roof-damage-early-and-prevent-costly-issues-before-its-too-late",
@@ -97,9 +103,10 @@ def parse_post(slug):
     title = html.unescape(re.sub(r"<[^>]+>", "", re.search(r"<h1[^>]*>(.*?)</h1>", s, re.S).group(1))).strip()
     date = re.search(r'rt-hero-publish-date.*?<div>([^<]+)</div>', s, re.S).group(1).strip()
     desc = html.unescape(re.search(r'<meta content="([^"]*)" name="description"', s).group(1))
-    text = " ".join(re.sub(r"<[^>]+>", " ", m) for m in re.findall(r'<div class="(?:rt-tick-list )?w-richtext">(.*?)</div>\s*</div>', s, re.S))
+    blocks = re.findall(r'<div class="[^"]*w-richtext[^"]*"[^>]*>(.*?)</div>\s*</div>', s, re.S)
+    text = " ".join(re.sub(r"<[^>]+>", " ", m) for m in blocks)
     words = len(re.findall(r"\w+", html.unescape(text)))
-    return {"title": title, "date": date, "desc": desc, "words": words, "minutes": max(2, round(words / 200 + 0.4))}
+    return {"title": title, "date": date, "desc": desc, "words": words, "minutes": max(1, -(-words // 200))}
 
 
 def esc(t):
@@ -338,12 +345,37 @@ def post(slug, cats, base, infos):
     write(path, s)
 
 
+def home_card(slug, base, info, prefix):
+    href = "%sblog-post/%s.html" % (prefix, slug)
+    return (
+        '<div class="w-dyn-item" role="listitem"><div class="w-layout-vflex rt-blog-card-one">'
+        '<a class="rt-blog-image-wrapper rt-overflow-hidden rt-border-radius w-inline-block" href="%s">'
+        '<img alt="%s" class="rt-blog-image-v1" loading="lazy" decoding="async" src="%sassets/images/blog/%s-800.webp" width="800" height="533"/></a>'
+        '<div class="rt-top-blog-publish-top-gap">%s</div>'
+        '<a class="rt-blog-title-wrapper w-inline-block" href="%s"><div class="rt-text-style-h5 rt-blog-title-top-gap">%s</div></a>'
+        "</div></div>" % (href, esc(info["title"]), prefix, base, info["date"], href, esc(info["title"]))
+    )
+
+
+def garde_corps_section(infos):
+    """News section of the garde-corps service page: the 3 latest Garde-corps articles."""
+    path = "service-detail/complete-roof-replacement.html"
+    s = read(path)
+    picks = [a for a in ARTICLES if "garde-corps" in a[1]][:3]
+    cards = "".join(home_card(slug, base, infos[slug], "../") for slug, cats, _, base in picks)
+    s, n = re.subn(r'(<div class="rt-blog-bottom-wrapper-v1 w-dyn-items" role="list">).*?(</div>\s*</div>\s*</div>\s*</div>\s*</section>)',
+                   lambda m: m.group(1) + cards + m.group(2), s, count=1, flags=re.S)
+    assert n == 1
+    write(path, s)
+
+
 def main():
     ensure_images()
     infos = {slug: parse_post(slug) for slug, *_ in ARTICLES}
     listing()
     for slug, cats, _, base in ARTICLES:
         post(slug, cats, base, infos)
+    garde_corps_section(infos)
     return infos
 
 
