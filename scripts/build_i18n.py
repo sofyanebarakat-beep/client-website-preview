@@ -56,6 +56,7 @@ ATTR = re.compile(
 )
 META_KEYS = {
     "description", "og:title", "og:description", "twitter:title", "twitter:description",
+    "og:image:alt", "twitter:image:alt",
 }
 
 
