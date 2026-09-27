@@ -22,6 +22,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 CATEGORIES = [
     ("portail", "Portail"),
+    ("porte", "Porte métallique"),
     ("cloture", "Clôture"),
     ("garde-corps", "Garde-corps"),
     ("pergola", "Pergola"),
@@ -34,6 +35,42 @@ LABEL = dict(CATEGORIES)
 
 # slug (file name without .html) -> categories (main one first), image source, image base name
 ARTICLES = [
+    ("garde-corps-verre-ou-metal-choisir",
+     ["garde-corps"], "assets/images/services/garde-corps-terrasse-panoramique-nice.webp", "garde-corps-verre-ou-metal-choisir"),
+    ("entretien-garde-corps-exterieur-bord-de-mer",
+     ["garde-corps"], "assets/images/services/garde-corps-barreaudage-terrasse-vue-nice.webp", "entretien-garde-corps-exterieur-bord-de-mer"),
+    ("garde-corps-fer-forge-style-maison",
+     ["garde-corps"], "assets/images/services/balcon-garde-corps-volutes-claustra-nice.webp", "garde-corps-fer-forge-style-maison"),
+    ("portail-battant-ou-coulissant-choisir",
+     ["portail"], "assets/images/services/portail-blanc-motifs-echecs-nice.webp", "portail-battant-ou-coulissant-choisir"),
+    ("motoriser-portail-fer-forge",
+     ["portail"], "assets/images/services/portail-fer-forge-volutes-villa-nice.webp", "motoriser-portail-fer-forge"),
+    ("dimensions-portail-sur-mesure",
+     ["portail"], "assets/images/services/portail-noir-murs-pierre-nice.webp", "dimensions-portail-sur-mesure"),
+    ("porte-metallique-portillon-securiser-acces",
+     ["porte", "portail"], "assets/images/services/portail-battant-noir-volutes-dorees-nice.webp", "porte-metallique-portillon-securiser-acces"),
+    ("portillon-metallique-choisir-serrure",
+     ["porte", "portail"], "assets/images/services/portillon-fer-forge-volutes-serrure-code-nice.webp", "portillon-metallique-choisir-serrure"),
+    ("couleur-finition-porte-metallique",
+     ["porte", "portail"], "assets/images/services/portillon-metallique-marron-fleurs-de-lys-nice.webp", "couleur-finition-porte-metallique"),
+    ("hauteur-cloture-regles-urbanisme",
+     ["cloture"], "assets/images/services/cloture-barreaux-pointes-lance-piliers-briques-nice.webp", "hauteur-cloture-regles-urbanisme"),
+    ("cloture-pleine-ou-ajouree-choisir",
+     ["cloture"], "assets/images/services/cloture-panneaux-pleins-muret-pierre-nice.webp", "cloture-pleine-ou-ajouree-choisir"),
+    ("cloture-fer-forge-sur-muret",
+     ["cloture"], "assets/images/services/cloture-fer-forge-pointes-fleur-de-lys-nice.webp", "cloture-fer-forge-sur-muret"),
+    ("pergola-adossee-ou-autoportee",
+     ["pergola"], "assets/images/services/pergola-adossee-verre-volutes-fer-forge-nice.webp", "pergola-adossee-ou-autoportee"),
+    ("marquise-verre-entree-maison",
+     ["marquise"], "assets/images/services/marquise-verre-fer-forge-facade-nice.webp", "marquise-verre-entree-maison"),
+    ("toiture-pergola-metallique-choisir",
+     ["pergola", "marquise"], "assets/images/services/verriere-toit-verre-structure-acier-nice.webp", "toiture-pergola-metallique-choisir"),
+    ("hauteur-rampe-escalier-securite",
+     ["escalier-rambarde"], "assets/images/services/rampe-escalier-fer-forge-palier-marches-pierre-nice.webp", "hauteur-rampe-escalier-securite"),
+    ("rampe-escalier-interieure-style",
+     ["escalier-rambarde"], "assets/images/services/rampe-escalier-fer-forge-balustres-interieur-nice.webp", "rampe-escalier-interieure-style"),
+    ("rampe-escalier-exterieure-choisir",
+     ["escalier-rambarde"], "assets/images/services/rampe-escalier-exterieure-fer-forge-volutes-perron-nice.webp", "rampe-escalier-exterieure-choisir"),
     ("normes-garde-corps-hauteur-ecartement-resistance",
      ["garde-corps", "escalier-rambarde"], "assets/images/features/garde-corps-terrasse.jpg", "normes-garde-corps-securite"),
     ("remplissage-garde-corps-barreaux-cables-tole-verre",
@@ -59,6 +96,15 @@ ARTICLES = [
     ("common-roofing-mistakes-homeowners-should-avoid-during-installation-projects",
      ["garde-corps", "escalier-rambarde"], "assets/images/pose-garde-corps-fer-forge.jpg", "erreurs-pose-garde-corps"),
 ]
+# service page (service-detail/<name>.html) -> the 3 articles shown in its news section
+SERVICE_NEWS = {
+    "complete-roof-replacement": ["garde-corps-verre-ou-metal-choisir", "entretien-garde-corps-exterieur-bord-de-mer", "garde-corps-fer-forge-style-maison"],
+    "professional-roof-installation": ["portail-battant-ou-coulissant-choisir", "motoriser-portail-fer-forge", "dimensions-portail-sur-mesure"],
+    "storm-damage-repair": ["porte-metallique-portillon-securiser-acces", "portillon-metallique-choisir-serrure", "couleur-finition-porte-metallique"],
+    "roof-inspection-maintenance": ["hauteur-cloture-regles-urbanisme", "cloture-pleine-ou-ajouree-choisir", "cloture-fer-forge-sur-muret"],
+    "metal-roofing-systems": ["pergola-adossee-ou-autoportee", "marquise-verre-entree-maison", "toiture-pergola-metallique-choisir"],
+    "reliable-roof-repair": ["hauteur-rampe-escalier-securite", "rampe-escalier-interieure-style", "rampe-escalier-exterieure-choisir"],
+}
 FEATURED = "how-to-choose-the-right-roofing-material-for-your-home-today"
 BANNER_SRC = "assets/images/hero-blacksmith-sparks.jpg"
 BANNER_BASE = "assets/images/blog/banner-atelier-ferronnerie"
@@ -357,16 +403,17 @@ def home_card(slug, base, info, prefix):
     )
 
 
-def garde_corps_section(infos):
-    """News section of the garde-corps service page: the 3 latest Garde-corps articles."""
-    path = "service-detail/complete-roof-replacement.html"
-    s = read(path)
-    picks = [a for a in ARTICLES if "garde-corps" in a[1]][:3]
-    cards = "".join(home_card(slug, base, infos[slug], "../") for slug, cats, _, base in picks)
-    s, n = re.subn(r'(<div class="rt-blog-bottom-wrapper-v1 w-dyn-items" role="list">).*?(</div>\s*</div>\s*</div>\s*</div>\s*</section>)',
-                   lambda m: m.group(1) + cards + m.group(2), s, count=1, flags=re.S)
-    assert n == 1
-    write(path, s)
+def service_sections(infos):
+    """News section of each service page: its own 3 articles (SERVICE_NEWS)."""
+    by_slug = {a[0]: a for a in ARTICLES}
+    for page, slugs in SERVICE_NEWS.items():
+        path = "service-detail/%s.html" % page
+        s = read(path)
+        cards = "".join(home_card(slug, by_slug[slug][3], infos[slug], "../") for slug in slugs)
+        s, n = re.subn(r'(<div class="rt-blog-bottom-wrapper-v1 w-dyn-items" role="list">).*?(</div>\s*</div>\s*</div>\s*</div>\s*</section>)',
+                       lambda m: m.group(1) + cards + m.group(2), s, count=1, flags=re.S)
+        assert n == 1, page
+        write(path, s)
 
 
 def main():
@@ -375,7 +422,7 @@ def main():
     listing()
     for slug, cats, _, base in ARTICLES:
         post(slug, cats, base, infos)
-    garde_corps_section(infos)
+    service_sections(infos)
     return infos
 
 

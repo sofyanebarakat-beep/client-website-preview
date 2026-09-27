@@ -178,7 +178,8 @@
 
   function placeSwitch(sw, ctaWrap) {
     var isMobile = window.matchMedia(MOBILE_MQ).matches;
-    var hamburger = ctaWrap.parentNode.querySelector(".rt-mobile-list-button");
+    // mobile: switcher sits left of the tap-to-call button (if any), then the menu button
+    var hamburger = ctaWrap.parentNode.querySelector(".rt-nav-call, .rt-mobile-list-button");
     if (isMobile && hamburger) {
       if (sw.parentNode !== ctaWrap.parentNode || sw.nextSibling !== hamburger) {
         ctaWrap.parentNode.insertBefore(sw, hamburger);

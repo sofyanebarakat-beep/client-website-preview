@@ -135,6 +135,7 @@
     /* Safety net: never allow sideways scrolling / empty strip on the right */
     html, body { overflow-x: clip; max-width: 100%; }
   </style>
+<link href="assets/css/nav.css" rel="stylesheet"/>
 <!-- i18n:head -->
 <meta name="i18n-lang" content="fr"/>
 <meta name="i18n-path" content="service.html"/>
@@ -167,165 +168,82 @@
 <nav class="rt-navbar-v1-menu-holder w-nav-menu" role="navigation">
 <div class="w-layout-vflex rt-nav-menu-holder-wrapper">
 <div class="w-layout-hflex rt-navbar-inner-menu-wrapper">
-<a class="rt-drop-down-toggle-v3 rt-menu-font-v1 rt-desktop-link" href="index.html">Accueil</a>
-<div class="rt-navbar-dropdown-v1 rt-desktop-hide w-dropdown" data-delay="0" data-hover="true">
-<div class="rt-drop-down-toggle-v3 w-dropdown-toggle">
-<div class="rt-menu-font-v1">Accueil</div>
-<div class="w-layout-vflex rt-navbar-drop-down-icon-wrapper">
-<img alt="" class="rt-navbar-drop-down-icon" height="6" loading="lazy" src="https://cdn.prod.website-files.com/69a196b4902215f53ac6be15/69a55bdd252f3181e36a4ed7_Vector%20(71).svg" width="10"/>
-</div>
-</div>
-<nav class="rt-navigation rt-background-color-white rt-border-radius w-dropdown-list">
-<a class="rt-navigation-link w-dropdown-link" href="index.html">Accueil</a>
-<a class="rt-navigation-link w-dropdown-link" href="index.html">Accueil</a>
-<a class="rt-navigation-link w-dropdown-link" href="index.html">Accueil</a>
-</nav>
-</div>
-<a class="rt-navigation-link-v1 w-inline-block" href="about-us.html">
+<!-- nav:menu -->
+<a class="rt-navigation-link-v1 rt-nav-top-link w-inline-block" href="index.html">
+<div>Accueil</div>
+</a>
+<a class="rt-navigation-link-v1 rt-nav-top-link w-inline-block" href="about-us.html">
 <div>À propos</div>
 </a>
-<div class="rt-navbar-dropdown-v1 w-dropdown" data-delay="0" data-hover="true">
+<div class="rt-navbar-dropdown-v1 rt-services-dropdown w-dropdown rt-nav-active" data-delay="0" data-hover="true">
 <div class="rt-drop-down-toggle-v3 w-dropdown-toggle">
-<div class="rt-menu-font-v1">Pages</div>
+<div class="rt-menu-font-v1">Nos prestations</div>
 <div class="w-layout-vflex rt-navbar-drop-down-icon-wrapper">
 <img alt="" class="rt-navbar-drop-down-icon" height="6" loading="lazy" src="https://cdn.prod.website-files.com/69a196b4902215f53ac6be15/69a55bdd252f3181e36a4ed7_Vector%20(71).svg" width="10"/>
 </div>
 </div>
-<nav class="rt-navigation rt-page-menu w-dropdown-list">
-<div class="w-layout-hflex rt-nav-menu-wrapper-v1">
-<div class="w-layout-hflex rt-nav-menu-inner-wrapper">
-<div class="w-layout-hflex rt-nav-mega-menu">
-<div class="w-layout-hflex rt-mega-menu-item-wrapper">
-<div class="w-layout-vflex rt-nav-menu-item-wrapper-big-screen">
-<a class="rt-navigation-link w-dropdown-link" href="index.html">Accueil</a>
-<a class="rt-navigation-link w-dropdown-link" href="index.html">Accueil</a>
-<a class="rt-navigation-link w-dropdown-link" href="index.html">Accueil</a>
-<a class="rt-navigation-link w-dropdown-link" href="about-us.html">À propos</a>
-<a aria-current="page" class="rt-navigation-link w-dropdown-link w--current" href="service.html">Services</a>
-<a class="rt-navigation-link w-dropdown-link" href="portfolio-one.html">Réalisations</a>
+<nav aria-label="Nos prestations" class="rt-navigation rt-services-menu w-dropdown-list">
+<div class="rt-services-menu-head">
+<span class="rt-services-menu-eyebrow">Nos prestations</span>
+<span class="rt-services-menu-sub">Fabriqué et posé sur mesure à Nice</span>
 </div>
-<div class="w-layout-vflex rt-nav-menu-item-wrapper-big-screen">
-<a class="rt-navigation-link w-dropdown-link" href="portfolio-one.html">Réalisations</a>
-<a class="rt-navigation-link w-dropdown-link" href="portfolio-one.html">Réalisations</a>
-<a class="rt-navigation-link w-dropdown-link" href="pricing-one.html">Tarifs</a>
-<a class="rt-navigation-link w-dropdown-link" href="pricing-two.html">Tarifs</a>
-<a class="rt-navigation-link w-dropdown-link" href="pricing-three.html">Tarifs</a>
-<a class="rt-navigation-link w-dropdown-link" href="blog.html">Actualités</a>
-</div>
-<div class="w-layout-vflex rt-nav-menu-item-wrapper-big-screen">
-<a class="rt-navigation-link w-dropdown-link" href="contact-two.html">Contact</a>
-<a class="rt-navigation-link w-dropdown-link" href="contact-two.html">Contact</a>
-<a class="rt-navigation-link w-dropdown-link" href="contact-two.html">Contact</a>
-<a class="rt-navigation-link w-dropdown-link" href="inquiry-form.html">Demande de devis</a>
-<a class="rt-navigation-link w-dropdown-link" href="faq.html">FAQ</a>
-</div>
-<div class="w-layout-vflex rt-nav-menu-item-wrapper-big-screen">
-<a class="rt-navigation-link w-dropdown-link" href="project/residential-roof-installation.html">Détail réalisation</a>
-<a class="rt-navigation-link w-dropdown-link" href="blog-post/essential-roof-maintenance-tips-every-homeowner-should-know-to-protect.html">Détail article</a>
-<a class="rt-navigation-link w-dropdown-link" href="service-detail/professional-roof-installation.html">Détail service</a>
-<a class="rt-navigation-link w-dropdown-link" href="401.html">Page protégée</a>
-<a class="rt-navigation-link w-dropdown-link" href="404.html">404</a>
-</div>
-</div>
-<div class="w-layout-hflex rt-mega-menu-image-wrapper">
-<div class="rt-mega-menu-image rt-overflow-hidden rt-border-radius">
-<img alt="" height="223.5" loading="lazy" sizes="100vw" src="https://cdn.prod.website-files.com/69a196b4902215f53ac6be15/69c61565595d6be58036804b_long-shot-man-with-helmet-sitting-roof%203.webp" srcset="https://cdn.prod.website-files.com/69a196b4902215f53ac6be15/69c61565595d6be58036804b_long-shot-man-with-helmet-sitting-roof%203-p-500.webp 500w, https://cdn.prod.website-files.com/69a196b4902215f53ac6be15/69c61565595d6be58036804b_long-shot-man-with-helmet-sitting-roof%203.webp 690w" width="345"/>
-</div>
-</div>
-</div>
-<div class="w-layout-hflex rt-nav-dropdown-v2-bottom rt-border-medium">
-<a class="rt-component-item w-inline-block" href="service-detail/professional-roof-installation.html">
-<div class="w-layout-hflex rt-component-main-left">
-<div class="rt-components-icon">
-<img alt="" height="38" loading="lazy" src="https://cdn.prod.website-files.com/69a196b4902215f53ac6be15/69e0d7c00a466650e488689a_premium-template.svg" width="37"/>
-</div>
-<div class="rt-components-text">
-<div>Découvrez nos portails, clôtures et garde-corps réalisés sur mesure</div>
-</div>
-</div>
-<div>
-<img alt="" height="10" loading="lazy" src="https://cdn.prod.website-files.com/69a196b4902215f53ac6be15/69e0d7c00a466650e488689b_left-arrow-main.svg" width="6"/>
-</div>
+<div class="rt-services-grid">
+<a class="rt-service-link" href="service-detail/complete-roof-replacement.html">
+<img alt="" class="rt-service-thumb" height="56" loading="lazy" src="assets/images/services/garde-corps-exterieur-fer-forge-nice-320.webp" width="56"/>
+<span class="rt-service-text">
+<span class="rt-service-title">Garde-corps</span>
+<span class="rt-service-desc">Balcons, terrasses et mezzanines</span>
+</span>
 </a>
-<a class="rt-nav-dropdown-inner rt-v2 w-inline-block" href="service.html">
-<div class="w-layout-hflex rt-component-item">
-<div class="w-layout-hflex rt-component-main-left">
-<div class="rt-components-icon">
-<img alt="components" height="38" loading="lazy" src="https://cdn.prod.website-files.com/69a196b4902215f53ac6be15/69e0d7c00a466650e488689c_components.svg" width="37"/>
-</div>
-<div class="rt-components-text">
-<div>Explorez nos services de ferronnerie à Nice et sur la Côte d’Azur</div>
-</div>
-</div>
-<div>
-<img alt="" height="10" loading="lazy" src="https://cdn.prod.website-files.com/69a196b4902215f53ac6be15/69e0d7c00a466650e488689b_left-arrow-main.svg" width="6"/>
-</div>
-</div>
+<a class="rt-service-link" href="service-detail/professional-roof-installation.html">
+<img alt="" class="rt-service-thumb" height="56" loading="lazy" src="assets/images/services/portail-fer-forge-volutes-villa-nice-320.webp" width="56"/>
+<span class="rt-service-text">
+<span class="rt-service-title">Portails</span>
+<span class="rt-service-desc">Battants, coulissants ou motorisés</span>
+</span>
 </a>
-<a class="rt-component-item w-inline-block" href="portfolio-one.html">
-<div class="w-layout-hflex rt-component-main-left">
-<div class="rt-components-icon">
-<img alt="" height="38" loading="lazy" src="https://cdn.prod.website-files.com/69a196b4902215f53ac6be15/69e0d7c00a466650e4886899_wareframes-icon.svg" width="37"/>
-</div>
-<div class="rt-components-text">
-<div>Découvrez nos réalisations et inspirez-vous de notre savoir-faire</div>
-</div>
-</div>
-<div>
-<img alt="" height="10" loading="lazy" src="https://cdn.prod.website-files.com/69a196b4902215f53ac6be15/69e0d7c00a466650e488689b_left-arrow-main.svg" width="6"/>
-</div>
+<a class="rt-service-link" href="service-detail/storm-damage-repair.html">
+<img alt="" class="rt-service-thumb" height="56" loading="lazy" src="assets/images/services/porte-metallique-fer-forge-nice-480.webp" width="56"/>
+<span class="rt-service-text">
+<span class="rt-service-title">Portes métalliques</span>
+<span class="rt-service-desc">Portes d’entrée et de service en acier</span>
+</span>
+</a>
+<a class="rt-service-link" href="service-detail/roof-inspection-maintenance.html">
+<img alt="" class="rt-service-thumb" height="56" loading="lazy" src="assets/images/services/cloture-fer-forge-nice-360.webp" width="56"/>
+<span class="rt-service-text">
+<span class="rt-service-title">Clôtures</span>
+<span class="rt-service-desc">Clôtures en fer forgé et en métal</span>
+</span>
+</a>
+<a class="rt-service-link" href="service-detail/metal-roofing-systems.html">
+<img alt="" class="rt-service-thumb" height="56" loading="lazy" src="assets/images/services/pergola-adossee-verre-volutes-fer-forge-nice-320.webp" width="56"/>
+<span class="rt-service-text">
+<span class="rt-service-title">Pergolas &amp; marquises</span>
+<span class="rt-service-desc">Abris et auvents pour terrasses et entrées</span>
+</span>
+</a>
+<a class="rt-service-link" href="service-detail/reliable-roof-repair.html">
+<img alt="" class="rt-service-thumb" height="56" loading="lazy" src="assets/images/services/rampe-escalier-fer-forge-volutes-noir-blanc-nice-320.webp" width="56"/>
+<span class="rt-service-text">
+<span class="rt-service-title">Rampes d'escalier</span>
+<span class="rt-service-desc">Intérieur et extérieur, sur mesure</span>
+</span>
 </a>
 </div>
-</div>
-</div>
-<div class="w-layout-hflex rt-nav-menu-wrapper">
-<div class="w-layout-vflex rt-nav-menu-item-wrapper-small-screen">
-<a aria-current="page" class="rt-navigation-link w-dropdown-link w--current" href="service.html">Services</a>
-<a class="rt-navigation-link w-dropdown-link" href="#">Détail service</a>
-<a class="rt-navigation-link w-dropdown-link" href="portfolio-one.html">Réalisations</a>
-<a class="rt-navigation-link w-dropdown-link" href="portfolio-one.html">Réalisations</a>
-<a class="rt-navigation-link w-dropdown-link" href="portfolio-one.html">Réalisations</a>
-<a class="rt-navigation-link w-dropdown-link" href="project/residential-roof-installation.html">Détail réalisation</a>
-</div>
-<div class="w-layout-vflex rt-nav-menu-item-wrapper-small-screen">
-<a class="rt-navigation-link w-dropdown-link" href="pricing-one.html">Tarifs</a>
-<a class="rt-navigation-link w-dropdown-link" href="pricing-two.html">Tarifs</a>
-<a class="rt-navigation-link w-dropdown-link" href="pricing-three.html">Tarifs</a>
-<a class="rt-navigation-link w-dropdown-link" href="faq.html">FAQ</a>
-<a class="rt-navigation-link w-dropdown-link" href="#">Demande de devis</a>
-<a class="rt-navigation-link w-dropdown-link" href="404.html">404</a>
-<a class="rt-navigation-link w-dropdown-link" href="401.html">Page protégée</a>
-</div>
+<div class="rt-services-menu-foot">
+<a class="rt-services-all" href="service.html">Voir toutes nos prestations →</a>
+<a class="rt-services-cta" href="inquiry-form.html">Demander un devis gratuit</a>
 </div>
 </nav>
 </div>
-<a class="rt-drop-down-toggle-v3 rt-menu-font-v1 rt-desktop-link" href="blog.html">Actualités</a>
-<div class="rt-navbar-dropdown-v1 rt-desktop-hide w-dropdown" data-delay="0" data-hover="true">
-<div class="rt-drop-down-toggle-v3 w-dropdown-toggle">
-<div class="rt-menu-font-v1">Actualités</div>
-<div class="w-layout-vflex rt-navbar-drop-down-icon-wrapper">
-<img alt="" class="rt-navbar-drop-down-icon" height="6" loading="lazy" src="https://cdn.prod.website-files.com/69a196b4902215f53ac6be15/69a55bdd252f3181e36a4ed7_Vector%20(71).svg" width="10"/>
-</div>
-</div>
-<nav class="rt-navigation rt-background-color-white rt-border-radius w-dropdown-list">
-<a class="rt-navigation-link w-dropdown-link" href="blog.html">Actualités</a>
-<a class="rt-navigation-link w-dropdown-link" href="blog-post/essential-roof-maintenance-tips-every-homeowner-should-know-to-protect.html">Article</a>
-</nav>
-</div>
-<a class="rt-drop-down-toggle-v3 rt-menu-font-v1 rt-desktop-link" href="contact-two.html">Contact</a>
-<div class="rt-navbar-dropdown-v1 rt-desktop-hide w-dropdown" data-delay="0" data-hover="true">
-<div class="rt-drop-down-toggle-v3 w-dropdown-toggle">
-<div class="rt-menu-font-v1">Contact</div>
-<div class="w-layout-vflex rt-navbar-drop-down-icon-wrapper">
-<img alt="" class="rt-navbar-drop-down-icon" height="6" loading="lazy" src="https://cdn.prod.website-files.com/69a196b4902215f53ac6be15/69a55bdd252f3181e36a4ed7_Vector%20(71).svg" width="10"/>
-</div>
-</div>
-<nav class="rt-navigation w-dropdown-list">
-<a class="rt-navigation-link w-dropdown-link" href="contact-two.html">Contact</a>
-<a class="rt-navigation-link w-dropdown-link" href="contact-two.html">Contact</a>
-<a class="rt-navigation-link w-dropdown-link" href="contact-two.html">Contact</a>
-</nav>
-</div>
+<a class="rt-navigation-link-v1 rt-nav-top-link w-inline-block" href="portfolio-one.html">
+<div>Réalisations</div>
+</a>
+<a class="rt-navigation-link-v1 rt-nav-top-link w-inline-block" href="blog.html">
+<div>Actualités</div>
+</a>
+<!-- /nav:menu -->
 </div>
 <div class="w-layout-vflex rt-nav-bottom-content">
 <div class="w-layout-hflex rt-nav-botton-wrapper">
@@ -371,6 +289,11 @@
 </div>
 </div>
 </nav>
+<!-- nav:call -->
+<a aria-label="Appeler l’atelier au 07 69 87 11 08" class="rt-nav-call" href="tel:+33769871108">
+<svg aria-hidden="true" fill="none" height="20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="20"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+</a>
+<!-- /nav:call -->
 <div class="rt-mobile-list-button w-nav-button">
 <div class="w-layout-vflex rt-nav-open-mobile-button">
 <div class="rt-mobile-list-line-one rt-background-color-white">
@@ -404,7 +327,7 @@
 </div>
 <div class="rt-text-style-h6 rt-text-color-white rt-font-weight-regular">Nos services</div>
 </div>
-<h1 class="rt-gap-off rt-h1-gap" data-w-id="50dde09f-6a6f-6b4a-ab18-ebbf144a0e41" style="opacity:0">Votre atelier de ferronnerie d'art sur la Côte d'Azur</h1>
+<h1 class="rt-gap-off rt-h1-gap" data-w-id="50dde09f-6a6f-6b4a-ab18-ebbf144a0e41" style="opacity:0">Portails, garde-corps et rampes forgés sur mesure à Nice</h1>
 <div class="w-layout-hflex rt-hero-button-wrapper">
 <div data-w-id="50dde09f-6a6f-6b4a-ab18-ebbf144a0e46" style="opacity:0">
 <a class="rt-button rt-border-radius-large rt-overflow-hidden w-inline-block" data-w-id="49d358eb-d6c4-264f-7e35-2a6452b92103" data-wf--rt-button-v1--variant="base" href="#service">
@@ -417,10 +340,9 @@
 </div>
 <div class="w-layout-hflex rt-hero-main-right" data-w-id="ae7a267c-d1ed-34fd-c9f8-561417141263" style="opacity:0">
 <div class="w-layout-vflex rt-hero-video-wrapper">
-<div class="rt-hero-video rt-border-radius w-background-video w-background-video-atom" data-autoplay="true" data-loop="true" data-poster-url="https://cdn.prod.website-files.com/69a196b4902215f53ac6be15%2F69b78d3279bdf928e480ad2b_5644254-hd_1920_1080_25fps%20%281%29_poster.0000000.jpg" data-video-urls="https://cdn.prod.website-files.com/69a196b4902215f53ac6be15%2F69b78d3279bdf928e480ad2b_5644254-hd_1920_1080_25fps%20%281%29_mp4.mp4,https://cdn.prod.website-files.com/69a196b4902215f53ac6be15%2F69b78d3279bdf928e480ad2b_5644254-hd_1920_1080_25fps%20%281%29_webm.webm" data-wf-ignore="true">
-<video autoplay="" data-object-fit="cover" data-wf-ignore="true" id="08f63d3d-c957-4348-6c67-dca8f8bc3de3-video" loop="" muted="" playsinline="" style='background-image:url("https://cdn.prod.website-files.com/69a196b4902215f53ac6be15%2F69b78d3279bdf928e480ad2b_5644254-hd_1920_1080_25fps%20%281%29_poster.0000000.jpg")'>
-<source data-wf-ignore="true" src="https://cdn.prod.website-files.com/69a196b4902215f53ac6be15%2F69b78d3279bdf928e480ad2b_5644254-hd_1920_1080_25fps%20%281%29_mp4.mp4"/>
-<source data-wf-ignore="true" src="https://cdn.prod.website-files.com/69a196b4902215f53ac6be15%2F69b78d3279bdf928e480ad2b_5644254-hd_1920_1080_25fps%20%281%29_webm.webm"/>
+<div class="rt-hero-video rt-border-radius w-background-video w-background-video-atom" data-autoplay="true" data-loop="true" data-poster-url="assets/images/service/atelier-ferronnerie-poster.jpg" data-video-urls="assets/videos/atelier-ferronnerie.mp4" data-wf-ignore="true">
+<video autoplay="" data-object-fit="cover" data-wf-ignore="true" id="08f63d3d-c957-4348-6c67-dca8f8bc3de3-video" loop="" muted="" playsinline="" style='background-image:url("assets/images/service/atelier-ferronnerie-poster.jpg")'>
+<source data-wf-ignore="true" src="assets/videos/atelier-ferronnerie.mp4" type="video/mp4"/>
 </video>
 <noscript>
 <style>
@@ -437,7 +359,7 @@
       object-fit: cover;
     }
   }</style>
-<img alt="" data-wf-bgvideo-fallback-img="true" src="https://cdn.prod.website-files.com/69a196b4902215f53ac6be15%2F69b78d3279bdf928e480ad2b_5644254-hd_1920_1080_25fps%20%281%29_poster.0000000.jpg"/>
+<img alt="" data-wf-bgvideo-fallback-img="true" src="assets/images/service/atelier-ferronnerie-poster.jpg"/>
 </noscript>
 <div aria-live="polite">
 <button aria-controls="08f63d3d-c957-4348-6c67-dca8f8bc3de3-video" class="w-backgroundvideo-backgroundvideoplaypausebutton rt-hero-play-pause-wrapper w-background-video--control" data-w-bg-video-control="true" type="button">
@@ -452,13 +374,13 @@
 </div>
 </div>
 <div class="w-layout-vflex rt-hero-video-text-content">
-<div class="rt-text-style-h6 rt-font-weight-regular rt-text-color-slate-charcoal">Nous façonnons <span class="rt-font-weight-medium">le métal sur mesure</span> pour protéger et embellir ce qui compte.</div>
+<div class="rt-text-style-h6 rt-font-weight-regular rt-text-color-slate-charcoal">Du relevé de mesures à la pose, <span class="rt-font-weight-medium">un seul atelier</span> suit votre projet.</div>
 </div>
 </div>
 </div>
 </div>
 <div class="rt-hero-background-image-wrapper-v1">
-<img alt="" class="rt-hero-background-image-v2" sizes="(max-width: 3840px) 100vw, 3840px" src="https://cdn.prod.website-files.com/69a196b4902215f53ac6be15/69b78973415b59c2d8124f3b_Service-details-banner-background.webp" srcset="https://cdn.prod.website-files.com/69a196b4902215f53ac6be15/69b78973415b59c2d8124f3b_Service-details-banner-background-p-500.webp 500w, https://cdn.prod.website-files.com/69a196b4902215f53ac6be15/69b78973415b59c2d8124f3b_Service-details-banner-background-p-800.webp 800w, https://cdn.prod.website-files.com/69a196b4902215f53ac6be15/69b78973415b59c2d8124f3b_Service-details-banner-background-p-1080.webp 1080w, https://cdn.prod.website-files.com/69a196b4902215f53ac6be15/69b78973415b59c2d8124f3b_Service-details-banner-background-p-1600.webp 1600w, https://cdn.prod.website-files.com/69a196b4902215f53ac6be15/69b78973415b59c2d8124f3b_Service-details-banner-background-p-2000.webp 2000w, https://cdn.prod.website-files.com/69a196b4902215f53ac6be15/69b78973415b59c2d8124f3b_Service-details-banner-background.webp 3840w"/>
+<img alt="" class="rt-hero-background-image-v2" src="assets/images/service/hero-meulage-etincelles.webp"/>
 </div>
 </section>
 <section class="rt-overview-v1 rt-border-radius-top-right-left">
@@ -473,7 +395,7 @@
 <img alt="" loading="lazy" src="https://cdn.prod.website-files.com/69a196b4902215f53ac6be15/69b8f04b0789e63cf5225096_Group%2070%20(1).webp" width="170"/>
 </div>
 <div class="rt-happy-client-text-wrapper">
-<div>Déjà <span class="rt-font-weight-medium">10,000+ </span>clients satisfaits</div>
+<div>Plus de <span class="rt-font-weight-medium">100</span> clients sur la Côte d'Azur</div>
 </div>
 </div>
 </div>
@@ -484,8 +406,8 @@
 </div>
 <div class="rt-text-style-h6 rt-font-weight-regular">Notre savoir-faire</div>
 </div>
-<h2 class="rt-gap-off rt-h2-gap" data-w-id="10fd41ec-956c-1f9c-060b-fccc4b569d20" style="opacity:0">Sécurité, cachet et valeur ajoutée pour votre propriété</h2>
-<p class="rt-gap-off rt-h2-paragraph-gap" data-w-id="415c616d-3b71-4b35-1f95-09754543e8b6" style="opacity:0">Nous créons des ouvrages métalliques durables qui protègent votre bien et rehaussent son caractère pour de longues années.</p>
+<h2 class="rt-gap-off rt-h2-gap" data-w-id="10fd41ec-956c-1f9c-060b-fccc4b569d20" style="opacity:0">Un seul interlocuteur, de l'esquisse à la pose</h2>
+<p class="rt-gap-off rt-h2-paragraph-gap" data-w-id="415c616d-3b71-4b35-1f95-09754543e8b6" style="opacity:0">Chaque ouvrage est dessiné avec vous, fabriqué dans notre atelier puis posé par nos propres artisans. Vous gardez le même contact du premier rendez-vous jusqu'à la fin du chantier.</p>
 <div data-w-id="25d5a6e7-0cb9-65ff-d00b-47977e25a3ef" style="opacity:0">
 <a class="rt-button-v4 w-variant-70cecd94-f516-bf13-7322-8f0383189f2c rt-border-radius-large rt-overflow-hidden w-inline-block" data-w-id="0aa82a43-0841-4776-86ff-500dc6183f93" data-wf--rt-button-v3--variant="border-dark" href="inquiry-form.html">
 <div class="rt-text-style-button rt-button-color-change rt-button-z-index">Devis gratuit</div>
@@ -502,8 +424,8 @@
 </div>
 </div>
 <div class="w-layout-vflex rt-overview-box-bottom">
-<div class="rt-text-style-h6">Création sur mesure</div>
-<div>Portails, garde-corps, verrières et escaliers dessinés et forgés selon vos envies.</div>
+<div class="rt-text-style-h6">Fabrication sur mesure</div>
+<div>Chaque pièce est dessinée pour votre espace, sans modèle standard imposé.</div>
 </div>
 </div>
 <div class="w-layout-vflex rt-overview-right-box rt-background-color-deep-plum rt-border-radius" data-w-id="3ea60d1b-3a71-9d07-a179-94c120fd679c" style="opacity:0">
@@ -513,8 +435,8 @@
 </div>
 </div>
 <div class="w-layout-vflex rt-overview-box-bottom">
-<div class="rt-text-style-h6 rt-text-color-white">Rénovation & entretien</div>
-<div class="rt-text-color-white">Nous restaurons et entretenons vos ferronneries anciennes pour prolonger leur vie.</div>
+<div class="rt-text-style-h6 rt-text-color-white">Restauration de l'ancien</div>
+<div class="rt-text-color-white">Nous réparons, décapons et repeignons vos ferronneries anciennes pour leur redonner leur éclat.</div>
 </div>
 </div>
 </div>
@@ -652,7 +574,7 @@
 </div>
 <div class="rt-text-style-h6 rt-font-weight-regular">Nos services</div>
 </div>
-<h2 class="rt-gap-off" data-w-id="9cccddc7-dcba-600b-e0e2-3571d7eb01ca" style="opacity:0">Des services de ferronnerie sur lesquels vous pouvez compter</h2>
+<h2 class="rt-gap-off" data-w-id="9cccddc7-dcba-600b-e0e2-3571d7eb01ca" style="opacity:0">Six savoir-faire, un seul atelier de ferronnerie</h2>
 </div>
 <div class="w-layout-vflex rt-sticky-wrapper">
 <div class="rt-sticky-card rt-border-radius w-dyn-list">
@@ -669,36 +591,36 @@
 <div class="rt-text-style-h6 rt-text-color-slate-charcoal top-margin">01</div>
 <h3 class="rt-gap-off">Portails</h3>
 </div>
-<p class="rt-gap-off">Nous concevons et fabriquons des portails sur mesure, en fer forgé, acier ou aluminium, alliant sécurité, robustesse et esthétique.</p>
+<p class="rt-gap-off">Portails battants ou coulissants en fer forgé, acier ou aluminium, dessinés pour votre entrée et prêts à être motorisés.</p>
 </div>
 <div class="w-layout-vflex rt-sticky-card-bottom">
 <div class="w-layout-vflex rt-sticky-card-list-wrapper">
-<div class="rt-text-style-h6">Ce que comprend la prestation :</div>
+<div class="rt-text-style-h6">Ce que nous prenons en charge :</div>
 <div class="w-layout-vflex rt-sticky-card-list-item-wrapper rt-1">
 <div class="w-layout-hflex rt-sticky-card-list">
 <div class="w-layout-vflex">
 <img alt="" loading="lazy" src="https://cdn.prod.website-files.com/69a196b4902215f53ac6be15/69b918e46ea1cfdc479622dd_Vector%20157%20(2).svg"/>
 </div>
-<div>Relevé de mesures sur site</div>
+<div>Relevé de l'entrée et des piliers</div>
 </div>
 <div class="w-layout-hflex rt-sticky-card-list">
 <div class="w-layout-vflex">
 <img alt="" loading="lazy" src="https://cdn.prod.website-files.com/69a196b4902215f53ac6be15/69b918e46ea1cfdc479622dd_Vector%20157%20(2).svg"/>
 </div>
-<div>Étude et croquis personnalisés</div>
+<div>Choix du modèle : battant ou coulissant</div>
 </div>
 <div class="w-layout-hflex rt-sticky-card-list">
 <div class="w-layout-vflex">
 <img alt="" loading="lazy" src="https://cdn.prod.website-files.com/69a196b4902215f53ac6be15/69b918e46ea1cfdc479622dd_Vector%20157%20(2).svg"/>
 </div>
-<div>Fabrication en atelier & pose</div>
+<div>Fabrication et pose par nos artisans</div>
 </div>
 </div>
 <div class="rt-sticky-list-wrapper w-richtext">
 <ul role="list">
-<li>Matériaux de première qualité</li>
-<li>Fabrication de précision</li>
-<li>Pose conforme aux normes</li>
+<li>Préparation pour la motorisation</li>
+<li>Portillon assorti sur demande</li>
+<li>Thermolaquage dans la teinte RAL de votre choix</li>
 </ul>
 </div>
 </div>
@@ -715,7 +637,7 @@
 </div>
 </div>
 <a class="rt-sticky-card-right rt-overflow-hidden rt-border-radius w-inline-block" href="service-detail/professional-roof-installation.html">
-<img alt="Garde-corps en fer forgé avec ferronnerie décorative à Nice" loading="lazy" src="assets/images/garde-corps-fer-forge-nice.jpg"/>
+<img alt="Portail sur mesure en fer forgé à Nice" loading="lazy" src="assets/images/services/portail-sur-mesure-nice-768.webp"/>
 </a>
 </div>
 </div>
@@ -734,36 +656,36 @@
 <div class="rt-text-style-h6 rt-text-color-slate-charcoal top-margin">02</div>
 <h3 class="rt-gap-off">Garde-corps</h3>
 </div>
-<p class="rt-gap-off">Garde-corps de terrasse, de balcon ou d'escalier, conçus aux normes et adaptés au style de votre habitation.</p>
+<p class="rt-gap-off">Garde-corps de balcon, de terrasse ou de mezzanine, conformes aux normes de sécurité et assortis au style de votre façade.</p>
 </div>
 <div class="w-layout-vflex rt-sticky-card-bottom">
 <div class="w-layout-vflex rt-sticky-card-list-wrapper">
-<div class="rt-text-style-h6">Ce que comprend la prestation :</div>
+<div class="rt-text-style-h6">Ce que nous prenons en charge :</div>
 <div class="w-layout-vflex rt-sticky-card-list-item-wrapper rt-1">
 <div class="w-layout-hflex rt-sticky-card-list">
 <div class="w-layout-vflex">
 <img alt="" loading="lazy" src="https://cdn.prod.website-files.com/69a196b4902215f53ac6be15/69b918e46ea1cfdc479622dd_Vector%20157%20(2).svg"/>
 </div>
-<div>Relevé de mesures sur site</div>
+<div>Mesures et vérification des ancrages</div>
 </div>
 <div class="w-layout-hflex rt-sticky-card-list">
 <div class="w-layout-vflex">
 <img alt="" loading="lazy" src="https://cdn.prod.website-files.com/69a196b4902215f53ac6be15/69b918e46ea1cfdc479622dd_Vector%20157%20(2).svg"/>
 </div>
-<div>Étude et croquis personnalisés</div>
+<div>Plans validés avec vous avant fabrication</div>
 </div>
 <div class="w-layout-hflex rt-sticky-card-list">
 <div class="w-layout-vflex">
 <img alt="" loading="lazy" src="https://cdn.prod.website-files.com/69a196b4902215f53ac6be15/69b918e46ea1cfdc479622dd_Vector%20157%20(2).svg"/>
 </div>
-<div>Fabrication en atelier & pose</div>
+<div>Pose sur dalle, en nez de dalle ou sur muret</div>
 </div>
 </div>
 <div class="rt-sticky-list-wrapper w-richtext">
 <ul role="list">
-<li>Dépose de l'ancien ouvrage</li>
-<li>Renforts et reprises de structure</li>
-<li>Installation neuve sur mesure</li>
+<li>Hauteur et espacements conformes aux normes</li>
+<li>Remplissage barreaudé, en tôle ou en verre</li>
+<li>Traitement adapté à l'air marin</li>
 </ul>
 </div>
 </div>
@@ -780,7 +702,7 @@
 </div>
 </div>
 <a class="rt-sticky-card-right rt-overflow-hidden rt-border-radius w-inline-block" href="service-detail/complete-roof-replacement.html">
-<img alt="Rampes d'escalier" loading="lazy" sizes="(max-width: 767px) 100vw, (max-width: 991px) 728px, 940px" src="https://cdn.prod.website-files.com/69afefea240028b43eb9fe5f/69c3b04936dca49fd686745d_Ferronnier du Rouret-thumbnail-image-two.webp" srcset="https://cdn.prod.website-files.com/69afefea240028b43eb9fe5f/69c3b04936dca49fd686745d_Ferronnier du Rouret-thumbnail-image-two-p-500.webp 500w, https://cdn.prod.website-files.com/69afefea240028b43eb9fe5f/69c3b04936dca49fd686745d_Ferronnier du Rouret-thumbnail-image-two-p-800.webp 800w, https://cdn.prod.website-files.com/69afefea240028b43eb9fe5f/69c3b04936dca49fd686745d_Ferronnier du Rouret-thumbnail-image-two-p-1080.webp 1080w, https://cdn.prod.website-files.com/69afefea240028b43eb9fe5f/69c3b04936dca49fd686745d_Ferronnier du Rouret-thumbnail-image-two.webp 1480w"/>
+<img alt="Garde-corps en fer forgé sur une terrasse à Nice" loading="lazy" src="assets/images/services/garde-corps-fer-forge-nice-750.webp"/>
 </a>
 </div>
 </div>
@@ -799,36 +721,36 @@
 <div class="rt-text-style-h6 rt-text-color-slate-charcoal top-margin">03</div>
 <h3 class="rt-gap-off">Rampes d'escalier</h3>
 </div>
-<p class="rt-gap-off">Rampes et mains courantes sur mesure, forgées et cintrées à la main pour épouser parfaitement votre escalier.</p>
+<p class="rt-gap-off">Rampes et mains courantes forgées et cintrées à la main pour suivre chaque marche de votre escalier, à l'intérieur comme à l'extérieur.</p>
 </div>
 <div class="w-layout-vflex rt-sticky-card-bottom">
 <div class="w-layout-vflex rt-sticky-card-list-wrapper">
-<div class="rt-text-style-h6">Ce que comprend la prestation :</div>
+<div class="rt-text-style-h6">Ce que nous prenons en charge :</div>
 <div class="w-layout-vflex rt-sticky-card-list-item-wrapper rt-1">
 <div class="w-layout-hflex rt-sticky-card-list">
 <div class="w-layout-vflex">
 <img alt="" loading="lazy" src="https://cdn.prod.website-files.com/69a196b4902215f53ac6be15/69b918e46ea1cfdc479622dd_Vector%20157%20(2).svg"/>
 </div>
-<div>Relevé de mesures sur site</div>
+<div>Relevé précis de l'escalier</div>
 </div>
 <div class="w-layout-hflex rt-sticky-card-list">
 <div class="w-layout-vflex">
 <img alt="" loading="lazy" src="https://cdn.prod.website-files.com/69a196b4902215f53ac6be15/69b918e46ea1cfdc479622dd_Vector%20157%20(2).svg"/>
 </div>
-<div>Étude et croquis personnalisés</div>
+<div>Cintrage à la forme de vos marches</div>
 </div>
 <div class="w-layout-hflex rt-sticky-card-list">
 <div class="w-layout-vflex">
 <img alt="" loading="lazy" src="https://cdn.prod.website-files.com/69a196b4902215f53ac6be15/69b918e46ea1cfdc479622dd_Vector%20157%20(2).svg"/>
 </div>
-<div>Fabrication en atelier & pose</div>
+<div>Fixation discrète et solide</div>
 </div>
 </div>
 <div class="rt-sticky-list-wrapper w-richtext">
 <ul role="list">
-<li>Diagnostic détaillé</li>
-<li>Réparations ciblées</li>
-<li>Traitement anticorrosion</li>
+<li>Main courante agréable à la prise</li>
+<li>Motifs classiques ou lignes épurées</li>
+<li>Finition brute, patinée ou laquée</li>
 </ul>
 </div>
 </div>
@@ -845,7 +767,7 @@
 </div>
 </div>
 <a class="rt-sticky-card-right rt-overflow-hidden rt-border-radius w-inline-block" href="service-detail/reliable-roof-repair.html">
-<img alt="Pergolas & marquises" loading="lazy" sizes="(max-width: 767px) 100vw, (max-width: 991px) 728px, 940px" src="https://cdn.prod.website-files.com/69afefea240028b43eb9fe5f/69c3b05b77d5718a35ed3f3b_Ferronnier du Rouret-thumbnail-image-three.webp" srcset="https://cdn.prod.website-files.com/69afefea240028b43eb9fe5f/69c3b05b77d5718a35ed3f3b_Ferronnier du Rouret-thumbnail-image-three-p-500.webp 500w, https://cdn.prod.website-files.com/69afefea240028b43eb9fe5f/69c3b05b77d5718a35ed3f3b_Ferronnier du Rouret-thumbnail-image-three-p-800.webp 800w, https://cdn.prod.website-files.com/69afefea240028b43eb9fe5f/69c3b05b77d5718a35ed3f3b_Ferronnier du Rouret-thumbnail-image-three-p-1080.webp 1080w, https://cdn.prod.website-files.com/69afefea240028b43eb9fe5f/69c3b05b77d5718a35ed3f3b_Ferronnier du Rouret-thumbnail-image-three.webp 1480w"/>
+<img alt="Rampe d'escalier en métal sur mesure à Nice" loading="lazy" src="assets/images/services/rampe-escalier-metal-sur-mesure-nice-750.webp"/>
 </a>
 </div>
 </div>
@@ -864,35 +786,35 @@
 <div class="rt-text-style-h6 rt-text-color-slate-charcoal top-margin">04</div>
 <h3 class="rt-gap-off">Pergolas & marquises</h3>
 </div>
-<p class="rt-gap-off">Pergolas, tonnelles et marquises en métal, pour ombrager et structurer vos espaces extérieurs avec élégance.</p>
+<p class="rt-gap-off">Pergolas, tonnelles et marquises en métal pour abriter une terrasse ou une entrée, dessinées en harmonie avec votre maison.</p>
 </div>
 <div class="w-layout-vflex rt-sticky-card-bottom">
 <div class="w-layout-vflex rt-sticky-card-list-wrapper">
-<div class="rt-text-style-h6">Ce que comprend la prestation :</div>
+<div class="rt-text-style-h6">Ce que nous prenons en charge :</div>
 <div class="w-layout-vflex rt-sticky-card-list-item-wrapper rt-1">
 <div class="w-layout-hflex rt-sticky-card-list">
 <div class="w-layout-vflex">
 <img alt="" loading="lazy" src="https://cdn.prod.website-files.com/69a196b4902215f53ac6be15/69b918e46ea1cfdc479622dd_Vector%20157%20(2).svg"/>
 </div>
-<div>Relevé de mesures sur site</div>
+<div>Étude de l'implantation et de l'ensoleillement</div>
 </div>
 <div class="w-layout-hflex rt-sticky-card-list">
 <div class="w-layout-vflex">
 <img alt="" loading="lazy" src="https://cdn.prod.website-files.com/69a196b4902215f53ac6be15/69b918e46ea1cfdc479622dd_Vector%20157%20(2).svg"/>
 </div>
-<div>Étude et croquis personnalisés</div>
+<div>Structure dimensionnée pour le vent</div>
 </div>
 <div class="w-layout-hflex rt-sticky-card-list">
 <div class="w-layout-vflex">
 <img alt="" loading="lazy" src="https://cdn.prod.website-files.com/69a196b4902215f53ac6be15/69b918e46ea1cfdc479622dd_Vector%20157%20(2).svg"/>
 </div>
-<div>Fabrication en atelier & pose</div>
+<div>Montage complet sur place</div>
 </div>
 </div>
 <div class="rt-sticky-list-wrapper w-richtext">
 <ul role="list">
-<li>Profilés et tôles haut de gamme</li>
-<li>Finition galvanisation & thermolaquage</li>
+<li>Couverture en verre, polycarbonate ou toile</li>
+<li>Galvanisation et thermolaquage</li>
 <li>Fixations renforcées</li>
 </ul>
 </div>
@@ -910,7 +832,7 @@
 </div>
 </div>
 <a class="rt-sticky-card-right rt-overflow-hidden rt-border-radius w-inline-block" href="service-detail/metal-roofing-systems.html">
-<img alt="Clôtures" loading="lazy" sizes="(max-width: 767px) 100vw, (max-width: 991px) 728px, 940px" src="https://cdn.prod.website-files.com/69afefea240028b43eb9fe5f/69c3af916ca3989696d2f068_Ferronnier du Rouret-thumbnail-image-four.webp" srcset="https://cdn.prod.website-files.com/69afefea240028b43eb9fe5f/69c3af916ca3989696d2f068_Ferronnier du Rouret-thumbnail-image-four-p-500.webp 500w, https://cdn.prod.website-files.com/69afefea240028b43eb9fe5f/69c3af916ca3989696d2f068_Ferronnier du Rouret-thumbnail-image-four-p-800.webp 800w, https://cdn.prod.website-files.com/69afefea240028b43eb9fe5f/69c3af916ca3989696d2f068_Ferronnier du Rouret-thumbnail-image-four-p-1080.webp 1080w, https://cdn.prod.website-files.com/69afefea240028b43eb9fe5f/69c3af916ca3989696d2f068_Ferronnier du Rouret-thumbnail-image-four.webp 1480w"/>
+<img alt="Pergola et marquise en fer forgé à Nice" loading="lazy" src="assets/images/services/pergola-marquise-fer-forge-nice-750.webp"/>
 </a>
 </div>
 </div>
@@ -929,36 +851,36 @@
 <div class="rt-text-style-h6 rt-text-color-slate-charcoal top-margin">05</div>
 <h3 class="rt-gap-off">Clôtures</h3>
 </div>
-<p class="rt-gap-off">Clôtures, panneaux ajourés et grilles de défense en fer forgé, pour sécuriser et embellir votre propriété.</p>
+<p class="rt-gap-off">Clôtures, grilles de défense et panneaux ajourés en fer forgé pour délimiter et protéger votre terrain sans renoncer à l'élégance.</p>
 </div>
 <div class="w-layout-vflex rt-sticky-card-bottom">
 <div class="w-layout-vflex rt-sticky-card-list-wrapper">
-<div class="rt-text-style-h6">Ce que comprend la prestation :</div>
+<div class="rt-text-style-h6">Ce que nous prenons en charge :</div>
 <div class="w-layout-vflex rt-sticky-card-list-item-wrapper rt-1">
 <div class="w-layout-hflex rt-sticky-card-list">
 <div class="w-layout-vflex">
 <img alt="" loading="lazy" src="https://cdn.prod.website-files.com/69a196b4902215f53ac6be15/69b918e46ea1cfdc479622dd_Vector%20157%20(2).svg"/>
 </div>
-<div>Relevé de mesures sur site</div>
+<div>Métré du terrain et des dénivelés</div>
 </div>
 <div class="w-layout-hflex rt-sticky-card-list">
 <div class="w-layout-vflex">
 <img alt="" loading="lazy" src="https://cdn.prod.website-files.com/69a196b4902215f53ac6be15/69b918e46ea1cfdc479622dd_Vector%20157%20(2).svg"/>
 </div>
-<div>Étude et croquis personnalisés</div>
+<div>Choix des motifs et de la hauteur</div>
 </div>
 <div class="w-layout-hflex rt-sticky-card-list">
 <div class="w-layout-vflex">
 <img alt="" loading="lazy" src="https://cdn.prod.website-files.com/69a196b4902215f53ac6be15/69b918e46ea1cfdc479622dd_Vector%20157%20(2).svg"/>
 </div>
-<div>Fabrication en atelier & pose</div>
+<div>Scellement des poteaux et pose</div>
 </div>
 </div>
 <div class="rt-sticky-list-wrapper w-richtext">
 <ul role="list">
-<li>Évaluation complète de l'ouvrage</li>
-<li>Entretien préventif</li>
-<li>Nettoyage et graissage des mécanismes</li>
+<li>Grilles de défense pour fenêtres</li>
+<li>Panneaux ajourés ou occultants</li>
+<li>Entretien et remise en peinture</li>
 </ul>
 </div>
 </div>
@@ -975,7 +897,7 @@
 </div>
 </div>
 <a class="rt-sticky-card-right rt-overflow-hidden rt-border-radius w-inline-block" href="service-detail/roof-inspection-maintenance.html">
-<img alt="Portes métalliques" loading="lazy" sizes="(max-width: 767px) 100vw, (max-width: 991px) 728px, 940px" src="https://cdn.prod.website-files.com/69afefea240028b43eb9fe5f/69c3afa12173877ab7533bde_Ferronnier du Rouret-thumbnail-image-five.webp" srcset="https://cdn.prod.website-files.com/69afefea240028b43eb9fe5f/69c3afa12173877ab7533bde_Ferronnier du Rouret-thumbnail-image-five-p-500.webp 500w, https://cdn.prod.website-files.com/69afefea240028b43eb9fe5f/69c3afa12173877ab7533bde_Ferronnier du Rouret-thumbnail-image-five-p-800.webp 800w, https://cdn.prod.website-files.com/69afefea240028b43eb9fe5f/69c3afa12173877ab7533bde_Ferronnier du Rouret-thumbnail-image-five-p-1080.webp 1080w, https://cdn.prod.website-files.com/69afefea240028b43eb9fe5f/69c3afa12173877ab7533bde_Ferronnier du Rouret-thumbnail-image-five.webp 1480w"/>
+<img alt="Clôture en fer forgé à Nice" loading="lazy" src="assets/images/services/cloture-fer-forge-nice-500.webp"/>
 </a>
 </div>
 </div>
@@ -994,36 +916,36 @@
 <div class="rt-text-style-h6 rt-text-color-slate-charcoal top-margin">06</div>
 <h3 class="rt-gap-off">Portes métalliques</h3>
 </div>
-<p class="rt-gap-off">Portes d'entrée, portillons et portes de garage en fer forgé ou acier, alliant sécurité, robustesse et finition soignée.</p>
+<p class="rt-gap-off">Portes d'entrée, portes de service et portillons en acier ou en fer forgé, pensés pour la sécurité comme pour l'allure de votre entrée.</p>
 </div>
 <div class="w-layout-vflex rt-sticky-card-bottom">
 <div class="w-layout-vflex rt-sticky-card-list-wrapper">
-<div class="rt-text-style-h6">Ce que comprend la prestation :</div>
+<div class="rt-text-style-h6">Ce que nous prenons en charge :</div>
 <div class="w-layout-vflex rt-sticky-card-list-item-wrapper rt-1">
 <div class="w-layout-hflex rt-sticky-card-list">
 <div class="w-layout-vflex">
 <img alt="" loading="lazy" src="https://cdn.prod.website-files.com/69a196b4902215f53ac6be15/69b918e46ea1cfdc479622dd_Vector%20157%20(2).svg"/>
 </div>
-<div>Relevé de mesures sur site</div>
+<div>Mesure de l'ouverture existante</div>
 </div>
 <div class="w-layout-hflex rt-sticky-card-list">
 <div class="w-layout-vflex">
 <img alt="" loading="lazy" src="https://cdn.prod.website-files.com/69a196b4902215f53ac6be15/69b918e46ea1cfdc479622dd_Vector%20157%20(2).svg"/>
 </div>
-<div>Étude et croquis personnalisés</div>
+<div>Choix de la serrurerie et des vitrages</div>
 </div>
 <div class="w-layout-hflex rt-sticky-card-list">
 <div class="w-layout-vflex">
 <img alt="" loading="lazy" src="https://cdn.prod.website-files.com/69a196b4902215f53ac6be15/69b918e46ea1cfdc479622dd_Vector%20157%20(2).svg"/>
 </div>
-<div>Fabrication en atelier & pose</div>
+<div>Fabrication et pose ajustée</div>
 </div>
 </div>
 <div class="rt-sticky-list-wrapper w-richtext">
 <ul role="list">
-<li>Relevé de mesures sur site</li>
-<li>Étude et croquis personnalisés</li>
-<li>Fabrication en atelier & pose</li>
+<li>Serrure multipoints sur demande</li>
+<li>Isolation et vitrage selon vos besoins</li>
+<li>Finition assortie à vos menuiseries</li>
 </ul>
 </div>
 </div>
@@ -1040,7 +962,7 @@
 </div>
 </div>
 <a class="rt-sticky-card-right rt-overflow-hidden rt-border-radius w-inline-block" href="service-detail/storm-damage-repair.html">
-<img alt="Réalisation de ferronnerie sur mesure à Nice" loading="lazy" sizes="(max-width: 767px) 100vw, (max-width: 991px) 728px, 940px" src="https://cdn.prod.website-files.com/69afefea240028b43eb9fe5f/69c3a95a264106c67f28bf5c_Ferronnier du Rouret-thumbnail-image-six.webp" srcset="https://cdn.prod.website-files.com/69afefea240028b43eb9fe5f/69c3a95a264106c67f28bf5c_Ferronnier du Rouret-thumbnail-image-six-p-500.webp 500w, https://cdn.prod.website-files.com/69afefea240028b43eb9fe5f/69c3a95a264106c67f28bf5c_Ferronnier du Rouret-thumbnail-image-six-p-800.webp 800w, https://cdn.prod.website-files.com/69afefea240028b43eb9fe5f/69c3a95a264106c67f28bf5c_Ferronnier du Rouret-thumbnail-image-six-p-1080.webp 1080w, https://cdn.prod.website-files.com/69afefea240028b43eb9fe5f/69c3a95a264106c67f28bf5c_Ferronnier du Rouret-thumbnail-image-six.webp 1480w"/>
+<img alt="Porte métallique en fer forgé à Nice" loading="lazy" src="assets/images/services/porte-metallique-fer-forge-nice-736.webp"/>
 </a>
 </div>
 </div>
@@ -1063,36 +985,36 @@
 <div class="rt-text-style-h6 rt-text-color-slate-charcoal top-margin">01</div>
 <h3 class="rt-gap-off">Portails</h3>
 </div>
-<p class="rt-gap-off">Nous concevons et fabriquons des portails sur mesure, en fer forgé, acier ou aluminium, alliant sécurité, robustesse et esthétique.</p>
+<p class="rt-gap-off">Portails battants ou coulissants en fer forgé, acier ou aluminium, dessinés pour votre entrée et prêts à être motorisés.</p>
 </div>
 <div class="w-layout-vflex rt-sticky-card-bottom">
 <div class="w-layout-vflex rt-sticky-card-list-wrapper">
-<div class="rt-text-style-h6">Ce que comprend la prestation :</div>
+<div class="rt-text-style-h6">Ce que nous prenons en charge :</div>
 <div class="w-layout-vflex rt-sticky-card-list-item-wrapper rt-1">
 <div class="w-layout-hflex rt-sticky-card-list">
 <div class="w-layout-vflex">
 <img alt="" loading="lazy" src="https://cdn.prod.website-files.com/69a196b4902215f53ac6be15/69b918e46ea1cfdc479622dd_Vector%20157%20(2).svg"/>
 </div>
-<div>Relevé de mesures sur site</div>
+<div>Relevé de l'entrée et des piliers</div>
 </div>
 <div class="w-layout-hflex rt-sticky-card-list">
 <div class="w-layout-vflex">
 <img alt="" loading="lazy" src="https://cdn.prod.website-files.com/69a196b4902215f53ac6be15/69b918e46ea1cfdc479622dd_Vector%20157%20(2).svg"/>
 </div>
-<div>Étude et croquis personnalisés</div>
+<div>Choix du modèle : battant ou coulissant</div>
 </div>
 <div class="w-layout-hflex rt-sticky-card-list">
 <div class="w-layout-vflex">
 <img alt="" loading="lazy" src="https://cdn.prod.website-files.com/69a196b4902215f53ac6be15/69b918e46ea1cfdc479622dd_Vector%20157%20(2).svg"/>
 </div>
-<div>Fabrication en atelier & pose</div>
+<div>Fabrication et pose par nos artisans</div>
 </div>
 </div>
 <div class="rt-sticky-list-wrapper w-richtext">
 <ul role="list">
-<li>Matériaux de première qualité</li>
-<li>Fabrication de précision</li>
-<li>Pose conforme aux normes</li>
+<li>Préparation pour la motorisation</li>
+<li>Portillon assorti sur demande</li>
+<li>Thermolaquage dans la teinte RAL de votre choix</li>
 </ul>
 </div>
 </div>
@@ -1109,7 +1031,7 @@
 </div>
 </div>
 <div class="w-layout-vflex rt-sticky-card-right rt-overflow-hidden rt-border-radius">
-<img alt="Garde-corps en fer forgé avec ferronnerie décorative à Nice" loading="lazy" src="assets/images/garde-corps-fer-forge-nice.jpg"/>
+<img alt="Portail sur mesure en fer forgé à Nice" loading="lazy" src="assets/images/services/portail-sur-mesure-nice-768.webp"/>
 </div>
 </div>
 </div>
@@ -1130,36 +1052,36 @@
 <div class="rt-text-style-h6 rt-text-color-slate-charcoal top-margin">02</div>
 <h3 class="rt-gap-off">Garde-corps</h3>
 </div>
-<p class="rt-gap-off">Garde-corps de terrasse, de balcon ou d'escalier, conçus aux normes et adaptés au style de votre habitation.</p>
+<p class="rt-gap-off">Garde-corps de balcon, de terrasse ou de mezzanine, conformes aux normes de sécurité et assortis au style de votre façade.</p>
 </div>
 <div class="w-layout-vflex rt-sticky-card-bottom">
 <div class="w-layout-vflex rt-sticky-card-list-wrapper">
-<div class="rt-text-style-h6">Ce que comprend la prestation :</div>
+<div class="rt-text-style-h6">Ce que nous prenons en charge :</div>
 <div class="w-layout-vflex rt-sticky-card-list-item-wrapper rt-1">
 <div class="w-layout-hflex rt-sticky-card-list">
 <div class="w-layout-vflex">
 <img alt="" loading="lazy" src="https://cdn.prod.website-files.com/69a196b4902215f53ac6be15/69b918e46ea1cfdc479622dd_Vector%20157%20(2).svg"/>
 </div>
-<div>Relevé de mesures sur site</div>
+<div>Mesures et vérification des ancrages</div>
 </div>
 <div class="w-layout-hflex rt-sticky-card-list">
 <div class="w-layout-vflex">
 <img alt="" loading="lazy" src="https://cdn.prod.website-files.com/69a196b4902215f53ac6be15/69b918e46ea1cfdc479622dd_Vector%20157%20(2).svg"/>
 </div>
-<div>Étude et croquis personnalisés</div>
+<div>Plans validés avec vous avant fabrication</div>
 </div>
 <div class="w-layout-hflex rt-sticky-card-list">
 <div class="w-layout-vflex">
 <img alt="" loading="lazy" src="https://cdn.prod.website-files.com/69a196b4902215f53ac6be15/69b918e46ea1cfdc479622dd_Vector%20157%20(2).svg"/>
 </div>
-<div>Fabrication en atelier & pose</div>
+<div>Pose sur dalle, en nez de dalle ou sur muret</div>
 </div>
 </div>
 <div class="rt-sticky-list-wrapper w-richtext">
 <ul role="list">
-<li>Dépose de l'ancien ouvrage</li>
-<li>Renforts et reprises de structure</li>
-<li>Installation neuve sur mesure</li>
+<li>Hauteur et espacements conformes aux normes</li>
+<li>Remplissage barreaudé, en tôle ou en verre</li>
+<li>Traitement adapté à l'air marin</li>
 </ul>
 </div>
 </div>
@@ -1176,7 +1098,7 @@
 </div>
 </div>
 <div class="w-layout-vflex rt-sticky-card-right rt-overflow-hidden rt-border-radius">
-<img alt="Rampes d'escalier" loading="lazy" sizes="(max-width: 767px) 100vw, (max-width: 991px) 728px, 940px" src="https://cdn.prod.website-files.com/69afefea240028b43eb9fe5f/69c3b04936dca49fd686745d_Ferronnier du Rouret-thumbnail-image-two.webp" srcset="https://cdn.prod.website-files.com/69afefea240028b43eb9fe5f/69c3b04936dca49fd686745d_Ferronnier du Rouret-thumbnail-image-two-p-500.webp 500w, https://cdn.prod.website-files.com/69afefea240028b43eb9fe5f/69c3b04936dca49fd686745d_Ferronnier du Rouret-thumbnail-image-two-p-800.webp 800w, https://cdn.prod.website-files.com/69afefea240028b43eb9fe5f/69c3b04936dca49fd686745d_Ferronnier du Rouret-thumbnail-image-two-p-1080.webp 1080w, https://cdn.prod.website-files.com/69afefea240028b43eb9fe5f/69c3b04936dca49fd686745d_Ferronnier du Rouret-thumbnail-image-two.webp 1480w"/>
+<img alt="Garde-corps en fer forgé sur une terrasse à Nice" loading="lazy" src="assets/images/services/garde-corps-fer-forge-nice-750.webp"/>
 </div>
 </div>
 </div>
@@ -1197,36 +1119,36 @@
 <div class="rt-text-style-h6 rt-text-color-slate-charcoal top-margin">03</div>
 <h3 class="rt-gap-off">Rampes d'escalier</h3>
 </div>
-<p class="rt-gap-off">Rampes et mains courantes sur mesure, forgées et cintrées à la main pour épouser parfaitement votre escalier.</p>
+<p class="rt-gap-off">Rampes et mains courantes forgées et cintrées à la main pour suivre chaque marche de votre escalier, à l'intérieur comme à l'extérieur.</p>
 </div>
 <div class="w-layout-vflex rt-sticky-card-bottom">
 <div class="w-layout-vflex rt-sticky-card-list-wrapper">
-<div class="rt-text-style-h6">Ce que comprend la prestation :</div>
+<div class="rt-text-style-h6">Ce que nous prenons en charge :</div>
 <div class="w-layout-vflex rt-sticky-card-list-item-wrapper rt-1">
 <div class="w-layout-hflex rt-sticky-card-list">
 <div class="w-layout-vflex">
 <img alt="" loading="lazy" src="https://cdn.prod.website-files.com/69a196b4902215f53ac6be15/69b918e46ea1cfdc479622dd_Vector%20157%20(2).svg"/>
 </div>
-<div>Relevé de mesures sur site</div>
+<div>Relevé précis de l'escalier</div>
 </div>
 <div class="w-layout-hflex rt-sticky-card-list">
 <div class="w-layout-vflex">
 <img alt="" loading="lazy" src="https://cdn.prod.website-files.com/69a196b4902215f53ac6be15/69b918e46ea1cfdc479622dd_Vector%20157%20(2).svg"/>
 </div>
-<div>Étude et croquis personnalisés</div>
+<div>Cintrage à la forme de vos marches</div>
 </div>
 <div class="w-layout-hflex rt-sticky-card-list">
 <div class="w-layout-vflex">
 <img alt="" loading="lazy" src="https://cdn.prod.website-files.com/69a196b4902215f53ac6be15/69b918e46ea1cfdc479622dd_Vector%20157%20(2).svg"/>
 </div>
-<div>Fabrication en atelier & pose</div>
+<div>Fixation discrète et solide</div>
 </div>
 </div>
 <div class="rt-sticky-list-wrapper w-richtext">
 <ul role="list">
-<li>Diagnostic détaillé</li>
-<li>Réparations ciblées</li>
-<li>Traitement anticorrosion</li>
+<li>Main courante agréable à la prise</li>
+<li>Motifs classiques ou lignes épurées</li>
+<li>Finition brute, patinée ou laquée</li>
 </ul>
 </div>
 </div>
@@ -1243,7 +1165,7 @@
 </div>
 </div>
 <div class="w-layout-vflex rt-sticky-card-right rt-overflow-hidden rt-border-radius">
-<img alt="Pergolas & marquises" loading="lazy" sizes="(max-width: 767px) 100vw, (max-width: 991px) 728px, 940px" src="https://cdn.prod.website-files.com/69afefea240028b43eb9fe5f/69c3b05b77d5718a35ed3f3b_Ferronnier du Rouret-thumbnail-image-three.webp" srcset="https://cdn.prod.website-files.com/69afefea240028b43eb9fe5f/69c3b05b77d5718a35ed3f3b_Ferronnier du Rouret-thumbnail-image-three-p-500.webp 500w, https://cdn.prod.website-files.com/69afefea240028b43eb9fe5f/69c3b05b77d5718a35ed3f3b_Ferronnier du Rouret-thumbnail-image-three-p-800.webp 800w, https://cdn.prod.website-files.com/69afefea240028b43eb9fe5f/69c3b05b77d5718a35ed3f3b_Ferronnier du Rouret-thumbnail-image-three-p-1080.webp 1080w, https://cdn.prod.website-files.com/69afefea240028b43eb9fe5f/69c3b05b77d5718a35ed3f3b_Ferronnier du Rouret-thumbnail-image-three.webp 1480w"/>
+<img alt="Rampe d'escalier en métal sur mesure à Nice" loading="lazy" src="assets/images/services/rampe-escalier-metal-sur-mesure-nice-750.webp"/>
 </div>
 </div>
 </div>
@@ -1264,35 +1186,35 @@
 <div class="rt-text-style-h6 rt-text-color-slate-charcoal top-margin">04</div>
 <h3 class="rt-gap-off">Pergolas & marquises</h3>
 </div>
-<p class="rt-gap-off">Pergolas, tonnelles et marquises en métal, pour ombrager et structurer vos espaces extérieurs avec élégance.</p>
+<p class="rt-gap-off">Pergolas, tonnelles et marquises en métal pour abriter une terrasse ou une entrée, dessinées en harmonie avec votre maison.</p>
 </div>
 <div class="w-layout-vflex rt-sticky-card-bottom">
 <div class="w-layout-vflex rt-sticky-card-list-wrapper">
-<div class="rt-text-style-h6">Ce que comprend la prestation :</div>
+<div class="rt-text-style-h6">Ce que nous prenons en charge :</div>
 <div class="w-layout-vflex rt-sticky-card-list-item-wrapper rt-1">
 <div class="w-layout-hflex rt-sticky-card-list">
 <div class="w-layout-vflex">
 <img alt="" loading="lazy" src="https://cdn.prod.website-files.com/69a196b4902215f53ac6be15/69b918e46ea1cfdc479622dd_Vector%20157%20(2).svg"/>
 </div>
-<div>Relevé de mesures sur site</div>
+<div>Étude de l'implantation et de l'ensoleillement</div>
 </div>
 <div class="w-layout-hflex rt-sticky-card-list">
 <div class="w-layout-vflex">
 <img alt="" loading="lazy" src="https://cdn.prod.website-files.com/69a196b4902215f53ac6be15/69b918e46ea1cfdc479622dd_Vector%20157%20(2).svg"/>
 </div>
-<div>Étude et croquis personnalisés</div>
+<div>Structure dimensionnée pour le vent</div>
 </div>
 <div class="w-layout-hflex rt-sticky-card-list">
 <div class="w-layout-vflex">
 <img alt="" loading="lazy" src="https://cdn.prod.website-files.com/69a196b4902215f53ac6be15/69b918e46ea1cfdc479622dd_Vector%20157%20(2).svg"/>
 </div>
-<div>Fabrication en atelier & pose</div>
+<div>Montage complet sur place</div>
 </div>
 </div>
 <div class="rt-sticky-list-wrapper w-richtext">
 <ul role="list">
-<li>Profilés et tôles haut de gamme</li>
-<li>Finition galvanisation & thermolaquage</li>
+<li>Couverture en verre, polycarbonate ou toile</li>
+<li>Galvanisation et thermolaquage</li>
 <li>Fixations renforcées</li>
 </ul>
 </div>
@@ -1310,7 +1232,7 @@
 </div>
 </div>
 <div class="w-layout-vflex rt-sticky-card-right rt-overflow-hidden rt-border-radius">
-<img alt="Clôtures" loading="lazy" sizes="(max-width: 767px) 100vw, (max-width: 991px) 728px, 940px" src="https://cdn.prod.website-files.com/69afefea240028b43eb9fe5f/69c3af916ca3989696d2f068_Ferronnier du Rouret-thumbnail-image-four.webp" srcset="https://cdn.prod.website-files.com/69afefea240028b43eb9fe5f/69c3af916ca3989696d2f068_Ferronnier du Rouret-thumbnail-image-four-p-500.webp 500w, https://cdn.prod.website-files.com/69afefea240028b43eb9fe5f/69c3af916ca3989696d2f068_Ferronnier du Rouret-thumbnail-image-four-p-800.webp 800w, https://cdn.prod.website-files.com/69afefea240028b43eb9fe5f/69c3af916ca3989696d2f068_Ferronnier du Rouret-thumbnail-image-four-p-1080.webp 1080w, https://cdn.prod.website-files.com/69afefea240028b43eb9fe5f/69c3af916ca3989696d2f068_Ferronnier du Rouret-thumbnail-image-four.webp 1480w"/>
+<img alt="Pergola et marquise en fer forgé à Nice" loading="lazy" src="assets/images/services/pergola-marquise-fer-forge-nice-750.webp"/>
 </div>
 </div>
 </div>
@@ -1331,36 +1253,36 @@
 <div class="rt-text-style-h6 rt-text-color-slate-charcoal top-margin">05</div>
 <h3 class="rt-gap-off">Clôtures</h3>
 </div>
-<p class="rt-gap-off">Clôtures, panneaux ajourés et grilles de défense en fer forgé, pour sécuriser et embellir votre propriété.</p>
+<p class="rt-gap-off">Clôtures, grilles de défense et panneaux ajourés en fer forgé pour délimiter et protéger votre terrain sans renoncer à l'élégance.</p>
 </div>
 <div class="w-layout-vflex rt-sticky-card-bottom">
 <div class="w-layout-vflex rt-sticky-card-list-wrapper">
-<div class="rt-text-style-h6">Ce que comprend la prestation :</div>
+<div class="rt-text-style-h6">Ce que nous prenons en charge :</div>
 <div class="w-layout-vflex rt-sticky-card-list-item-wrapper rt-1">
 <div class="w-layout-hflex rt-sticky-card-list">
 <div class="w-layout-vflex">
 <img alt="" loading="lazy" src="https://cdn.prod.website-files.com/69a196b4902215f53ac6be15/69b918e46ea1cfdc479622dd_Vector%20157%20(2).svg"/>
 </div>
-<div>Relevé de mesures sur site</div>
+<div>Métré du terrain et des dénivelés</div>
 </div>
 <div class="w-layout-hflex rt-sticky-card-list">
 <div class="w-layout-vflex">
 <img alt="" loading="lazy" src="https://cdn.prod.website-files.com/69a196b4902215f53ac6be15/69b918e46ea1cfdc479622dd_Vector%20157%20(2).svg"/>
 </div>
-<div>Étude et croquis personnalisés</div>
+<div>Choix des motifs et de la hauteur</div>
 </div>
 <div class="w-layout-hflex rt-sticky-card-list">
 <div class="w-layout-vflex">
 <img alt="" loading="lazy" src="https://cdn.prod.website-files.com/69a196b4902215f53ac6be15/69b918e46ea1cfdc479622dd_Vector%20157%20(2).svg"/>
 </div>
-<div>Fabrication en atelier & pose</div>
+<div>Scellement des poteaux et pose</div>
 </div>
 </div>
 <div class="rt-sticky-list-wrapper w-richtext">
 <ul role="list">
-<li>Évaluation complète de l'ouvrage</li>
-<li>Entretien préventif</li>
-<li>Nettoyage et graissage des mécanismes</li>
+<li>Grilles de défense pour fenêtres</li>
+<li>Panneaux ajourés ou occultants</li>
+<li>Entretien et remise en peinture</li>
 </ul>
 </div>
 </div>
@@ -1377,7 +1299,7 @@
 </div>
 </div>
 <div class="w-layout-vflex rt-sticky-card-right rt-overflow-hidden rt-border-radius">
-<img alt="Portes métalliques" loading="lazy" sizes="(max-width: 767px) 100vw, (max-width: 991px) 728px, 940px" src="https://cdn.prod.website-files.com/69afefea240028b43eb9fe5f/69c3afa12173877ab7533bde_Ferronnier du Rouret-thumbnail-image-five.webp" srcset="https://cdn.prod.website-files.com/69afefea240028b43eb9fe5f/69c3afa12173877ab7533bde_Ferronnier du Rouret-thumbnail-image-five-p-500.webp 500w, https://cdn.prod.website-files.com/69afefea240028b43eb9fe5f/69c3afa12173877ab7533bde_Ferronnier du Rouret-thumbnail-image-five-p-800.webp 800w, https://cdn.prod.website-files.com/69afefea240028b43eb9fe5f/69c3afa12173877ab7533bde_Ferronnier du Rouret-thumbnail-image-five-p-1080.webp 1080w, https://cdn.prod.website-files.com/69afefea240028b43eb9fe5f/69c3afa12173877ab7533bde_Ferronnier du Rouret-thumbnail-image-five.webp 1480w"/>
+<img alt="Clôture en fer forgé à Nice" loading="lazy" src="assets/images/services/cloture-fer-forge-nice-500.webp"/>
 </div>
 </div>
 </div>
@@ -1398,36 +1320,36 @@
 <div class="rt-text-style-h6 rt-text-color-slate-charcoal top-margin">06</div>
 <h3 class="rt-gap-off">Portes métalliques</h3>
 </div>
-<p class="rt-gap-off">Portes d'entrée, portillons et portes de garage en fer forgé ou acier, alliant sécurité, robustesse et finition soignée.</p>
+<p class="rt-gap-off">Portes d'entrée, portes de service et portillons en acier ou en fer forgé, pensés pour la sécurité comme pour l'allure de votre entrée.</p>
 </div>
 <div class="w-layout-vflex rt-sticky-card-bottom">
 <div class="w-layout-vflex rt-sticky-card-list-wrapper">
-<div class="rt-text-style-h6">Ce que comprend la prestation :</div>
+<div class="rt-text-style-h6">Ce que nous prenons en charge :</div>
 <div class="w-layout-vflex rt-sticky-card-list-item-wrapper rt-1">
 <div class="w-layout-hflex rt-sticky-card-list">
 <div class="w-layout-vflex">
 <img alt="" loading="lazy" src="https://cdn.prod.website-files.com/69a196b4902215f53ac6be15/69b918e46ea1cfdc479622dd_Vector%20157%20(2).svg"/>
 </div>
-<div>Relevé de mesures sur site</div>
+<div>Mesure de l'ouverture existante</div>
 </div>
 <div class="w-layout-hflex rt-sticky-card-list">
 <div class="w-layout-vflex">
 <img alt="" loading="lazy" src="https://cdn.prod.website-files.com/69a196b4902215f53ac6be15/69b918e46ea1cfdc479622dd_Vector%20157%20(2).svg"/>
 </div>
-<div>Étude et croquis personnalisés</div>
+<div>Choix de la serrurerie et des vitrages</div>
 </div>
 <div class="w-layout-hflex rt-sticky-card-list">
 <div class="w-layout-vflex">
 <img alt="" loading="lazy" src="https://cdn.prod.website-files.com/69a196b4902215f53ac6be15/69b918e46ea1cfdc479622dd_Vector%20157%20(2).svg"/>
 </div>
-<div>Fabrication en atelier & pose</div>
+<div>Fabrication et pose ajustée</div>
 </div>
 </div>
 <div class="rt-sticky-list-wrapper w-richtext">
 <ul role="list">
-<li>Relevé de mesures sur site</li>
-<li>Étude et croquis personnalisés</li>
-<li>Fabrication en atelier & pose</li>
+<li>Serrure multipoints sur demande</li>
+<li>Isolation et vitrage selon vos besoins</li>
+<li>Finition assortie à vos menuiseries</li>
 </ul>
 </div>
 </div>
@@ -1444,7 +1366,7 @@
 </div>
 </div>
 <div class="w-layout-vflex rt-sticky-card-right rt-overflow-hidden rt-border-radius">
-<img alt="Réalisation de ferronnerie sur mesure à Nice" loading="lazy" sizes="(max-width: 767px) 100vw, (max-width: 991px) 728px, 940px" src="https://cdn.prod.website-files.com/69afefea240028b43eb9fe5f/69c3a95a264106c67f28bf5c_Ferronnier du Rouret-thumbnail-image-six.webp" srcset="https://cdn.prod.website-files.com/69afefea240028b43eb9fe5f/69c3a95a264106c67f28bf5c_Ferronnier du Rouret-thumbnail-image-six-p-500.webp 500w, https://cdn.prod.website-files.com/69afefea240028b43eb9fe5f/69c3a95a264106c67f28bf5c_Ferronnier du Rouret-thumbnail-image-six-p-800.webp 800w, https://cdn.prod.website-files.com/69afefea240028b43eb9fe5f/69c3a95a264106c67f28bf5c_Ferronnier du Rouret-thumbnail-image-six-p-1080.webp 1080w, https://cdn.prod.website-files.com/69afefea240028b43eb9fe5f/69c3a95a264106c67f28bf5c_Ferronnier du Rouret-thumbnail-image-six.webp 1480w"/>
+<img alt="Porte métallique en fer forgé à Nice" loading="lazy" src="assets/images/services/porte-metallique-fer-forge-nice-736.webp"/>
 </div>
 </div>
 </div>
@@ -1472,9 +1394,9 @@
 <div class="w-layout-hflex rt-hero-top-subtext rt-tag-box-gap-h2" data-w-id="6ecacb44-1046-f8e3-4c9b-25084ff2eade" style="opacity:0">
 <div class="rt-round rt-background-color-neon-lime rt-border-radius-full">
 </div>
-<div class="rt-text-style-h6 rt-font-weight-regular">Nos réalisations</div>
+<div class="rt-text-style-h6 rt-font-weight-regular">Pourquoi nous choisir</div>
 </div>
-<h2 class="rt-gap-off" data-w-id="6ecacb44-1046-f8e3-4c9b-25084ff2eae2" style="opacity:0">Un savoir-faire d'atelier reconnu sur toute la Côte d'Azur</h2>
+<h2 class="rt-gap-off" data-w-id="6ecacb44-1046-f8e3-4c9b-25084ff2eae2" style="opacity:0">Ce qui fait la différence sur chacun de nos chantiers</h2>
 </div>
 <div class="w-layout-hflex rt-service-v1-main">
 <div class="w-layout-vflex rt-service-v1-card rt-service-card-one" data-w-id="26fc7983-aec0-691b-acd8-55ee66bfecc4" href="#">
@@ -1484,7 +1406,7 @@
 <img alt="" class="rt-service-card-v6-arrow" height="33" loading="lazy" src="https://cdn.prod.website-files.com/69a196b4902215f53ac6be15/69b932df7f63e81329d45c14_e9d998774b82357174c038a78a7b3576_arrow-10.svg" width="32"/>
 </div>
 <div class="w-layout-vflex rt-service-text-wrapper">
-<div class="rt-text-style-h3 rt-rotate-text rt-text-color-slate-charcoal">Équipe d'artisans experts</div>
+<div class="rt-text-style-h3 rt-rotate-text rt-text-color-slate-charcoal">Des artisans ferronniers</div>
 <div class="rt-big-text-style rt-rotate-text rt-text-color-slate-charcoal">01</div>
 </div>
 </div>
@@ -1494,8 +1416,8 @@
 </div>
 <div class="w-layout-vflex rt-service-v1-card-text">
 <div class="rt-text-style-h5">01</div>
-<div class="rt-text-style-h3">Équipe d'artisans experts</div>
-<p>Un atelier d'artisans passionnés, attachés au travail soigné, à la sécurité et à des ouvrages durables.</p>
+<div class="rt-text-style-h3">Des artisans ferronniers</div>
+<p>Nos ferronniers forgent, soudent et posent eux-mêmes chaque ouvrage : aucun intermédiaire entre vous et l'atelier.</p>
 <a class="rt-button-v4 rt-border-radius-large rt-overflow-hidden w-inline-block" data-w-id="0aa82a43-0841-4776-86ff-500dc6183f93" data-wf--rt-button-v3--variant="base" href="portfolio-one.html">
 <div class="rt-text-style-button rt-button-color-change rt-button-z-index">Voir nos réalisations</div>
 <div class="rt-button-overlap-v1">
@@ -1512,7 +1434,7 @@
 <img alt="" class="rt-service-card-v6-arrow" height="33" loading="lazy" src="https://cdn.prod.website-files.com/69a196b4902215f53ac6be15/69b932df7f63e81329d45c14_e9d998774b82357174c038a78a7b3576_arrow-10.svg" width="32"/>
 </div>
 <div class="w-layout-vflex rt-service-text-wrapper">
-<div class="rt-text-style-h3 rt-rotate-text rt-text-color-slate-charcoal">Matériaux haut de gamme</div>
+<div class="rt-text-style-h3 rt-rotate-text rt-text-color-slate-charcoal">Des matériaux durables</div>
 <div class="rt-big-text-style rt-rotate-text rt-text-color-slate-charcoal">02</div>
 </div>
 </div>
@@ -1522,8 +1444,8 @@
 </div>
 <div class="w-layout-vflex rt-service-v1-card-text">
 <div class="rt-text-style-h5">02</div>
-<div class="rt-text-style-h3">Matériaux haut de gamme</div>
-<p class="rt-gap-off">Un atelier d'artisans passionnés, attachés au travail soigné, à la sécurité et à des ouvrages durables.</p>
+<div class="rt-text-style-h3">Des matériaux durables</div>
+<p class="rt-gap-off">Acier galvanisé, fer forgé et aluminium, traités contre la corrosion pour résister au soleil et à l'air marin de la Côte d'Azur.</p>
 <a class="rt-button-v4 rt-border-radius-large rt-overflow-hidden w-inline-block" data-w-id="0aa82a43-0841-4776-86ff-500dc6183f93" data-wf--rt-button-v3--variant="base" href="portfolio-one.html">
 <div class="rt-text-style-button rt-button-color-change rt-button-z-index">Voir nos réalisations</div>
 <div class="rt-button-overlap-v1">
@@ -1540,7 +1462,7 @@
 <img alt="" class="rt-service-card-v6-arrow" height="33" loading="lazy" src="https://cdn.prod.website-files.com/69a196b4902215f53ac6be15/69b932df7f63e81329d45c14_e9d998774b82357174c038a78a7b3576_arrow-10.svg" width="32"/>
 </div>
 <div class="w-layout-vflex rt-service-text-wrapper">
-<div class="rt-text-style-h3 rt-rotate-text rt-text-color-slate-charcoal">Service fiable et ponctuel</div>
+<div class="rt-text-style-h3 rt-rotate-text rt-text-color-slate-charcoal">Des délais tenus</div>
 <div class="rt-big-text-style rt-rotate-text rt-text-color-slate-charcoal">03</div>
 </div>
 </div>
@@ -1550,8 +1472,8 @@
 </div>
 <div class="w-layout-vflex rt-service-v1-card-text">
 <div class="rt-text-style-h5">03</div>
-<div class="rt-text-style-h3">Service fiable et ponctuel</div>
-<p class="rt-gap-off">Un atelier d'artisans passionnés, attachés au travail soigné, à la sécurité et à des ouvrages durables.</p>
+<div class="rt-text-style-h3">Des délais tenus</div>
+<p class="rt-gap-off">Un planning annoncé dès le devis et une date de pose confirmée à l'avance, pour que vous puissiez vous organiser.</p>
 <a class="rt-button-v4 rt-border-radius-large rt-overflow-hidden w-inline-block" data-w-id="0aa82a43-0841-4776-86ff-500dc6183f93" data-wf--rt-button-v3--variant="base" href="portfolio-one.html">
 <div class="rt-text-style-button rt-button-color-change rt-button-z-index">Voir nos réalisations</div>
 <div class="rt-button-overlap-v1">
@@ -1568,7 +1490,7 @@
 <img alt="" class="rt-service-card-v6-arrow" height="33" loading="lazy" src="https://cdn.prod.website-files.com/69a196b4902215f53ac6be15/69b932df7f63e81329d45c14_e9d998774b82357174c038a78a7b3576_arrow-10.svg" width="32"/>
 </div>
 <div class="w-layout-vflex rt-service-text-wrapper">
-<div class="rt-text-style-h3 rt-rotate-text rt-text-color-slate-charcoal">Satisfaction client</div>
+<div class="rt-text-style-h3 rt-rotate-text rt-text-color-slate-charcoal">Un suivi après la pose</div>
 <div class="rt-big-text-style rt-rotate-text rt-text-color-slate-charcoal">04</div>
 </div>
 </div>
@@ -1578,8 +1500,8 @@
 </div>
 <div class="w-layout-vflex rt-service-v1-card-text">
 <div class="rt-text-style-h5">04</div>
-<div class="rt-text-style-h3">Satisfaction client</div>
-<p class="rt-gap-off">Un atelier d'artisans passionnés, attachés au travail soigné, à la sécurité et à des ouvrages durables.</p>
+<div class="rt-text-style-h3">Un suivi après la pose</div>
+<p class="rt-gap-off">Nous restons disponibles après le chantier pour les réglages, l'entretien ou une remise en peinture.</p>
 <a class="rt-button-v4 rt-border-radius-large rt-overflow-hidden w-inline-block" data-w-id="0aa82a43-0841-4776-86ff-500dc6183f93" data-wf--rt-button-v3--variant="base" href="portfolio-one.html">
 <div class="rt-text-style-button rt-button-color-change rt-button-z-index">Voir nos réalisations</div>
 <div class="rt-button-overlap-v1">
@@ -1600,7 +1522,7 @@
 <img alt="" class="rt-service-card-v6-arrow" height="33" loading="lazy" src="https://cdn.prod.website-files.com/69a196b4902215f53ac6be15/69b932df7f63e81329d45c14_e9d998774b82357174c038a78a7b3576_arrow-10.svg" width="32"/>
 </div>
 <div class="w-layout-vflex rt-service-text-wrapper">
-<div class="rt-text-style-h3 rt-rotate-text rt-text-color-slate-charcoal">Équipe d'artisans experts</div>
+<div class="rt-text-style-h3 rt-rotate-text rt-text-color-slate-charcoal">Des artisans ferronniers</div>
 <div class="rt-big-text-style rt-rotate-text rt-text-color-slate-charcoal">01</div>
 </div>
 </div>
@@ -1610,8 +1532,8 @@
 </div>
 <div class="w-layout-vflex rt-service-v1-card-text">
 <div class="rt-text-style-h5">01</div>
-<div class="rt-text-style-h3">Équipe d'artisans experts</div>
-<p>Un atelier d'artisans passionnés, attachés au travail soigné, à la sécurité et à des ouvrages durables.</p>
+<div class="rt-text-style-h3">Des artisans ferronniers</div>
+<p>Nos ferronniers forgent, soudent et posent eux-mêmes chaque ouvrage : aucun intermédiaire entre vous et l'atelier.</p>
 <a class="rt-button-v4 rt-border-radius-large rt-overflow-hidden w-inline-block" data-w-id="0aa82a43-0841-4776-86ff-500dc6183f93" data-wf--rt-button-v3--variant="base" href="portfolio-one.html">
 <div class="rt-text-style-button rt-button-color-change rt-button-z-index">Voir nos réalisations</div>
 <div class="rt-button-overlap-v1">
@@ -1630,7 +1552,7 @@
 <img alt="" class="rt-service-card-v6-arrow" height="33" loading="lazy" src="https://cdn.prod.website-files.com/69a196b4902215f53ac6be15/69b932df7f63e81329d45c14_e9d998774b82357174c038a78a7b3576_arrow-10.svg" width="32"/>
 </div>
 <div class="w-layout-vflex rt-service-text-wrapper">
-<div class="rt-text-style-h3 rt-rotate-text rt-text-color-slate-charcoal">Matériaux haut de gamme</div>
+<div class="rt-text-style-h3 rt-rotate-text rt-text-color-slate-charcoal">Des matériaux durables</div>
 <div class="rt-big-text-style rt-rotate-text rt-text-color-slate-charcoal">02</div>
 </div>
 </div>
@@ -1640,8 +1562,8 @@
 </div>
 <div class="w-layout-vflex rt-service-v1-card-text">
 <div class="rt-text-style-h5">02</div>
-<div class="rt-text-style-h3">Matériaux haut de gamme</div>
-<p class="rt-gap-off">Un atelier d'artisans passionnés, attachés au travail soigné, à la sécurité et à des ouvrages durables.</p>
+<div class="rt-text-style-h3">Des matériaux durables</div>
+<p class="rt-gap-off">Acier galvanisé, fer forgé et aluminium, traités contre la corrosion pour résister au soleil et à l'air marin de la Côte d'Azur.</p>
 <a class="rt-button-v4 rt-border-radius-large rt-overflow-hidden w-inline-block" data-w-id="0aa82a43-0841-4776-86ff-500dc6183f93" data-wf--rt-button-v3--variant="base" href="portfolio-one.html">
 <div class="rt-text-style-button rt-button-color-change rt-button-z-index">Voir nos réalisations</div>
 <div class="rt-button-overlap-v1">
@@ -1660,7 +1582,7 @@
 <img alt="" class="rt-service-card-v6-arrow" height="33" loading="lazy" src="https://cdn.prod.website-files.com/69a196b4902215f53ac6be15/69b932df7f63e81329d45c14_e9d998774b82357174c038a78a7b3576_arrow-10.svg" width="32"/>
 </div>
 <div class="w-layout-vflex rt-service-text-wrapper">
-<div class="rt-text-style-h3 rt-rotate-text rt-text-color-slate-charcoal">Service fiable et ponctuel</div>
+<div class="rt-text-style-h3 rt-rotate-text rt-text-color-slate-charcoal">Des délais tenus</div>
 <div class="rt-big-text-style rt-rotate-text rt-text-color-slate-charcoal">03</div>
 </div>
 </div>
@@ -1670,8 +1592,8 @@
 </div>
 <div class="w-layout-vflex rt-service-v1-card-text">
 <div class="rt-text-style-h5">03</div>
-<div class="rt-text-style-h3">Service fiable et ponctuel</div>
-<p class="rt-gap-off">Un atelier d'artisans passionnés, attachés au travail soigné, à la sécurité et à des ouvrages durables.</p>
+<div class="rt-text-style-h3">Des délais tenus</div>
+<p class="rt-gap-off">Un planning annoncé dès le devis et une date de pose confirmée à l'avance, pour que vous puissiez vous organiser.</p>
 <a class="rt-button-v4 rt-border-radius-large rt-overflow-hidden w-inline-block" data-w-id="0aa82a43-0841-4776-86ff-500dc6183f93" data-wf--rt-button-v3--variant="base" href="portfolio-one.html">
 <div class="rt-text-style-button rt-button-color-change rt-button-z-index">Voir nos réalisations</div>
 <div class="rt-button-overlap-v1">
@@ -1690,7 +1612,7 @@
 <img alt="" class="rt-service-card-v6-arrow" height="33" loading="lazy" src="https://cdn.prod.website-files.com/69a196b4902215f53ac6be15/69b932df7f63e81329d45c14_e9d998774b82357174c038a78a7b3576_arrow-10.svg" width="32"/>
 </div>
 <div class="w-layout-vflex rt-service-text-wrapper">
-<div class="rt-text-style-h3 rt-rotate-text rt-text-color-slate-charcoal">Satisfaction client</div>
+<div class="rt-text-style-h3 rt-rotate-text rt-text-color-slate-charcoal">Un suivi après la pose</div>
 <div class="rt-big-text-style rt-rotate-text rt-text-color-slate-charcoal">04</div>
 </div>
 </div>
@@ -1700,8 +1622,8 @@
 </div>
 <div class="w-layout-vflex rt-service-v1-card-text">
 <div class="rt-text-style-h5">04</div>
-<div class="rt-text-style-h3">Satisfaction client</div>
-<p class="rt-gap-off">Un atelier d'artisans passionnés, attachés au travail soigné, à la sécurité et à des ouvrages durables.</p>
+<div class="rt-text-style-h3">Un suivi après la pose</div>
+<p class="rt-gap-off">Nous restons disponibles après le chantier pour les réglages, l'entretien ou une remise en peinture.</p>
 <a class="rt-button-v4 rt-border-radius-large rt-overflow-hidden w-inline-block" data-w-id="0aa82a43-0841-4776-86ff-500dc6183f93" data-wf--rt-button-v3--variant="base" href="portfolio-one.html">
 <div class="rt-text-style-button rt-button-color-change rt-button-z-index">Voir nos réalisations</div>
 <div class="rt-button-overlap-v1">
@@ -1736,14 +1658,13 @@
 </div>
 <div class="rt-text-style-h6 rt-font-weight-regular">L'atelier en images</div>
 </div>
-<h2 class="rt-gap-off" data-w-id="3a9a8799-cddf-4d55-5f2e-50745873e1cf" style="opacity:0">Découvrez chaque étape de la création, de l'esquisse à la pose</h2>
+<h2 class="rt-gap-off" data-w-id="3a9a8799-cddf-4d55-5f2e-50745873e1cf" style="opacity:0">De la barre de métal brut à l'ouvrage posé chez vous</h2>
 </div>
 <div class="rt-video-middile-wrapper rt-video-bottom-gap" data-w-id="3a9a8799-cddf-4d55-5f2e-50745873e1d1" style="opacity:0">
 <div class="w-layout-vflex rt-video-mask-wrapper rt-mask-v10">
-<div class="rt-home-one-video w-background-video w-background-video-atom" data-autoplay="true" data-loop="true" data-poster-url="https://cdn.prod.website-files.com/69a196b4902215f53ac6be15%2F69aa70e0cbda85722d61c562_8829525-uhd_4096_2160_25fps%20%281%29%20%281%29_poster.0000000.jpg" data-video-urls="https://cdn.prod.website-files.com/69a196b4902215f53ac6be15%2F69aa70e0cbda85722d61c562_8829525-uhd_4096_2160_25fps%20%281%29%20%281%29_mp4.mp4,https://cdn.prod.website-files.com/69a196b4902215f53ac6be15%2F69aa70e0cbda85722d61c562_8829525-uhd_4096_2160_25fps%20%281%29%20%281%29_webm.webm" data-wf-ignore="true">
-<video autoplay="" data-object-fit="cover" data-wf-ignore="true" id="3a9a8799-cddf-4d55-5f2e-50745873e1d3-video" loop="" muted="" playsinline="" style='background-image:url("https://cdn.prod.website-files.com/69a196b4902215f53ac6be15%2F69aa70e0cbda85722d61c562_8829525-uhd_4096_2160_25fps%20%281%29%20%281%29_poster.0000000.jpg")'>
-<source data-wf-ignore="true" src="https://cdn.prod.website-files.com/69a196b4902215f53ac6be15%2F69aa70e0cbda85722d61c562_8829525-uhd_4096_2160_25fps%20%281%29%20%281%29_mp4.mp4"/>
-<source data-wf-ignore="true" src="https://cdn.prod.website-files.com/69a196b4902215f53ac6be15%2F69aa70e0cbda85722d61c562_8829525-uhd_4096_2160_25fps%20%281%29%20%281%29_webm.webm"/>
+<div class="rt-home-one-video w-background-video w-background-video-atom" data-autoplay="true" data-loop="true" data-poster-url="assets/images/ferronnerie-presentation-poster.jpg" data-video-urls="assets/videos/ferronnerie-presentation.mp4" data-wf-ignore="true">
+<video autoplay="" data-object-fit="cover" data-wf-ignore="true" id="3a9a8799-cddf-4d55-5f2e-50745873e1d3-video" loop="" muted="" playsinline="" style='background-image:url("assets/images/ferronnerie-presentation-poster.jpg")'>
+<source data-wf-ignore="true" src="assets/videos/ferronnerie-presentation.mp4" type="video/mp4"/>
 </video>
 <noscript>
 <style>
@@ -1760,7 +1681,7 @@
       object-fit: cover;
     }
   }</style>
-<img alt="" data-wf-bgvideo-fallback-img="true" src="https://cdn.prod.website-files.com/69a196b4902215f53ac6be15%2F69aa70e0cbda85722d61c562_8829525-uhd_4096_2160_25fps%20%281%29%20%281%29_poster.0000000.jpg"/>
+<img alt="" data-wf-bgvideo-fallback-img="true" src="assets/images/ferronnerie-presentation-poster.jpg"/>
 </noscript>
 <div aria-live="polite">
 <button aria-controls="3a9a8799-cddf-4d55-5f2e-50745873e1d3-video" class="w-backgroundvideo-backgroundvideoplaypausebutton rt-home-one-playe-pause-wrapper-v3 w-background-video--control" data-w-bg-video-control="true" type="button">
@@ -1778,7 +1699,7 @@
 </div>
 </div>
 <div class="w-layout-hflex rt-video-bottom-content-wrapper-v2 rt-mobile-landscape-text-center">
-<h3 class="rt-gap-off" data-w-id="3a9a8799-cddf-4d55-5f2e-50745873e1db" style="opacity:0">Envie d'un ouvrage en fer forgé signé par un artisan ?</h3>
+<h3 class="rt-gap-off" data-w-id="3a9a8799-cddf-4d55-5f2e-50745873e1db" style="opacity:0">Un projet de ferronnerie en tête ? Parlons-en.</h3>
 <div class="w-layout-hflex rt-video-bottom-content-button-wrapper-v2">
 <div data-w-id="3a9a8799-cddf-4d55-5f2e-50745873e1df" style="opacity:0">
 <a class="rt-button rt-border-radius-large rt-overflow-hidden w-inline-block" data-w-id="49d358eb-d6c4-264f-7e35-2a6452b92103" data-wf--rt-button-v1--variant="base" href="inquiry-form.html">
@@ -1793,187 +1714,6 @@
 <div class="rt-button-overlap-v1">
 </div>
 </a>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section>
-<section class="rt-pricing-v4">
-<div class="w-layout-blockcontainer rt-container w-container">
-<div class="w-layout-vflex rt-pricing-main">
-<div class="w-layout-vflex rt-pricing-top-content rt-text-center rt-top-content-gap">
-<div class="w-layout-hflex rt-hero-top-subtext rt-tag-box-gap-h2" data-w-id="bd376fd0-68ac-2b2b-f8bf-c1f5e439718e" style="opacity:0">
-<div class="rt-round rt-background-color-neon-lime rt-border-radius-full">
-</div>
-<div class="rt-text-style-h6 rt-font-weight-regular">Tarifs</div>
-</div>
-<h2 class="rt-gap-off" data-w-id="bd376fd0-68ac-2b2b-f8bf-c1f5e4397192" style="opacity:0">Des formules adaptées à chaque projet et à chaque budget</h2>
-</div>
-<div class="w-layout-grid rt-pricing-v1-item-wrapper" data-w-id="bd376fd0-68ac-2b2b-f8bf-c1f5e4397194" style="opacity:0">
-<div class="rt-pricing-v5-item rt-border-radius">
-<div class="w-layout-vflex rt-pricing-v1-item-top-part">
-<div class="w-layout-vflex rt-pricing-title">
-<div class="rt-text-style-h4">Ferronnerie standard</div>
-<div>À partir de</div>
-</div>
-<div class="w-layout-hflex rt-pricing-price-wrapper">
-<div class="rt-text-style-h1 rt-text-color-deep-plum">290 €</div>
-<p class="rt-gap-off rt-margin-bottom">/ ml</p>
-</div>
-<p class="rt-gap-off rt-pricing-description-gap">Pour les projets simples : portillons, grilles de fenêtre et petits ouvrages en acier.</p>
-<a class="rt-button-v4 w-variant-c07356f1-ebfb-76ed-20ac-927c59e4bfe0 rt-border-radius-large rt-overflow-hidden w-inline-block" data-w-id="0aa82a43-0841-4776-86ff-500dc6183f93" data-wf--rt-button-v3--variant="pricing-button" href="contact-two.html">
-<div class="rt-text-style-button rt-button-color-change rt-button-z-index">Demander un devis</div>
-<div class="rt-button-overlap-v1">
-</div>
-</a>
-<div class="rt-pricing-item-center-line-v3">
-</div>
-</div>
-<div class="w-layout-vflex rt-pricing-v1-bottom-part">
-<div class="w-layout-vflex rt-pricing-list-item-wrapper">
-<div class="rt-text-style-h6 rt-bottom-gap">Comprend :</div>
-<div class="w-layout-hflex rt-pricing-list-item">
-<div class="w-layout-vflex rt-tick-icon-wrapper">
-<img alt="" loading="lazy" src="https://cdn.prod.website-files.com/69a196b4902215f53ac6be15/69b142c1062b4578a18b9a2b_Vector%20157.svg"/>
-</div>
-<div>Relevé de mesures sur site</div>
-</div>
-<div class="w-layout-hflex rt-pricing-list-item">
-<div class="w-layout-vflex rt-tick-icon-wrapper">
-<img alt="" loading="lazy" src="https://cdn.prod.website-files.com/69a196b4902215f53ac6be15/69b142c1062b4578a18b9a2b_Vector%20157.svg"/>
-</div>
-<div>Acier galvanisé</div>
-</div>
-<div class="w-layout-hflex rt-pricing-list-item">
-<div class="w-layout-vflex rt-tick-icon-wrapper">
-<img alt="" loading="lazy" src="https://cdn.prod.website-files.com/69a196b4902215f53ac6be15/69b142c1062b4578a18b9a2b_Vector%20157.svg"/>
-</div>
-<div>Apprêt antirouille</div>
-</div>
-<div class="w-layout-hflex rt-pricing-list-item">
-<div class="w-layout-vflex rt-tick-icon-wrapper">
-<img alt="" loading="lazy" src="https://cdn.prod.website-files.com/69a196b4902215f53ac6be15/69b142c1062b4578a18b9a2b_Vector%20157.svg"/>
-</div>
-<div>Pose incluse</div>
-</div>
-<div class="w-layout-hflex rt-pricing-list-item">
-<div class="w-layout-vflex rt-tick-icon-wrapper">
-<img alt="" loading="lazy" src="https://cdn.prod.website-files.com/69a196b4902215f53ac6be15/69b142c1062b4578a18b9a2b_Vector%20157.svg"/>
-</div>
-<div>Délai estimé : 3 à 4 semaines</div>
-</div>
-</div>
-</div>
-</div>
-<div class="rt-pricing-v3-item rt-border-radius">
-<div class="w-layout-vflex rt-pricing-v1-item-top-part">
-<div class="w-layout-vflex rt-pricing-title">
-<div class="rt-text-style-h4 rt-text-color-white">Ferronnerie sur mesure</div>
-<div class="rt-text-color-white">À partir de</div>
-</div>
-<div class="w-layout-hflex rt-pricing-price-wrapper">
-<div class="rt-text-style-h1">390 €</div>
-<p class="rt-gap-off rt-margin-bottom rt-pricing-text-color">/ ml</p>
-</div>
-<p class="rt-gap-off rt-pricing-text-color rt-pricing-description-gap">Pour les villas et maisons contemporaines : portails, garde-corps et rampes dessinés sur mesure.</p>
-<a class="rt-button w-variant-9f9f34a7-c7b0-4927-2709-156c6fa09350 rt-border-radius-large rt-overflow-hidden w-inline-block" data-w-id="49d358eb-d6c4-264f-7e35-2a6452b92103" data-wf--rt-button-v1--variant="button-full-width" href="contact-two.html">
-<div class="rt-text-style-button rt-button-color-change rt-button-z-index">Demander un devis</div>
-<div class="rt-button-overlap">
-</div>
-</a>
-<div class="rt-pricing-item-center-line-v4">
-</div>
-</div>
-<div class="w-layout-vflex rt-pricing-v1-bottom-part">
-<div class="w-layout-vflex rt-pricing-list-item-wrapper">
-<div class="rt-text-style-h6 rt-bottom-gap rt-text-color-white">Comprend :</div>
-<div class="w-layout-hflex rt-pricing-list-item">
-<div class="w-layout-vflex rt-tick-icon-wrapper">
-<img alt="" loading="lazy" src="https://cdn.prod.website-files.com/69a196b4902215f53ac6be15/69b1580edfef6748598646fa_Vector%20157%20(1).svg"/>
-</div>
-<div class="rt-pricing-text-color">Étude et croquis personnalisés</div>
-</div>
-<div class="w-layout-hflex rt-pricing-list-item">
-<div class="w-layout-vflex rt-tick-icon-wrapper">
-<img alt="" loading="lazy" src="https://cdn.prod.website-files.com/69a196b4902215f53ac6be15/69b1580edfef6748598646fa_Vector%20157%20(1).svg"/>
-</div>
-<div class="rt-pricing-text-color">Fer forgé, acier ou aluminium</div>
-</div>
-<div class="w-layout-hflex rt-pricing-list-item">
-<div class="w-layout-vflex rt-tick-icon-wrapper">
-<img alt="" loading="lazy" src="https://cdn.prod.website-files.com/69a196b4902215f53ac6be15/69b1580edfef6748598646fa_Vector%20157%20(1).svg"/>
-</div>
-<div class="rt-pricing-text-color">Thermolaquage teinte RAL au choix</div>
-</div>
-<div class="w-layout-hflex rt-pricing-list-item">
-<div class="w-layout-vflex rt-tick-icon-wrapper">
-<img alt="" loading="lazy" src="https://cdn.prod.website-files.com/69a196b4902215f53ac6be15/69b1580edfef6748598646fa_Vector%20157%20(1).svg"/>
-</div>
-<div class="rt-pricing-text-color">Finition anticorrosion renforcée</div>
-</div>
-<div class="w-layout-hflex rt-pricing-list-item">
-<div class="w-layout-vflex rt-tick-icon-wrapper">
-<img alt="" loading="lazy" src="https://cdn.prod.website-files.com/69a196b4902215f53ac6be15/69b1580edfef6748598646fa_Vector%20157%20(1).svg"/>
-</div>
-<div class="rt-pricing-text-color">Garantie 10 ans</div>
-</div>
-</div>
-</div>
-</div>
-<div class="rt-pricing-v5-item rt-border-radius">
-<div class="w-layout-vflex rt-pricing-v1-item-top-part">
-<div class="w-layout-vflex rt-pricing-title">
-<div class="rt-text-style-h4">Ferronnerie d'art & grands ouvrages</div>
-<div>À partir de</div>
-</div>
-<div class="w-layout-hflex rt-pricing-price-wrapper">
-<div class="rt-text-style-h1 rt-text-color-deep-plum">590 €</div>
-<p class="rt-gap-off rt-margin-bottom">/ ml</p>
-</div>
-<p class="rt-gap-off rt-pricing-description-gap">Pour les copropriétés, commerces et ouvrages d'exception : verrières, escaliers, portails monumentaux.</p>
-<a class="rt-button-v4 w-variant-c07356f1-ebfb-76ed-20ac-927c59e4bfe0 rt-border-radius-large rt-overflow-hidden w-inline-block" data-w-id="0aa82a43-0841-4776-86ff-500dc6183f93" data-wf--rt-button-v3--variant="pricing-button" href="contact-two.html">
-<div class="rt-text-style-button rt-button-color-change rt-button-z-index">Demander un devis</div>
-<div class="rt-button-overlap-v1">
-</div>
-</a>
-<div class="rt-pricing-item-center-line-v3">
-</div>
-</div>
-<div class="w-layout-vflex rt-pricing-v1-bottom-part">
-<div class="w-layout-vflex rt-pricing-list-item-wrapper">
-<div class="rt-text-style-h6 rt-bottom-gap">Comprend :</div>
-<div class="w-layout-hflex rt-pricing-list-item">
-<div class="w-layout-vflex rt-tick-icon-wrapper">
-<img alt="" loading="lazy" src="https://cdn.prod.website-files.com/69a196b4902215f53ac6be15/69b142c1062b4578a18b9a2b_Vector%20157.svg"/>
-</div>
-<div>Étude technique et plans</div>
-</div>
-<div class="w-layout-hflex rt-pricing-list-item">
-<div class="w-layout-vflex rt-tick-icon-wrapper">
-<img alt="" loading="lazy" src="https://cdn.prod.website-files.com/69a196b4902215f53ac6be15/69b142c1062b4578a18b9a2b_Vector%20157.svg"/>
-</div>
-<div>Fer forgé à la main & acier sur mesure</div>
-</div>
-<div class="w-layout-hflex rt-pricing-list-item">
-<div class="w-layout-vflex rt-tick-icon-wrapper">
-<img alt="" loading="lazy" src="https://cdn.prod.website-files.com/69a196b4902215f53ac6be15/69b142c1062b4578a18b9a2b_Vector%20157.svg"/>
-</div>
-<div>Galvanisation à chaud</div>
-</div>
-<div class="w-layout-hflex rt-pricing-list-item">
-<div class="w-layout-vflex rt-tick-icon-wrapper">
-<img alt="" loading="lazy" src="https://cdn.prod.website-files.com/69a196b4902215f53ac6be15/69b142c1062b4578a18b9a2b_Vector%20157.svg"/>
-</div>
-<div>Motorisation & automatismes</div>
-</div>
-<div class="w-layout-hflex rt-pricing-list-item">
-<div class="w-layout-vflex rt-tick-icon-wrapper">
-<img alt="" loading="lazy" src="https://cdn.prod.website-files.com/69a196b4902215f53ac6be15/69b142c1062b4578a18b9a2b_Vector%20157.svg"/>
-</div>
-<div>Pose et mise aux normes</div>
-</div>
-</div>
 </div>
 </div>
 </div>
