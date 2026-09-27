@@ -982,6 +982,7 @@ window.SITE_TRANSLATIONS = {
   "Facebook de La Ferronnerie du Rouret": { en: "Facebook of La Ferronnerie du Rouret", it: "Facebook de La Ferronnerie du Rouret" },
   "Ferronnerie sur mesure pour les maisons et les copropriétés : nos formules et une estimation de budget. Devis gratuit.": { en: "Custom ironwork for homes and co-ownerships: our plans and a budget estimate. Free quote.", it: "Ferro battuto su misura per case e condomini: le nostre formule e una stima del budget. Preventivo gratuito." },
   "Ferronnier au travail dans son atelier de forge": { en: "Blacksmith at work in his forge workshop", it: "Fabbro al lavoro nella sua officina di forgia" },
+  "Portail en fer forgé noir dans un jardin, réalisé par La Ferronnerie du Rouret": { en: "Black wrought iron gate in a garden, made by La Ferronnerie du Rouret", it: "Cancello in ferro battuto nero in un giardino, realizzato da La Ferronnerie du Rouret" },
   "GARDE-CORPS SUR MESURE": { en: "CUSTOM RAILINGS", it: "PARAPETTI SU MISURA" },
   "Garde-corps de balcon en fer forgé": { en: "Wrought iron balcony railing", it: "Parapetto da balcone in ferro battuto" },
   "Garde-corps de terrasse en métal": { en: "Metal terrace railing", it: "Parapetto da terrazza in metallo" },
