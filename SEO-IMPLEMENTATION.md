@@ -46,4 +46,6 @@ French pages at the repo root are the **source**. `/en/` and `/it/` are generate
 - Edit French pages or `assets/i18n/translations.js`, then run `python3 scripts/build_i18n.py` (add `--report` to list French text that still has no translation). Never edit files under `en/` or `it/` by hand.
 - The build adds `hreflang` alternates, `og:locale`, self-referencing canonicals and a hidden `Langue` field on every form, and regenerates `sitemap.xml` with the three language versions of each page.
 - The navbar language switcher (`assets/i18n/i18n.js`) is a set of real links to the same page in the other languages.
+- Clean URLs (`/garde-corps-nice/`, `/realisations/…/`, `/conseils/…/`, `/contact/`, `/devis/`) are real folders written by the build: every page whose canonical is a clean URL is also saved as `<path>/index.html` in the three languages, and all links point there, so they work on any static host (GitHub Pages included). These folders are generated: never edit them by hand.
+- The main menu (Accueil · À propos · Nos prestations · Réalisations · Actualités, plus the mobile tap-to-call button) is written by `python3 scripts/build_nav.py`; run it before `build_i18n.py`.
 - Localised details: phone numbers use the international format in EN/IT, prices/dates follow each language's convention, and form phone/email fields get `inputmode`/`autocomplete` attributes.

@@ -1887,4 +1887,8 @@ window.SITE_TRANSLATIONS = {
   "De la barre de métal brut à l'ouvrage posé chez vous": { en: "From raw metal bar to finished piece in your home", it: "Dalla barra di metallo grezzo all'opera posata a casa tua" },
   "Un projet de ferronnerie en tête ? Parlons-en.": { en: "Have an ironwork project in mind? Let's talk.", it: "Hai in mente un progetto in ferro battuto? Parliamone." },
   "Ferronnier forgeant une pièce de métal sur l’enclume": { en: "Ironworker forging a piece of metal on the anvil", it: "Fabbro che forgia un pezzo di metallo sull’incudine" },
+  "Soudure d’une pièce métallique à l’atelier": { en: "Welding a metal part in the workshop", it: "Saldatura di un pezzo metallico in laboratorio" },
+  "Découpe de précision d’une tôle d’acier": { en: "Precision cutting of a steel sheet", it: "Taglio di precisione di una lamiera d’acciaio" },
+  "Escalier extérieur avec rampe en métal": { en: "Outdoor staircase with a metal banister", it: "Scala esterna con ringhiera in metallo" },
+  "Rampe d’escalier en fer forgé décorative": { en: "Decorative wrought-iron stair banister", it: "Ringhiera decorativa in ferro battuto" },
 };

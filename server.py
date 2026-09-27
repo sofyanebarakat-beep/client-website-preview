@@ -177,6 +177,11 @@ class CleanURLHandler(SimpleHTTPRequestHandler):
         if rel in ("", "."):
             return os.path.join(ROOT, HOME_PAGE)
 
+        # Clean URLs are real folders written by scripts/build_i18n.py
+        # (garde-corps-nice/index.html, en/realisations/x/index.html ...).
+        if os.path.isfile(os.path.join(full, "index.html")):
+            return os.path.join(full, "index.html")
+
         # Language folders (/en/, /it/) mirror the French clean URLs.
         lang, _, lang_rest = rel.partition("/")
         if lang in ("en", "it"):

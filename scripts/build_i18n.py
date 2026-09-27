@@ -10,6 +10,10 @@ French pages in the repo are the SOURCE. This script
     using assets/i18n/translations.js as the dictionary,
   * regenerates sitemap.xml with hreflang alternates for the three languages.
 
+  * writes every page whose canonical is a clean URL (/garde-corps-nice/,
+    /realisations/x/, /conseils/x/ ...) a second time as <path>/index.html, in the
+    three languages, and points all links at those clean URLs.
+
 Run after ANY edit to a French page or to translations.js:
 
     python3 scripts/build_i18n.py            # build
@@ -79,7 +83,8 @@ def list_pages():
     for dirpath, dirnames, filenames in os.walk(ROOT):
         dirnames[:] = [d for d in dirnames if d not in SKIP_DIRS and not d.startswith(".")]
         for f in filenames:
-            if f.endswith(".html"):
+            if f.endswith(".html") and not (f == "index.html" and dirpath != ROOT
+                                            and is_clean_copy(os.path.join(dirpath, f))):
                 pages.append(os.path.relpath(os.path.join(dirpath, f), ROOT).replace(os.sep, "/"))
     return sorted(pages)
 
@@ -301,9 +306,145 @@ def head_block(page, lang, canon):
     return "\n".join(lines) + "\n"
 
 
-def render(base, page, lang, dictionary, pages_set, translators):
+# ---------------------------------------------------------------- clean URLs
+#
+# A page whose canonical is a clean URL (/garde-corps-nice/, /realisations/x/,
+# /conseils/x/ ...) is also written as <clean path>/index.html (and under /en/,
+# /it/), so the URL works on any static host, and every link to the page points
+# there. The copies carry CLEAN_MARK and are never read as French sources.
+
+CLEAN_MARK = "clean-url-source"
+URL_ATTRS = re.compile(r'(\s(?:href|src|poster|action|data-src)=)"([^"]*)"')
+SRCSET = re.compile(r'(\s(?:srcset|data-srcset)=)"([^"]*)"')
+CSS_URL = re.compile(r"url\((['\"]?)([^'\")]+)\1\)")
+
+
+def is_relative(url):
+    return bool(url) and not re.match(r"^(?:[a-z][a-z0-9+.-]*:|//|#|/|\{)", url, re.I)
+
+
+def split_url(url):
+    m = re.match(r"([^?#]*)(.*)", url)
+    return m.group(1), m.group(2)
+
+
+def clean_targets(canon_by_page):
+    """page -> clean directory ('' for the site root) for every page with a clean canonical."""
+    return {p: c.strip("/") for p, c in canon_by_page.items() if not c.endswith(".html")}
+
+
+def clean_owners(targets):
+    """clean directory -> the page that is copied there (several pages can share a canonical)."""
+    try:
+        sys.path.insert(0, ROOT)
+        from server import ROUTE_ALIASES
+    except Exception:
+        ROUTE_ALIASES = {}
+    owners = {}
+    for page, d in sorted(targets.items()):
+        if not d:
+            continue
+        if ROUTE_ALIASES.get(d) == page or d not in owners:
+            owners[d] = page
+    return owners
+
+
+def map_links(doc, page, targets):
+    """Point links at a page's clean URL instead of its .html file."""
+    page_dir = os.path.dirname(page)
+
+    def fix(m):
+        val = m.group(2)
+        if not is_relative(val):
+            return m.group(0)
+        path, rest = split_url(val)
+        target = os.path.normpath(os.path.join(page_dir, path)).replace(os.sep, "/")
+        if not path.endswith(".html") or target not in targets:
+            return m.group(0)
+        new = os.path.relpath(targets[target] or ".", page_dir or ".").replace(os.sep, "/")
+        new = "./" if new == "." else new + "/"
+        return '%s"%s%s"' % (m.group(1), new, rest)
+
+    out = []
+    for m in TOKEN.finditer(doc):
+        if m.group("tag") and re.match(r"<a\b", m.group(0), re.I):
+            out.append(re.sub(r'(\shref=)"([^"]*)"', fix, m.group(0)))
+        else:
+            out.append(m.group(0))
+    return "".join(out)
+
+
+def rebase(doc, from_dir, to_dir):
+    """Rewrite relative URLs of a document moved from from_dir to to_dir (repo paths)."""
+    def move(url):
+        if not is_relative(url):
+            return url
+        path, rest = split_url(url)
+        if not path:
+            return url
+        target = os.path.normpath(os.path.join(from_dir, path))
+        new = os.path.relpath(target, to_dir).replace(os.sep, "/")
+        if path.endswith("/") and not new.endswith("/"):
+            new = (new + "/") if new != "." else "./"
+        return new + rest
+
+    def attrs(chunk):
+        chunk = URL_ATTRS.sub(lambda m: '%s"%s"' % (m.group(1), move(m.group(2))), chunk)
+        chunk = SRCSET.sub(lambda m: '%s"%s"' % (m.group(1), ", ".join(
+            " ".join([move(part.split()[0])] + part.split()[1:]) for part in m.group(2).split(",") if part.strip())), chunk)
+        return CSS_URL.sub(lambda m: "url(%s%s%s)" % (m.group(1), move(m.group(2)), m.group(1)), chunk)
+
+    out = []
+    for m in TOKEN.finditer(doc):
+        if m.group("tag") or (m.group("raw") and m.group("rawtag").lower() == "style"):
+            out.append(attrs(m.group(0)))
+        elif m.group("raw"):
+            head = re.match(TAG_RE, m.group(0)).group(0)
+            out.append(attrs(head) + m.group(0)[len(head):])
+        else:
+            out.append(m.group(0))
+    return "".join(out)
+
+
+def clean_copy(doc, page, lang, clean_dir):
+    """The rendered page `page` in `lang`, re-homed at <lang>/<clean_dir>/index.html."""
+    prefix = "" if lang == "fr" else lang + "/"
+    from_dir = prefix + os.path.dirname(page)
+    to_dir = prefix + clean_dir
+    doc = rebase(doc, from_dir or ".", to_dir)
+    depth = clean_dir.count("/") + 1 + (1 if lang != "fr" else 0)
+    doc = re.sub(r'<meta name="i18n-path" content="[^"]*"/>',
+                 '<meta name="i18n-path" content="%s/"/>' % clean_dir, doc, count=1)
+    doc = re.sub(r'<meta name="i18n-root" content="[^"]*"/>',
+                 '<meta name="i18n-root" content="%s"/>\n<meta content="%s" name="%s"/>' % ("../" * depth, page, CLEAN_MARK),
+                 doc, count=1)
+    return doc
+
+
+def remove_clean_copies():
+    """Delete French clean-URL copies from a previous build (en/ and it/ are rebuilt whole)."""
+    for dirpath, dirnames, filenames in os.walk(ROOT, topdown=False):
+        rel = os.path.relpath(dirpath, ROOT)
+        if rel == "." or rel.split(os.sep)[0] in SKIP_DIRS or "index.html" not in filenames:
+            continue
+        f = os.path.join(dirpath, "index.html")
+        if is_clean_copy(f):
+            os.remove(f)
+            # drop the folder, and parents such as conseils/, once they are empty
+            d = dirpath
+            while d != ROOT and not os.listdir(d):
+                os.rmdir(d)
+                d = os.path.dirname(d)
+
+
+def is_clean_copy(path):
+    with open(path, encoding="utf-8") as f:
+        return 'name="%s"' % CLEAN_MARK in f.read()
+
+
+def render(base, page, lang, dictionary, pages_set, translators, targets=None):
     canon = canonical_path(base) if page not in FR_ONLY else None
-    doc = base
+    doc = map_links(base, page, targets) if targets else base
     if lang != "fr":
         tr = translators[lang]
         doc = translate_document(doc, tr)
@@ -405,6 +546,7 @@ def main():
     report = "--report" in sys.argv
     build_blog.main()
     dictionary = load_dictionary()
+    remove_clean_copies()
     pages = list_pages()
     pages_set = set(pages) - FR_ONLY
     translators = {l: Translator(dictionary, l) for l in GENERATED}
@@ -414,28 +556,43 @@ def main():
 
     canon_by_page = {}
     extra_images = {}
+    sources = {}
     for page in pages:
         src = open(os.path.join(ROOT, page), encoding="utf-8").read()
         base = normalise_base(src, page)
+        sources[page] = (src, base)
         c = canonical_path(base)
         if c and page not in FR_ONLY:
             canon_by_page[page] = c
             imgs = hero_images(base)
             if imgs:
                 extra_images[c] = imgs
+    targets = clean_targets(canon_by_page)
+    owned = {page: d for d, page in clean_owners(targets).items()}
+
+    copies = 0
+    for page in pages:
+        src, base = sources[page]
         for lang in LANGS:
             if lang != "fr" and page in FR_ONLY:
                 continue
-            doc = render(base, page, lang, dictionary, pages_set, translators)
+            doc = render(base, page, lang, dictionary, pages_set, translators, targets)
             dest = os.path.join(ROOT, page if lang == "fr" else os.path.join(lang, page))
             os.makedirs(os.path.dirname(dest), exist_ok=True)
             if lang != "fr" or doc != src:
                 with open(dest, "w", encoding="utf-8") as f:
                     f.write(doc)
+            if page in owned:
+                d = owned[page]
+                dest = os.path.join(ROOT, d if lang == "fr" else os.path.join(lang, d), "index.html")
+                os.makedirs(os.path.dirname(dest), exist_ok=True)
+                with open(dest, "w", encoding="utf-8") as f:
+                    f.write(clean_copy(doc, page, lang, d))
+                copies += 1
 
     build_sitemap(canon_by_page, dictionary, extra_images)
     total = sum(1 for p in pages if p not in FR_ONLY) * len(GENERATED)
-    print("Built %d pages (%d French sources, %d generated)." % (total, len(pages), total))
+    print("Built %d pages (%d French sources, %d generated), plus %d clean-URL copies." % (total, len(pages), total, copies))
     if report:
         miss = sorted(translators["en"].missing)
         print("%d French strings without translation:" % len(miss))
