@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Generate the organised blog (French sources) — run automatically by build_i18n.py.
+Generate the organised blog (French sources in src/) — run automatically by build_i18n.py.
 
   * blog.html: featured article, search, category filters with counts, cards with
     category tags and reading time.
@@ -19,6 +19,7 @@ import json
 from PIL import Image
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+SRC = os.path.join(ROOT, "src")   # French source pages
 
 CATEGORIES = [
     ("portail", "Portail"),
@@ -112,12 +113,12 @@ BANNER_ALT = "Travail du métal à la meuleuse, avec des étincelles"
 
 
 def read(path):
-    with open(os.path.join(ROOT, path), encoding="utf-8") as f:
+    with open(os.path.join(SRC, path), encoding="utf-8") as f:
         return f.read()
 
 
 def write(path, text):
-    with open(os.path.join(ROOT, path), "w", encoding="utf-8") as f:
+    with open(os.path.join(SRC, path), "w", encoding="utf-8") as f:
         f.write(text)
 
 

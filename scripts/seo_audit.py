@@ -9,19 +9,14 @@ import sys
 import xml.etree.ElementTree as ET
 
 ROOT = Path(__file__).resolve().parents[1]
-PUBLIC_PAGES = [
-    ROOT / "index.html",
-    ROOT / "about-us.html",
-    ROOT / "service.html",
-    ROOT / "blog.html",
-    ROOT / "faq.html",
-    ROOT / "contact-two.html",
-    ROOT / "inquiry-form.html",
-    ROOT / "portfolio-one.html",
-    *sorted((ROOT / "service-detail").glob("*.html")),
-    *sorted((ROOT / "project").glob("*.html")),
-    *sorted((ROOT / "blog-post").glob("*.html")),
-]
+NOT_PUBLISHED = {"src", "archive", "assets", "scripts", "en", "it", ".git"}
+# the published French pages: index.html + every <clean URL>/index.html
+PUBLIC_PAGES = [ROOT / "index.html"] + sorted(
+    p for p in ROOT.glob("*/**/index.html") if p.relative_to(ROOT).parts[0] not in NOT_PUBLISHED
+)
+SERVICE_PAGES = [ROOT / d / "index.html" for d in (
+    "garde-corps-nice", "portails-sur-mesure-nice", "portes-metalliques-nice",
+    "clotures-fer-forge-nice", "pergolas-marquises-nice", "rampes-escalier-nice")]
 
 
 def count(pattern, source):
@@ -40,6 +35,8 @@ for page in PUBLIC_PAGES:
         found = count(pattern, source)
         if found != 1:
             errors.append(f"{page.relative_to(ROOT)}: expected 1 {label}, found {found}")
+    if re.search(r'<a [^>]*href="(?![a-z]+:)[^"#]*\.html[#"?]', source) or re.search(r'="https://ferronnerie-rouret\.com/[^"]*\.html"', source):
+        errors.append(f"{page.relative_to(ROOT)}: link or URL ending in .html (pages use clean URLs)")
     if re.search(r'(?:href|src)="https://flampt\.webflow\.io', source):
         errors.append(f"{page.relative_to(ROOT)}: contains a Webflow demo-domain link")
     name = page.relative_to(ROOT)
@@ -75,11 +72,11 @@ for page in PUBLIC_PAGES:
                     if key not in node:
                         errors.append(f"{name}: LocalBusiness JSON-LD is missing {key}")
 
-for page in (ROOT / "service-detail").glob("*.html"):
+for page in SERVICE_PAGES:
     source = page.read_text(encoding="utf-8")
     hero = re.search(r'<img[^>]+class="rt-hero-background-image"[^>]*>', source)
     if not hero:  # image-slider hero: the first slide must be a local image with alt text
-        hero = re.search(r'<div class="gh-slide is-active"[^>]*>(<img[^>]*>)', source)
+        hero = re.search(r'<div class="gh-slide is-active"[^>]*>(?:<picture[^>]*>(?:<source[^>]*>)*)?(<img[^>]*>)', source)
         hero = re.match(r"(.*)", hero.group(1)) if hero and "/assets/images/" in hero.group(1) else None
         if hero and 'alt="' in hero.group(0):
             continue

@@ -145,6 +145,23 @@
 <meta content="en_GB" property="og:locale:alternate"/>
 <meta content="it_IT" property="og:locale:alternate"/>
 <!-- /i18n:head -->
+<style id="mobile-art-direction">
+.mobile-picture{display:block;width:100%;height:100%}.mobile-picture>img{display:block;width:100%;height:100%;object-fit:cover}
+.gh-slide>picture,.gh-why .rt-image-mask-wrapper>.mobile-picture{position:absolute;inset:0;width:100%;height:100%}
+@media(max-width:767px){
+  .rt-section-gap,.rt-section-gap-v2,.rt-section-gap-v3{padding-top:3.5rem!important;padding-bottom:3.5rem!important}
+  .rt-container{padding-left:1.125rem!important;padding-right:1.125rem!important}
+  .rt-portfolio-image-wrapper-v1,.rt-blog-image-wrapper{aspect-ratio:4/5!important;min-height:0!important}
+  .rt-portfolio-image-v1,.rt-blog-image-v1{width:100%!important;height:100%!important;object-fit:cover!important}
+  .gh-hero{height:max(43rem,100svh)!important;min-height:43rem}
+  .gh-content{left:1.125rem!important;right:1.125rem!important;bottom:6.75rem!important;width:auto!important}
+  .gh-title{font-size:clamp(2.25rem,11vw,3.7rem)!important;line-height:.96!important}
+  .gh-sub{font-size:1rem!important;line-height:1.45!important}
+  .gh-slide picture{position:absolute;inset:0;width:100%;height:100%}
+  .gh-slide picture img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .rt-hero-background-image-wrapper-v1 picture{display:block;width:100%;height:100%}
+}
+</style>
 </head>
 <body>
 <div class="w-layout-vflex rt-navbar-outer-wrapper-v1" data-wf--rt-navbar-v1--variant="base">
@@ -169,7 +186,7 @@
 <a class="rt-navigation-link-v1 rt-nav-top-link w-inline-block" href="../">
 <div>Accueil</div>
 </a>
-<a class="rt-navigation-link-v1 rt-nav-top-link w-inline-block" href="../about-us.html">
+<a class="rt-navigation-link-v1 rt-nav-top-link w-inline-block" href="../a-propos/">
 <div>À propos</div>
 </a>
 <div class="rt-navbar-dropdown-v1 rt-services-dropdown w-dropdown" data-delay="0" data-hover="true">
@@ -229,7 +246,7 @@
 </a>
 </div>
 <div class="rt-services-menu-foot">
-<a class="rt-services-all" href="../service.html">Voir toutes nos prestations →</a>
+<a class="rt-services-all" href="../services/">Voir toutes nos prestations →</a>
 <a class="rt-services-cta" href="../devis/">Demander un devis gratuit</a>
 </div>
 </nav>
@@ -237,7 +254,7 @@
 <a aria-current="page" class="rt-navigation-link-v1 rt-nav-top-link w-inline-block rt-nav-active" href="./">
 <div>Réalisations</div>
 </a>
-<a class="rt-navigation-link-v1 rt-nav-top-link w-inline-block" href="../blog.html">
+<a class="rt-navigation-link-v1 rt-nav-top-link w-inline-block" href="../conseils/">
 <div>Actualités</div>
 </a>
 <!-- /nav:menu -->
@@ -333,7 +350,7 @@
 </div>
 </div>
 <div class="rt-hero-background-image-wrapper-v1">
-<img alt="Portail en fer forgé noir dans un jardin, réalisé par La Ferronnerie du Rouret" class="rt-hero-background-image" src="../assets/images/realisations/hero-portail-fer-forge-jardin.webp" style="object-fit:cover;width:100%;height:100%"/>
+<picture data-mobile-hero class="mobile-picture"><source media="(max-width: 767px)" srcset="../assets/images/mobile/realisations-hero-mobile.webp"><img alt="Portail en fer forgé noir dans un jardin, réalisé par La Ferronnerie du Rouret" class="rt-hero-background-image" src="../assets/images/realisations/hero-portail-fer-forge-jardin.webp" style="object-fit:cover;width:100%;height:100%"/></picture>
 </div>
 </section>
 <section class="rt-portfolio-v3 rt-border-radius-top-right-left">
@@ -353,7 +370,7 @@
 <div class="w-dyn-items" role="list">
 <div class="rt-portfolio-content-v1 w-dyn-item" data-w-id="64ea8ee7-bdef-2afe-4839-068b85fdc4d6" role="listitem">
 <a class="rt-portfolio-image-wrapper-v1 rt-border-radius rt-overflow-hidden w-inline-block" href="ouvrage-metallique-residentiel/">
-<img alt="Portail contemporain noir sur mesure entre murs en pierre à Nice" class="rt-portfolio-image-v1" height="887" width="1774" loading="lazy" sizes="(max-width: 767px) 100vw, 1080px" src="../assets/images/services/portail-noir-murs-pierre-nice-1280.webp" srcset="../assets/images/services/portail-noir-murs-pierre-nice-800.webp 800w, ../assets/images/services/portail-noir-murs-pierre-nice-1280.webp 1280w, ../assets/images/services/portail-noir-murs-pierre-nice.webp 1774w"/>
+<picture class="mobile-picture"><source media="(max-width: 767px)" srcset="../assets/images/services/portail-noir-murs-pierre-nice-1280-mobile.webp"><img data-mobile-art="true" alt="Portail contemporain noir sur mesure entre murs en pierre à Nice" class="rt-portfolio-image-v1" height="887" width="1774" loading="lazy" sizes="(max-width: 767px) 100vw, 1080px" src="../assets/images/services/portail-noir-murs-pierre-nice-1280.webp" srcset="../assets/images/services/portail-noir-murs-pierre-nice-800.webp 800w, ../assets/images/services/portail-noir-murs-pierre-nice-1280.webp 1280w, ../assets/images/services/portail-noir-murs-pierre-nice.webp 1774w"/></picture>
 </a>
 <div class="w-layout-hflex rt-portfolio-text-content-v1">
 <a class="w-inline-block" href="ouvrage-metallique-residentiel/">
@@ -374,7 +391,7 @@
 <div class="rt-portfolio-card-height w-dyn-items" role="list">
 <div class="rt-portfolio-content-v2 w-dyn-item" data-w-id="12118390-b6d6-537c-1f6b-4cfd329e4701" role="listitem">
 <a class="rt-portfolio-image-wrapper-v2 rt-border-radius rt-overflow-hidden rt-card-portrait w-inline-block" href="ouvrage-metallique-commercial-nice/">
-<img alt="Verrière en verre sur structure acier réalisée par La Ferronnerie du Rouret" class="rt-portfolio-image-v1" height="887" width="1774" loading="lazy" sizes="(max-width: 767px) 100vw, 1080px" src="../assets/images/services/verriere-toit-verre-structure-acier-nice-1280.webp" srcset="../assets/images/services/verriere-toit-verre-structure-acier-nice-800.webp 800w, ../assets/images/services/verriere-toit-verre-structure-acier-nice-1280.webp 1280w, ../assets/images/services/verriere-toit-verre-structure-acier-nice.webp 1774w"/>
+<picture class="mobile-picture"><source media="(max-width: 767px)" srcset="../assets/images/services/verriere-toit-verre-structure-acier-nice-1280-mobile.webp"><img data-mobile-art="true" alt="Verrière en verre sur structure acier réalisée par La Ferronnerie du Rouret" class="rt-portfolio-image-v1" height="887" width="1774" loading="lazy" sizes="(max-width: 767px) 100vw, 1080px" src="../assets/images/services/verriere-toit-verre-structure-acier-nice-1280.webp" srcset="../assets/images/services/verriere-toit-verre-structure-acier-nice-800.webp 800w, ../assets/images/services/verriere-toit-verre-structure-acier-nice-1280.webp 1280w, ../assets/images/services/verriere-toit-verre-structure-acier-nice.webp 1774w"/></picture>
 </a>
 <div class="w-layout-hflex rt-portfolio-text-content-v1">
 <a class="w-inline-block" href="ouvrage-metallique-commercial-nice/">
@@ -395,7 +412,7 @@
 <div class="w-dyn-items" role="list">
 <div class="rt-portfolio-content-v2 w-dyn-item" data-w-id="1a9feede-269a-0dd6-0160-d456c1396088" role="listitem">
 <a class="rt-portfolio-image-wrapper-v2 rt-border-radius rt-overflow-hidden w-inline-block" href="garde-corps-acier-design/">
-<img alt="Garde-corps à barreaudage en acier sur terrasse avec vue" class="rt-portfolio-image-v1" height="887" width="1774" loading="lazy" sizes="(max-width: 767px) 100vw, 1080px" src="../assets/images/services/garde-corps-barreaudage-terrasse-vue-nice-1280.webp" srcset="../assets/images/services/garde-corps-barreaudage-terrasse-vue-nice-800.webp 800w, ../assets/images/services/garde-corps-barreaudage-terrasse-vue-nice-1280.webp 1280w, ../assets/images/services/garde-corps-barreaudage-terrasse-vue-nice.webp 1774w"/>
+<picture class="mobile-picture"><source media="(max-width: 767px)" srcset="../assets/images/services/garde-corps-barreaudage-terrasse-vue-nice-1280-mobile.webp"><img data-mobile-art="true" alt="Garde-corps à barreaudage en acier sur terrasse avec vue" class="rt-portfolio-image-v1" height="887" width="1774" loading="lazy" sizes="(max-width: 767px) 100vw, 1080px" src="../assets/images/services/garde-corps-barreaudage-terrasse-vue-nice-1280.webp" srcset="../assets/images/services/garde-corps-barreaudage-terrasse-vue-nice-800.webp 800w, ../assets/images/services/garde-corps-barreaudage-terrasse-vue-nice-1280.webp 1280w, ../assets/images/services/garde-corps-barreaudage-terrasse-vue-nice.webp 1774w"/></picture>
 </a>
 <div class="w-layout-hflex rt-portfolio-text-content-v1">
 <a class="w-inline-block" href="garde-corps-acier-design/">
@@ -429,7 +446,7 @@
 <div class="w-dyn-items" role="list">
 <div class="rt-portfolio-content-v1 w-dyn-item" data-w-id="c0b01aaa-c550-9a78-d68b-bc389fb576d8" role="listitem">
 <a class="rt-portfolio-image-wrapper-v1 rt-border-radius rt-overflow-hidden w-inline-block" href="structure-metallique-commerciale/">
-<img alt="Marquise en verre et fer forgé sur façade" class="rt-portfolio-image-v1" height="887" width="1774" loading="lazy" sizes="(max-width: 767px) 100vw, 1080px" src="../assets/images/services/marquise-verre-fer-forge-facade-nice-1280.webp" srcset="../assets/images/services/marquise-verre-fer-forge-facade-nice-800.webp 800w, ../assets/images/services/marquise-verre-fer-forge-facade-nice-1280.webp 1280w, ../assets/images/services/marquise-verre-fer-forge-facade-nice.webp 1774w"/>
+<picture class="mobile-picture"><source media="(max-width: 767px)" srcset="../assets/images/services/marquise-verre-fer-forge-facade-nice-1280-mobile.webp"><img data-mobile-art="true" alt="Marquise en verre et fer forgé sur façade" class="rt-portfolio-image-v1" height="887" width="1774" loading="lazy" sizes="(max-width: 767px) 100vw, 1080px" src="../assets/images/services/marquise-verre-fer-forge-facade-nice-1280.webp" srcset="../assets/images/services/marquise-verre-fer-forge-facade-nice-800.webp 800w, ../assets/images/services/marquise-verre-fer-forge-facade-nice-1280.webp 1280w, ../assets/images/services/marquise-verre-fer-forge-facade-nice.webp 1774w"/></picture>
 </a>
 <div class="w-layout-hflex rt-portfolio-text-content-v1">
 <a class="w-inline-block" href="structure-metallique-commerciale/">
@@ -450,7 +467,7 @@
 <div class="rt-portfolio-collection-list-v2 w-dyn-items" role="list">
 <div class="rt-portfolio-content-v2 rt-2 w-dyn-item" data-w-id="8e0ad1d7-5af0-164a-3613-43261c88fbdc" role="listitem">
 <a class="rt-portfolio-image-wrapper-v2 rt-border-radius rt-overflow-hidden rt1 w-inline-block" href="escalier-metallique-sur-mesure/">
-<img alt="Escalier intérieur avec rampe en fer forgé à balustres" class="rt-portfolio-image-v1" height="887" width="1774" loading="lazy" sizes="(max-width: 767px) 100vw, 1080px" src="../assets/images/services/rampe-escalier-fer-forge-balustres-interieur-nice-1280.webp" srcset="../assets/images/services/rampe-escalier-fer-forge-balustres-interieur-nice-800.webp 800w, ../assets/images/services/rampe-escalier-fer-forge-balustres-interieur-nice-1280.webp 1280w, ../assets/images/services/rampe-escalier-fer-forge-balustres-interieur-nice.webp 1774w"/>
+<picture class="mobile-picture"><source media="(max-width: 767px)" srcset="../assets/images/services/rampe-escalier-fer-forge-balustres-interieur-nice-1280-mobile.webp"><img data-mobile-art="true" alt="Escalier intérieur avec rampe en fer forgé à balustres" class="rt-portfolio-image-v1" height="887" width="1774" loading="lazy" sizes="(max-width: 767px) 100vw, 1080px" src="../assets/images/services/rampe-escalier-fer-forge-balustres-interieur-nice-1280.webp" srcset="../assets/images/services/rampe-escalier-fer-forge-balustres-interieur-nice-800.webp 800w, ../assets/images/services/rampe-escalier-fer-forge-balustres-interieur-nice-1280.webp 1280w, ../assets/images/services/rampe-escalier-fer-forge-balustres-interieur-nice.webp 1774w"/></picture>
 </a>
 <div class="w-layout-hflex rt-portfolio-text-content-v1">
 <a class="w-inline-block" href="escalier-metallique-sur-mesure/">
@@ -470,7 +487,7 @@
 <div class="rt-portfolio-content-wrapper-v2 w-dyn-items" role="list">
 <div class="rt-portfolio-content-v2 w-dyn-item" data-w-id="9044ed85-05fc-cf57-40af-1ede74f864ba" role="listitem" style="opacity:0">
 <a class="rt-portfolio-image-wrapper-v2 rt-border-radius rt-overflow-hidden w-inline-block" href="rambarde-balcon-sur-mesure/">
-<img alt="Garde-corps de balcon en fer forgé à volutes" class="rt-portfolio-image-v1" height="887" width="1774" loading="lazy" sizes="(max-width: 767px) 100vw, 1080px" src="../assets/images/services/balcon-garde-corps-volutes-claustra-nice-1280.webp" srcset="../assets/images/services/balcon-garde-corps-volutes-claustra-nice-800.webp 800w, ../assets/images/services/balcon-garde-corps-volutes-claustra-nice-1280.webp 1280w, ../assets/images/services/balcon-garde-corps-volutes-claustra-nice.webp 1774w"/>
+<picture class="mobile-picture"><source media="(max-width: 767px)" srcset="../assets/images/services/balcon-garde-corps-volutes-claustra-nice-1280-mobile.webp"><img data-mobile-art="true" alt="Garde-corps de balcon en fer forgé à volutes" class="rt-portfolio-image-v1" height="887" width="1774" loading="lazy" sizes="(max-width: 767px) 100vw, 1080px" src="../assets/images/services/balcon-garde-corps-volutes-claustra-nice-1280.webp" srcset="../assets/images/services/balcon-garde-corps-volutes-claustra-nice-800.webp 800w, ../assets/images/services/balcon-garde-corps-volutes-claustra-nice-1280.webp 1280w, ../assets/images/services/balcon-garde-corps-volutes-claustra-nice.webp 1774w"/></picture>
 </a>
 <div class="w-layout-hflex rt-portfolio-text-content-v1">
 <a class="w-inline-block" href="rambarde-balcon-sur-mesure/">
@@ -486,7 +503,7 @@
 </div>
 <div class="rt-portfolio-content-v2 w-dyn-item" data-w-id="9044ed85-05fc-cf57-40af-1ede74f864ba" role="listitem" style="opacity:0">
 <a class="rt-portfolio-image-wrapper-v2 rt-border-radius rt-overflow-hidden w-inline-block" href="garde-corps-terrasse-panoramique/">
-<img alt="Garde-corps de terrasse panoramique sur la Côte d'Azur" class="rt-portfolio-image-v1" height="887" width="1774" loading="lazy" sizes="(max-width: 767px) 100vw, 1080px" src="../assets/images/services/garde-corps-terrasse-panoramique-nice-1280.webp" srcset="../assets/images/services/garde-corps-terrasse-panoramique-nice-800.webp 800w, ../assets/images/services/garde-corps-terrasse-panoramique-nice-1280.webp 1280w, ../assets/images/services/garde-corps-terrasse-panoramique-nice.webp 1774w"/>
+<picture class="mobile-picture"><source media="(max-width: 767px)" srcset="../assets/images/services/garde-corps-terrasse-panoramique-nice-1280-mobile.webp"><img data-mobile-art="true" alt="Garde-corps de terrasse panoramique sur la Côte d'Azur" class="rt-portfolio-image-v1" height="887" width="1774" loading="lazy" sizes="(max-width: 767px) 100vw, 1080px" src="../assets/images/services/garde-corps-terrasse-panoramique-nice-1280.webp" srcset="../assets/images/services/garde-corps-terrasse-panoramique-nice-800.webp 800w, ../assets/images/services/garde-corps-terrasse-panoramique-nice-1280.webp 1280w, ../assets/images/services/garde-corps-terrasse-panoramique-nice.webp 1774w"/></picture>
 </a>
 <div class="w-layout-hflex rt-portfolio-text-content-v1">
 <a class="w-inline-block" href="garde-corps-terrasse-panoramique/">
@@ -550,8 +567,8 @@
 <div class="rt-text-style-h6">Liens rapides</div>
 <div class="w-layout-vflex rt-footer-links">
 <a class="rt-footer-link" href="../">Accueil</a>
-<a class="rt-footer-link" href="../about-us.html">À propos</a>
-<a class="rt-footer-link" href="../service.html">Services</a>
+<a class="rt-footer-link" href="../a-propos/">À propos</a>
+<a class="rt-footer-link" href="../services/">Services</a>
 <a aria-current="page" class="rt-footer-link w--current" href="./">Réalisations</a>
 </div>
 </div>

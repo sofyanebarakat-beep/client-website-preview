@@ -19,7 +19,7 @@ assets/i18n/translations.js for the EN / IT copies.
 import os
 import re
 
-from build_i18n import ROOT, FR_ONLY, depth_of, list_pages
+from build_i18n import SRC, FR_ONLY, depth_of, list_pages
 
 START, END = "<!-- nav:menu -->", "<!-- /nav:menu -->"
 CALL_START, CALL_END = "<!-- nav:call -->", "<!-- /nav:call -->"
@@ -152,7 +152,7 @@ def main():
     for page in list_pages():
         if page in FR_ONLY:
             continue
-        path = os.path.join(ROOT, page)
+        path = os.path.join(SRC, page)
         src = open(path, encoding="utf-8").read()
         m = REGION.search(src)
         if not m:

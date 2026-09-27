@@ -2,25 +2,29 @@
 """
 Build the multilingual site.
 
-French pages in the repo are the SOURCE. This script
+The French pages in src/ are the SOURCE (edit those, never the generated site).
+This script publishes them at the repository root, which is the website:
 
-  * (re)writes each French page with hreflang / og:locale / language-switcher
-    metadata and localisation attributes on forms,
-  * generates a fully translated static copy of every page under /en/ and /it/
+  * every page is written at its clean URL, <canonical path>/index.html
+    (/a-propos/, /garde-corps-nice/, /realisations/x/, /conseils/x/ ...), so no
+    URL ends in .html; the home page is /index.html and the error page /404.html,
+  * adds hreflang / og:locale / language-switcher metadata and localisation
+    attributes on forms,
+  * generates a fully translated copy of every page under /en/ and /it/
     using assets/i18n/translations.js as the dictionary,
   * regenerates sitemap.xml with hreflang alternates for the three languages.
 
-  * writes every page whose canonical is a clean URL (/garde-corps-nice/,
-    /realisations/x/, /conseils/x/ ...) a second time as <path>/index.html, in the
-    three languages, and points all links at those clean URLs.
+Links between source pages use their file names (about-us.html, blog-post/x.html);
+the build turns them into the clean URLs.
 
-Run after ANY edit to a French page or to translations.js:
+Run after ANY edit to a page in src/ or to translations.js:
 
     python3 scripts/build_i18n.py            # build
     python3 scripts/build_i18n.py --report   # also list text with no translation
 
-The output is committed (GitHub Pages serves static files), so do not edit
-files under en/ or it/ by hand: they are overwritten on every build.
+The output is committed (GitHub Pages serves static files), so do not edit the
+generated pages by hand: they are overwritten on every build. Old pages that are
+no longer part of the site are kept in archive/ and are not built.
 """
 
 import html
@@ -36,13 +40,15 @@ import build_blog
 from urllib.parse import urlsplit
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+SRC = os.path.join(ROOT, "src")   # French source pages
 SITE = "https://ferronnerie-rouret.com"
 LANGS = ("fr", "en", "it")
 GENERATED = ("en", "it")
 OG_LOCALE = {"fr": "fr_FR", "en": "en_GB", "it": "it_IT"}
-SKIP_DIRS = {"assets", "en", "it", "scripts", "output", "tmp", "node_modules", ".git"}
-FR_ONLY = {"style-guide.html"}            # internal brand guide: French only
-NON_PAGE_PREFIXES = ("output/", "sitemap.xml", "robots.txt", "style-guide.html")
+SKIP_DIRS = {"assets", "en", "it", "scripts", "src", "archive", "node_modules", ".git"}
+FR_ONLY = set()                          # pages published in French only
+NON_PAGE_PREFIXES = ("sitemap.xml", "robots.txt")
+NO_PATH_PAGES = {"index.html", "404.html"}   # language switcher goes to the language home
 
 HEAD_START, HEAD_END = "<!-- i18n:head -->", "<!-- /i18n:head -->"
 
@@ -80,12 +86,11 @@ def load_dictionary():
 
 def list_pages():
     pages = []
-    for dirpath, dirnames, filenames in os.walk(ROOT):
-        dirnames[:] = [d for d in dirnames if d not in SKIP_DIRS and not d.startswith(".")]
+    for dirpath, dirnames, filenames in os.walk(SRC):
+        dirnames[:] = [d for d in dirnames if not d.startswith(".")]
         for f in filenames:
-            if f.endswith(".html") and not (f == "index.html" and dirpath != ROOT
-                                            and is_clean_copy(os.path.join(dirpath, f))):
-                pages.append(os.path.relpath(os.path.join(dirpath, f), ROOT).replace(os.sep, "/"))
+            if f.endswith(".html"):
+                pages.append(os.path.relpath(os.path.join(dirpath, f), SRC).replace(os.sep, "/"))
     return sorted(pages)
 
 
@@ -291,7 +296,7 @@ def head_block(page, lang, canon):
     lines = [
         HEAD_START,
         '<meta name="i18n-lang" content="%s"/>' % lang,
-        '<meta name="i18n-path" content="%s"/>' % page,
+        '<meta name="i18n-path" content="%s"/>' % ("" if page in NO_PATH_PAGES else page),
         '<meta name="i18n-root" content="%s"/>' % ("../" * depth),
     ]
     if canon:
@@ -335,17 +340,13 @@ def clean_targets(canon_by_page):
 
 def clean_owners(targets):
     """clean directory -> the page that is copied there (several pages can share a canonical)."""
-    try:
-        sys.path.insert(0, ROOT)
-        from server import ROUTE_ALIASES
-    except Exception:
-        ROUTE_ALIASES = {}
     owners = {}
     for page, d in sorted(targets.items()):
         if not d:
             continue
-        if ROUTE_ALIASES.get(d) == page or d not in owners:
-            owners[d] = page
+        if d in owners:
+            sys.exit("Two source pages share the canonical /%s/: %s and %s" % (d, owners[d], page))
+        owners[d] = page
     return owners
 
 
@@ -494,7 +495,10 @@ def build_sitemap(canon_by_page, dictionary, extra_images):
     if "xmlns:xhtml" not in s:
         s = s.replace("<urlset ", '<urlset xmlns:xhtml="http://www.w3.org/1999/xhtml" ', 1)
     blocks = re.findall(r"  <url>.*?</url>\n", s, re.S)
-    fr_blocks = [b for b in blocks if not re.search(r"<loc>%s/(?:en|it)/" % re.escape(SITE), b)]
+    known = set(canon_by_page.values())
+    # French entries of pages that still exist (archived pages drop out)
+    fr_blocks = [b for b in blocks if not re.search(r"<loc>%s/(?:en|it)/" % re.escape(SITE), b)
+                 and (urlsplit(re.search(r"<loc>(.*?)</loc>", b).group(1)).path or "/") in known]
 
     def alternates(canon):
         rows = ['    <xhtml:link rel="alternate" hreflang="%s" href="%s"/>\n' % (l, lang_url(canon, l)) for l in LANGS]
@@ -509,7 +513,6 @@ def build_sitemap(canon_by_page, dictionary, extra_images):
         entry = dictionary.get(norm(caption))
         return entry[lang] if entry and entry.get(lang) else caption
 
-    known = set(canon_by_page.values())
     out_blocks = []
     for b in fr_blocks:
         b = re.sub(r"    <xhtml:link[^>]*/>\n", "", b)
@@ -558,7 +561,7 @@ def main():
     extra_images = {}
     sources = {}
     for page in pages:
-        src = open(os.path.join(ROOT, page), encoding="utf-8").read()
+        src = open(os.path.join(SRC, page), encoding="utf-8").read()
         base = normalise_base(src, page)
         sources[page] = (src, base)
         c = canonical_path(base)
@@ -577,12 +580,15 @@ def main():
             if lang != "fr" and page in FR_ONLY:
                 continue
             doc = render(base, page, lang, dictionary, pages_set, translators, targets)
-            dest = os.path.join(ROOT, page if lang == "fr" else os.path.join(lang, page))
-            os.makedirs(os.path.dirname(dest), exist_ok=True)
-            if lang != "fr" or doc != src:
+            if page not in owned:
+                # no clean URL of its own: the home page (index.html) and 404.html
+                if os.path.dirname(page):
+                    sys.exit("%s has no clean canonical URL: give it one or move it to archive/" % page)
+                dest = os.path.join(ROOT, page if lang == "fr" else os.path.join(lang, page))
+                os.makedirs(os.path.dirname(dest), exist_ok=True)
                 with open(dest, "w", encoding="utf-8") as f:
                     f.write(doc)
-            if page in owned:
+            else:
                 d = owned[page]
                 dest = os.path.join(ROOT, d if lang == "fr" else os.path.join(lang, d), "index.html")
                 os.makedirs(os.path.dirname(dest), exist_ok=True)
@@ -591,6 +597,10 @@ def main():
                 copies += 1
 
     build_sitemap(canon_by_page, dictionary, extra_images)
+    # mobile hero / card images on the published French pages (idempotent)
+    mobile = os.path.join(ROOT, "scripts", "build_mobile_images.mjs")
+    if os.path.exists(mobile):
+        subprocess.run(["node", mobile], cwd=ROOT, check=True)
     total = sum(1 for p in pages if p not in FR_ONLY) * len(GENERATED)
     print("Built %d pages (%d French sources, %d generated), plus %d clean-URL copies." % (total, len(pages), total, copies))
     if report:

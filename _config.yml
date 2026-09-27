@@ -1,0 +1,8 @@
+# GitHub Pages (Jekyll) settings.
+# Only the website is published: sources, archive and tooling are left out.
+exclude:
+  - src/
+  - archive/
+  - scripts/
+  - server.py
+  - README.md

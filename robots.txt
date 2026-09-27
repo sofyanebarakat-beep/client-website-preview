@@ -1,4 +1,7 @@
 User-agent: *
 Allow: /
+Disallow: /src/
+Disallow: /archive/
+Disallow: /scripts/
 
 Sitemap: https://ferronnerie-rouret.com/sitemap.xml

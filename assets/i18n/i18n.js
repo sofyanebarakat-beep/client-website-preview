@@ -7,7 +7,7 @@
  *
  * Page metadata (added by the build script):
  *   <meta name="i18n-lang"  content="fr|en|it">
- *   <meta name="i18n-path"  content="blog-post/x.html">   page path from the site root
+ *   <meta name="i18n-path"  content="conseils/x/">        page path from the site root ("" on the home page)
  *   <meta name="i18n-root"  content="../">                relative path back to the site root
  */
 (function () {
@@ -21,7 +21,7 @@
   var CURRENT = meta("i18n-lang");
   var PAGE_PATH = meta("i18n-path");
   var ROOT = meta("i18n-root");
-  if (!CURRENT || !PAGE_PATH || ROOT === null) return;
+  if (!CURRENT || PAGE_PATH === null || ROOT === null) return;   // "" = language home
 
   var FLAGS = {
     fr: '<svg viewBox="0 0 3 2" width="22" height="15" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false"><rect width="3" height="2" fill="#fff"/><rect width="1" height="2" fill="#002395"/><rect width="1" height="2" x="2" fill="#ED2939"/></svg>',
