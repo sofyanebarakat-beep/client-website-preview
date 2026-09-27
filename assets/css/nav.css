@@ -270,3 +270,7 @@
     margin-right: 0 !important;
   }
 }
+
+/* Images carry width/height (no layout shift while loading). Keep their proportions
+   when CSS resizes them; zero specificity, so any class that sets a height wins. */
+:where(img[width][height]) { height: auto; }

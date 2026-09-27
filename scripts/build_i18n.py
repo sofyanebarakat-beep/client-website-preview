@@ -12,7 +12,8 @@ This script publishes them at the repository root, which is the website:
     attributes on forms,
   * generates a fully translated copy of every page under /en/ and /it/
     using assets/i18n/translations.js as the dictionary,
-  * regenerates sitemap.xml with hreflang alternates for the three languages.
+  * regenerates sitemap.xml with hreflang alternates for the three languages,
+  * optimises images first (scripts/optimize_images.py: WebP, sizes, srcset).
 
 Links between source pages use their file names (about-us.html, blog-post/x.html);
 the build turns them into the clean URLs.
@@ -37,6 +38,7 @@ import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import build_blog
+import optimize_images
 from urllib.parse import urlsplit
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -548,6 +550,7 @@ def build_sitemap(canon_by_page, dictionary, extra_images):
 def main():
     report = "--report" in sys.argv
     build_blog.main()
+    optimize_images.main()
     dictionary = load_dictionary()
     remove_clean_copies()
     pages = list_pages()

@@ -9,6 +9,7 @@ repository root. Every page has a clean URL (no `.html`).
 | --- | --- |
 | `src/` | **French source pages — edit these.** |
 | `assets/` | CSS, JS, images, videos, and `i18n/translations.js` (the FR → EN/IT dictionary) |
+| `assets/vendor/` | Self-hosted third-party files: Webflow CSS/JS and media, jQuery, GSAP, the Inter font. The site loads nothing from other servers. |
 | `scripts/` | Build scripts |
 | `index.html`, `404.html`, `a-propos/`, `services/`, `garde-corps-nice/`, … | The published site (generated, do not edit) |
 | `en/`, `it/` | English and Italian sites (generated, do not edit) |
@@ -42,7 +43,7 @@ build turns every link into the clean URL.
 
 ```sh
 # 1. edit a page in src/ (or a translation in assets/i18n/translations.js)
-python3 scripts/build_i18n.py      # 2. build FR + EN + IT, sitemap, mobile images
+python3 scripts/build_i18n.py      # 2. build FR + EN + IT, sitemap, optimised + mobile images
 python3 scripts/seo_audit.py       # 3. check titles, descriptions, canonicals, links
 python3 server.py                  # 4. preview at http://localhost:8000/
 ```
@@ -50,3 +51,11 @@ python3 server.py                  # 4. preview at http://localhost:8000/
 `python3 scripts/build_i18n.py --report` also lists French text that has no
 translation yet. `scripts/build_nav.py` rewrites the main menu in every source
 page; run it when the menu changes, then build.
+
+## Images
+
+The build runs `scripts/optimize_images.py` on `src/` first: JPG/PNG become WebP,
+every photo gets `width`/`height`, smaller copies (`<name>-w480.webp`, `-w800`,
+`-w1200`, `-w1600`) with `srcset`/`sizes`, and the hero image loads first. Just put
+the original photo in `assets/images/` (with a descriptive file name and French
+`alt` text) and build.
