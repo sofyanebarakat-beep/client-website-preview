@@ -1886,4 +1886,5 @@ window.SITE_TRANSLATIONS = {
   "Nous restons disponibles après le chantier pour les réglages, l'entretien ou une remise en peinture.": { en: "We stay available after the job for adjustments, maintenance or repainting.", it: "Restiamo disponibili dopo il cantiere per regolazioni, manutenzione o riverniciatura." },
   "De la barre de métal brut à l'ouvrage posé chez vous": { en: "From raw metal bar to finished piece in your home", it: "Dalla barra di metallo grezzo all'opera posata a casa tua" },
   "Un projet de ferronnerie en tête ? Parlons-en.": { en: "Have an ironwork project in mind? Let's talk.", it: "Hai in mente un progetto in ferro battuto? Parliamone." },
+  "Ferronnier forgeant une pièce de métal sur l’enclume": { en: "Ironworker forging a piece of metal on the anvil", it: "Fabbro che forgia un pezzo di metallo sull’incudine" },
 };
