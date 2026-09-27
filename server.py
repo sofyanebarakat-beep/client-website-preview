@@ -212,21 +212,6 @@ class CleanURLHandler(SimpleHTTPRequestHandler):
         if not os.path.splitext(full)[1] and os.path.isfile(full + ".html"):
             return full + ".html"
 
-        # Pages served at a clean URL (e.g. /realisations/) sit one or two levels
-        # deeper than their real file, so their relative links (assets/..., ../about-us.html)
-        # resolve to /realisations/assets/... Retry with leading segments stripped.
-        parts = [p for p in rel.split("/") if p]
-        for i in range(1, len(parts)):
-            tail = "/".join(parts[i:])
-            candidate = os.path.join(ROOT, tail)
-            if os.path.isfile(candidate):
-                return candidate
-            alias_tail = ROUTE_ALIASES.get(tail.rstrip("/"))
-            if alias_tail:
-                return os.path.join(ROOT, alias_tail)
-            if not os.path.splitext(candidate)[1] and os.path.isfile(candidate + ".html"):
-                return candidate + ".html"
-
         # Nothing matched: hand back the 404 page path (status set in send_head).
         return os.path.join(ROOT, lang if lang in ("en", "it") else "", NOT_FOUND_PAGE)
 
@@ -236,6 +221,17 @@ class CleanURLHandler(SimpleHTTPRequestHandler):
         if redirect_target:
             self.send_response(301)
             self.send_header("Location", redirect_target)
+            self.send_header("Content-Length", "0")
+            self.end_headers()
+            return None
+
+        # Folder URL without its trailing slash: redirect like GitHub Pages does,
+        # so relative links on the page resolve against the folder.
+        rel = requested_path.lstrip("/")
+        if rel and not requested_path.endswith("/") and os.path.isfile(
+                os.path.join(ROOT, unquote(rel), "index.html")):
+            self.send_response(301)
+            self.send_header("Location", requested_path + "/")
             self.send_header("Content-Length", "0")
             self.end_headers()
             return None
