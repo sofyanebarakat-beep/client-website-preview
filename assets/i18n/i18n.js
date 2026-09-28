@@ -247,23 +247,32 @@
     fr: {
       title: "Un projet de ferronnerie ?",
       message: "Échangez directement avec notre atelier sur WhatsApp.",
+      titleB: "Une idée à transformer en métal ?",
+      messageB: "Décrivez votre projet à un artisan et obtenez un premier retour rapidement.",
       action: "Écrire au +33 7 69 87 11 08",
       close: "Fermer la notification WhatsApp",
-      preset: "Bonjour, je souhaite obtenir des informations pour mon projet de ferronnerie."
+      preset: "Bonjour, je souhaite obtenir des informations pour mon projet de ferronnerie.",
+      presetB: "Bonjour, j'ai une idée de projet en métal et je souhaite en discuter avec votre atelier."
     },
     en: {
       title: "Planning a metalwork project?",
       message: "Chat directly with our workshop on WhatsApp.",
+      titleB: "An idea to bring to life in metal?",
+      messageB: "Describe your project to a craftsperson and receive an initial response quickly.",
       action: "Message +33 7 69 87 11 08",
       close: "Close the WhatsApp notification",
-      preset: "Hello, I would like more information about my metalwork project."
+      preset: "Hello, I would like more information about my metalwork project.",
+      presetB: "Hello, I have a metalwork project idea and would like to discuss it with your workshop."
     },
     it: {
       title: "Hai un progetto di lavorazione del ferro?",
       message: "Parla direttamente con il nostro laboratorio su WhatsApp.",
+      titleB: "Un'idea da trasformare in metallo?",
+      messageB: "Descrivi il tuo progetto a un artigiano e ricevi rapidamente un primo riscontro.",
       action: "Scrivi al +33 7 69 87 11 08",
       close: "Chiudi la notifica WhatsApp",
-      preset: "Buongiorno, vorrei ricevere informazioni per il mio progetto di lavorazione del ferro."
+      preset: "Buongiorno, vorrei ricevere informazioni per il mio progetto di lavorazione del ferro.",
+      presetB: "Buongiorno, ho un'idea per un progetto in metallo e vorrei parlarne con il vostro laboratorio."
     }
   };
 
@@ -383,11 +392,23 @@
       else if (href.indexOf("tel:+33769871108") === 0) method = "phone";
       else if (href.indexOf("devis/") !== -1) method = "quote";
       if (!method) return;
-      var detail = { method: method, pagePath: PAGE_PATH, pageTitle: document.title };
+      var variant = link.getAttribute("data-whatsapp-variant") || "none";
+      var detail = { method: method, pagePath: PAGE_PATH, pageTitle: document.title, variant: variant };
       window.dataLayer = window.dataLayer || [];
-      window.dataLayer.push({ event: "contact_click", contact_method: method, page_path: PAGE_PATH, page_title: document.title });
+      window.dataLayer.push({ event: "contact_click", contact_method: method, experiment_variant: variant, page_path: PAGE_PATH, page_title: document.title });
+      if (typeof window.gtag === "function") window.gtag("event", "contact_click", { contact_method: method, experiment_variant: variant, page_path: PAGE_PATH });
+      if (typeof window.fbq === "function") window.fbq("trackCustom", "ContactClick", { method: method, experiment_variant: variant, page_path: PAGE_PATH });
       try { window.dispatchEvent(new CustomEvent("contact_click", { detail: detail })); } catch (error) { /* Legacy browser: dataLayer remains available. */ }
     });
+  }
+
+  function whatsappVariant() {
+    var variant = "A";
+    try {
+      variant = window.sessionStorage.getItem("gh-whatsapp-variant") || (Math.random() < .5 ? "A" : "B");
+      window.sessionStorage.setItem("gh-whatsapp-variant", variant);
+    } catch (error) { /* Keep deterministic fallback A when storage is unavailable. */ }
+    return variant;
   }
 
   function mountWhatsAppNotice() {
@@ -399,18 +420,22 @@
 
     var copy = WHATSAPP_COPY[CURRENT] || WHATSAPP_COPY.fr;
     var projectCopy = PROJECT_COPY[CURRENT] || PROJECT_COPY.fr;
-    var destination = isProjectPage() ? projectWhatsAppUrl(projectCopy) : "https://wa.me/33769871108?text=" + encodeURIComponent(copy.preset);
+    var variant = whatsappVariant();
+    var noticeTitle = variant === "B" ? copy.titleB : copy.title;
+    var noticeMessage = variant === "B" ? copy.messageB : copy.message;
+    var noticePreset = variant === "B" ? copy.presetB : copy.preset;
+    var destination = isProjectPage() ? projectWhatsAppUrl(projectCopy) : "https://wa.me/33769871108?text=" + encodeURIComponent(noticePreset);
     var notice = document.createElement("aside");
     notice.className = "gh-whatsapp-notice";
     notice.setAttribute("role", "complementary");
     notice.setAttribute("aria-label", "WhatsApp");
     notice.innerHTML =
       '<button class="gh-whatsapp-notice__close" type="button" aria-label="' + copy.close + '">&times;</button>' +
-      '<div class="gh-whatsapp-notice__icon" aria-hidden="true">WA</div>' +
+      '<div class="gh-whatsapp-notice__icon" aria-hidden="true"><svg viewBox="0 0 32 32" focusable="false"><path fill="currentColor" d="M16.04 3a12.82 12.82 0 0 0-11.1 19.22L3.1 29l6.94-1.82A12.88 12.88 0 1 0 16.04 3Zm0 23.56c-1.9 0-3.76-.51-5.38-1.47l-.39-.23-4.12 1.08 1.1-4.01-.25-.41a10.66 10.66 0 1 1 9.04 5.04Zm5.85-7.98c-.32-.16-1.9-.94-2.2-1.05-.29-.11-.5-.16-.72.16-.21.32-.82 1.05-1 1.26-.19.22-.38.24-.7.08-.32-.16-1.36-.5-2.59-1.6a9.65 9.65 0 0 1-1.79-2.23c-.19-.32-.02-.5.14-.66.15-.14.32-.37.48-.56.16-.18.21-.32.32-.53.11-.21.05-.4-.03-.56-.08-.16-.72-1.73-.98-2.37-.26-.62-.52-.54-.72-.55h-.61c-.21 0-.56.08-.85.4-.3.32-1.12 1.1-1.12 2.66 0 1.57 1.15 3.08 1.31 3.3.16.21 2.25 3.44 5.46 4.82.76.33 1.36.52 1.82.67.77.24 1.46.21 2.01.13.62-.09 1.9-.78 2.17-1.53.27-.75.27-1.4.19-1.53-.08-.14-.29-.22-.61-.38Z"/></svg></div>' +
       '<div class="gh-whatsapp-notice__content">' +
-        '<strong class="gh-whatsapp-notice__title">' + copy.title + "</strong>" +
-        '<span class="gh-whatsapp-notice__message">' + copy.message + "</span>" +
-        '<a class="gh-whatsapp-notice__action" href="' + destination + '" target="_blank" rel="noopener">' + copy.action + "</a>" +
+        '<strong class="gh-whatsapp-notice__title">' + noticeTitle + "</strong>" +
+        '<span class="gh-whatsapp-notice__message">' + noticeMessage + "</span>" +
+        '<a class="gh-whatsapp-notice__action" data-whatsapp-variant="' + variant + '" href="' + destination + '" target="_blank" rel="noopener">' + copy.action + "</a>" +
       "</div>";
 
     notice.querySelector(".gh-whatsapp-notice__close").addEventListener("click", function () {
@@ -419,12 +444,51 @@
     });
 
     document.body.appendChild(notice);
+    var delayPassed = false;
+    var intentDetected = false;
+    var shown = false;
+    function showWhenReady() {
+      if (shown || !delayPassed || !intentDetected || !document.body.contains(notice)) return;
+      shown = true;
+      notice.classList.add("is-visible");
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({ event: "whatsapp_notice_view", experiment_variant: variant, page_path: PAGE_PATH });
+      try { window.sessionStorage.setItem("gh-whatsapp-notice-shown", "1"); } catch (error) { /* Optional enhancement. */ }
+    }
+    function recordIntent() {
+      intentDetected = true;
+      showWhenReady();
+    }
+    function checkScrollIntent() {
+      var available = document.documentElement.scrollHeight - window.innerHeight;
+      if (available > 0 && window.scrollY / available >= .4) recordIntent();
+    }
+    window.addEventListener("scroll", checkScrollIntent, { passive: true });
+    document.documentElement.addEventListener("mouseleave", function (event) { if (event.clientY <= 0) recordIntent(); });
+    window.setTimeout(recordIntent, 15000);
     window.setTimeout(function () {
-      if (document.body.contains(notice)) {
-        notice.classList.add("is-visible");
-        try { window.sessionStorage.setItem("gh-whatsapp-notice-shown", "1"); } catch (error) { /* Optional enhancement. */ }
-      }
+      delayPassed = true;
+      checkScrollIntent();
+      showWhenReady();
     }, 5500);
+  }
+
+  function mountRevealAnimations() {
+    var elements = document.querySelectorAll(".gh-project-summary__card, .gh-project-gallery__item, .gh-project-trust, .gh-project-cta__inner, .gh-author-cta");
+    if (!elements.length) return;
+    for (var i = 0; i < elements.length; i++) elements[i].classList.add("gh-reveal");
+    if (!("IntersectionObserver" in window) || window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      for (var j = 0; j < elements.length; j++) elements[j].classList.add("is-revealed");
+      return;
+    }
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add("is-revealed");
+        observer.unobserve(entry.target);
+      });
+    }, { threshold: .14, rootMargin: "0px 0px -5% 0px" });
+    for (var k = 0; k < elements.length; k++) observer.observe(elements[k]);
   }
 
   function findProjectImages() {
@@ -661,6 +725,7 @@
     mountSwitch();
     enhanceArticle();
     enhanceProjectPage();
+    mountRevealAnimations();
     trackContactClicks();
     mountWhatsAppNotice();
   }

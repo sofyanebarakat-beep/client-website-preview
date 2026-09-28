@@ -437,6 +437,11 @@
   font-weight: 800;
   letter-spacing: -.02em;
 }
+.gh-whatsapp-notice__icon svg {
+  display: block;
+  width: 1.65rem;
+  height: 1.65rem;
+}
 .gh-whatsapp-notice.is-visible .gh-whatsapp-notice__icon {
   animation: gh-whatsapp-icon-pop .85s .18s cubic-bezier(.2, .9, .25, 1.25) both;
 }
@@ -525,6 +530,31 @@
   .gh-whatsapp-notice.is-visible .gh-whatsapp-notice__icon,
   .gh-whatsapp-notice.is-visible .gh-whatsapp-notice__action {
     animation: none;
+    transition: none;
+  }
+}
+
+/* ---------- progressive reveal ---------- */
+.gh-reveal {
+  opacity: 0;
+  transform: translate3d(0, 1.25rem, 0) scale(.985);
+  transition: opacity .6s ease, transform .7s cubic-bezier(.2,.75,.25,1);
+}
+.gh-reveal.is-revealed {
+  opacity: 1;
+  transform: translate3d(0, 0, 0) scale(1);
+}
+.gh-project-summary__card:nth-child(2),
+.gh-project-gallery__item:nth-child(2) { transition-delay: .08s; }
+.gh-project-summary__card:nth-child(3) { transition-delay: .16s; }
+.gh-project-summary__card:nth-child(4) { transition-delay: .24s; }
+.gh-project-summary__card:nth-child(5) { transition-delay: .32s; }
+.gh-project-summary__card:nth-child(6) { transition-delay: .4s; }
+@media (prefers-reduced-motion: reduce) {
+  .gh-reveal,
+  .gh-reveal.is-revealed {
+    opacity: 1;
+    transform: none;
     transition: none;
   }
 }
