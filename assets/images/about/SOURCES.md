@@ -7,7 +7,6 @@ License for every image: [Unsplash License](https://unsplash.com/license) (free 
 | Local image | Unsplash photo |
 | --- | --- |
 | `navbar-atelier-etincelles.webp` | https://unsplash.com/photos/MfWTZFau-DM |
-| `hero-atelier-forge.webp` | https://unsplash.com/photos/fsOKJe2eA0k |
 | `hero-forgeron-enclume.webp` | https://unsplash.com/photos/2MuZ23gkFKo |
 | `presentation-portail-fer-forge.webp` | https://unsplash.com/photos/lic-9CuniWE |
 | `mission-qualite-detail-fer-forge.webp` | https://unsplash.com/photos/wT24_J8pdp4 |
@@ -23,3 +22,5 @@ License for every image: [Unsplash License](https://unsplash.com/license) (free 
 | `equipe-robert-blanc.webp` | https://unsplash.com/photos/9IEGO2zcM2s |
 | `equipe-ethan-roux.webp` | https://unsplash.com/photos/9kYa--GkBPs |
 | `clients-satisfaits.webp` | Composite of https://unsplash.com/photos/wnpf3Q5pkXA, https://unsplash.com/photos/MXtBuSP3Gdw, https://unsplash.com/photos/s3hlZ-gdfdQ |
+
+`hero-portail-volutes-villa.webp` is not a stock photo: it is resized from `assets/images/services/portail-fer-forge-volutes-villa-nice.webp`, one of the site's own service images.
