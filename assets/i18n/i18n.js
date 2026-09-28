@@ -216,11 +216,133 @@
     });
   }
 
+  var ARTICLE_COPY = {
+    fr: {
+      subtitle: "Atelier de ferronnerie d'art à Nice",
+      whatsapp: "WhatsApp +33 7 69 87 11 08",
+      phone: "07 69 87 11 08",
+      quote: "Demander un devis",
+      whatsappLabel: "Contacter La Ferronnerie du Rouret sur WhatsApp",
+      phoneLabel: "Appeler La Ferronnerie du Rouret au 07 69 87 11 08"
+    },
+    en: {
+      subtitle: "Art metalwork workshop in Nice",
+      whatsapp: "WhatsApp +33 7 69 87 11 08",
+      phone: "+33 7 69 87 11 08",
+      quote: "Request a quote",
+      whatsappLabel: "Contact La Ferronnerie du Rouret on WhatsApp",
+      phoneLabel: "Call La Ferronnerie du Rouret on +33 7 69 87 11 08"
+    },
+    it: {
+      subtitle: "Laboratorio di lavorazione artistica del ferro a Nizza",
+      whatsapp: "WhatsApp +33 7 69 87 11 08",
+      phone: "+33 7 69 87 11 08",
+      quote: "Richiedi un preventivo",
+      whatsappLabel: "Contatta La Ferronnerie du Rouret su WhatsApp",
+      phoneLabel: "Chiama La Ferronnerie du Rouret al +33 7 69 87 11 08"
+    }
+  };
+
+  var WHATSAPP_COPY = {
+    fr: {
+      title: "Un projet de ferronnerie ?",
+      message: "Échangez directement avec notre atelier sur WhatsApp.",
+      action: "Écrire au +33 7 69 87 11 08",
+      close: "Fermer la notification WhatsApp",
+      preset: "Bonjour, je souhaite obtenir des informations pour mon projet de ferronnerie."
+    },
+    en: {
+      title: "Planning a metalwork project?",
+      message: "Chat directly with our workshop on WhatsApp.",
+      action: "Message +33 7 69 87 11 08",
+      close: "Close the WhatsApp notification",
+      preset: "Hello, I would like more information about my metalwork project."
+    },
+    it: {
+      title: "Hai un progetto di lavorazione del ferro?",
+      message: "Parla direttamente con il nostro laboratorio su WhatsApp.",
+      action: "Scrivi al +33 7 69 87 11 08",
+      close: "Chiudi la notifica WhatsApp",
+      preset: "Buongiorno, vorrei ricevere informazioni per il mio progetto di lavorazione del ferro."
+    }
+  };
+
+  function mountWhatsAppNotice() {
+    if (document.querySelector(".gh-whatsapp-notice")) return;
+
+    var copy = WHATSAPP_COPY[CURRENT] || WHATSAPP_COPY.fr;
+    var notice = document.createElement("aside");
+    notice.className = "gh-whatsapp-notice";
+    notice.setAttribute("role", "complementary");
+    notice.setAttribute("aria-label", "WhatsApp");
+    notice.innerHTML =
+      '<button class="gh-whatsapp-notice__close" type="button" aria-label="' + copy.close + '">&times;</button>' +
+      '<div class="gh-whatsapp-notice__icon" aria-hidden="true">WA</div>' +
+      '<div class="gh-whatsapp-notice__content">' +
+        '<strong class="gh-whatsapp-notice__title">' + copy.title + "</strong>" +
+        '<span class="gh-whatsapp-notice__message">' + copy.message + "</span>" +
+        '<a class="gh-whatsapp-notice__action" href="https://wa.me/33769871108?text=' + encodeURIComponent(copy.preset) + '" target="_blank" rel="noopener">' + copy.action + "</a>" +
+      "</div>";
+
+    notice.querySelector(".gh-whatsapp-notice__close").addEventListener("click", function () {
+      notice.classList.remove("is-visible");
+      window.setTimeout(function () { notice.remove(); }, 250);
+    });
+
+    document.body.appendChild(notice);
+    window.setTimeout(function () {
+      if (document.body.contains(notice)) notice.classList.add("is-visible");
+    }, 5500);
+  }
+
+  function enhanceArticle() {
+    if (PAGE_PATH.indexOf("conseils/") !== 0 || PAGE_PATH === "conseils/") return;
+
+    document.body.classList.add("gh-article-page");
+
+    var author = document.querySelector(".rt-more-details-author-inner");
+    if (!author) return;
+
+    var imageWrap = author.querySelector(".rt-more-details-author-image");
+    var image = imageWrap ? imageWrap.querySelector("img") : null;
+    if (image) {
+      image.src = ROOT + "assets/images/logo-la-ferronnerie-du-rouret.svg";
+      image.removeAttribute("srcset");
+      image.removeAttribute("sizes");
+      image.removeAttribute("data-w-id");
+      image.removeAttribute("style");
+      image.alt = "Logo de La Ferronnerie du Rouret";
+      image.width = 120;
+      image.height = 120;
+      image.className = "gh-author-logo";
+    }
+
+    var details = author.querySelector(".rt-author-details-warpper");
+    var copy = ARTICLE_COPY[CURRENT] || ARTICLE_COPY.fr;
+    if (details) {
+      var lines = details.children;
+      if (lines[0]) lines[0].textContent = "La Ferronnerie du Rouret";
+      if (lines[1]) lines[1].textContent = copy.subtitle;
+    }
+
+    if (!author.querySelector(".gh-author-cta")) {
+      var actions = document.createElement("div");
+      actions.className = "gh-author-cta";
+      actions.innerHTML =
+        '<a class="gh-author-action gh-author-action--whatsapp" href="https://wa.me/33769871108" target="_blank" rel="noopener" aria-label="' + copy.whatsappLabel + '">' + copy.whatsapp + "</a>" +
+        '<a class="gh-author-action gh-author-action--phone" href="tel:+33769871108" aria-label="' + copy.phoneLabel + '">' + copy.phone + "</a>" +
+        '<a class="gh-author-action gh-author-action--quote" href="' + ROOT + 'devis/">' + copy.quote + "</a>";
+      author.appendChild(actions);
+    }
+  }
+
   function init() {
     if (window.__i18nInit) return;
     window.__i18nInit = true;
     injectStyles();
     mountSwitch();
+    enhanceArticle();
+    mountWhatsAppNotice();
   }
 
   if (document.readyState === "loading") {

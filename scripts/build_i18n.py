@@ -270,6 +270,10 @@ def normalise_base(src, page):
     for m in TOKEN.finditer(src):
         if m.group("tag") or (m.group("raw") and m.group("rawtag").lower() == "style"):
             out.append(abs_assets(m.group(0)))
+        elif m.group("raw"):
+            # <script src="/assets/..."> : the opening tag only, never the script body
+            head = re.match(TAG_RE, m.group(0)).group(0)
+            out.append(abs_assets(head) + m.group(0)[len(head):])
         else:
             out.append(m.group(0))
     src = "".join(out)
@@ -321,8 +325,8 @@ def head_block(page, lang, canon):
 # there. The copies carry CLEAN_MARK and are never read as French sources.
 
 CLEAN_MARK = "clean-url-source"
-URL_ATTRS = re.compile(r'(\s(?:href|src|poster|action|data-src)=)"([^"]*)"')
-SRCSET = re.compile(r'(\s(?:srcset|data-srcset)=)"([^"]*)"')
+URL_ATTRS = re.compile(r'(\s(?:href|src|poster|action|data-src|data-poster-url)=)"([^"]*)"')
+SRCSET = re.compile(r'(\s(?:srcset|data-srcset|data-video-urls)=)"([^"]*)"')   # comma-separated lists
 CSS_URL = re.compile(r"url\((['\"]?)([^'\")]+)\1\)")
 
 

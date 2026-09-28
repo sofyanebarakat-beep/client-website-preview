@@ -1,0 +1,5 @@
+<svg width="298" height="157" viewBox="0 0 298 157" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Gates">
+<rect width="298" height="157" fill="#F3F6F7"/>
+<g transform="translate(125 26)" stroke="#374151" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 44V10M44 44V10M4 14Q14 4 24 10Q34 4 44 14"/><path d="M11 44V12M17 44V9M24 44V10M31 44V9M37 44V12M4 28H44"/></g>
+<text x="149" y="116" text-anchor="middle" fill="#374151" font-family="Helvetica, Arial, sans-serif" font-size="20" font-weight="600">Gates</text>
+</svg>

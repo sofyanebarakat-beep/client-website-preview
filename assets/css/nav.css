@@ -274,3 +274,229 @@
 /* Images carry width/height (no layout shift while loading). Keep their proportions
    when CSS resizes them; zero specificity, so any class that sets a height wins. */
 :where(img[width][height]) { height: auto; }
+
+/* ---------- article template ---------- */
+.gh-article-page .rt-hero-v1-image {
+  width: 100%;
+  aspect-ratio: 1280 / 776;
+}
+.gh-article-page .rt-hero-v1-image > img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+.gh-article-page .rt-more-details-image-one,
+.gh-article-page .rt-more-details-image-two {
+  aspect-ratio: 4 / 3;
+}
+.gh-article-page .rt-more-details-image-one > img,
+.gh-article-page .rt-more-details-image-two > img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+.gh-article-page .w-richtext img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+.gh-article-page .rt-blog-card-image-wrapper {
+  display: block;
+  width: 100%;
+  aspect-ratio: 3 / 2;
+}
+.gh-article-page .rt-blog-card-image-wrapper .rt-blog-card-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+.gh-article-page .rt-more-details-author-image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 7.5rem;
+  height: 7.5rem;
+  padding: .75rem;
+  background: #fff;
+}
+.gh-article-page .rt-more-details-author-image .gh-author-logo {
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  object-fit: contain;
+}
+.gh-author-cta {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: .65rem;
+  margin-top: 1.25rem;
+}
+.gh-author-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.9rem;
+  padding: .7rem 1rem;
+  border: 1px solid #d9672b;
+  border-radius: 999px;
+  color: #562a33;
+  font-weight: 700;
+  line-height: 1.2;
+  text-align: center;
+  text-decoration: none;
+  transition: background-color .2s ease, border-color .2s ease, color .2s ease, transform .2s ease;
+}
+.gh-author-action:hover,
+.gh-author-action:focus-visible {
+  background: #f7ece7;
+  color: #562a33;
+  transform: translateY(-1px);
+}
+.gh-author-action--whatsapp {
+  border-color: #18864b;
+  background: #18864b;
+  color: #fff;
+}
+.gh-author-action--whatsapp:hover,
+.gh-author-action--whatsapp:focus-visible {
+  border-color: #126d3c;
+  background: #126d3c;
+  color: #fff;
+}
+.gh-author-action--quote {
+  border-color: #d9672b;
+  background: #d9672b;
+  color: #fff;
+}
+.gh-author-action--quote:hover,
+.gh-author-action--quote:focus-visible {
+  border-color: #b9551f;
+  background: #b9551f;
+  color: #fff;
+}
+@media screen and (max-width: 767px) {
+  .gh-article-page .rt-hero-v1-image {
+    aspect-ratio: 4 / 3;
+  }
+  .gh-article-page .rt-more-details-author-inner {
+    align-items: center;
+    text-align: center;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .gh-author-action { transition: none; }
+}
+
+/* ---------- delayed WhatsApp notice ---------- */
+.gh-whatsapp-notice {
+  position: fixed;
+  right: 1.25rem;
+  bottom: 1.25rem;
+  z-index: 9998;
+  display: flex;
+  align-items: flex-start;
+  gap: .85rem;
+  width: min(25rem, calc(100vw - 2rem));
+  padding: 1.15rem;
+  border: 1px solid rgba(24, 134, 75, .22);
+  border-radius: 1rem;
+  background: #fff;
+  color: #2f2024;
+  box-shadow: 0 16px 45px rgba(34, 28, 30, .2);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(1rem);
+  transition: opacity .25s ease, transform .25s ease, visibility .25s ease;
+}
+.gh-whatsapp-notice.is-visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+.gh-whatsapp-notice__icon {
+  display: inline-flex;
+  flex: 0 0 2.8rem;
+  align-items: center;
+  justify-content: center;
+  width: 2.8rem;
+  height: 2.8rem;
+  border-radius: 50%;
+  background: #18864b;
+  color: #fff;
+  font-size: .8rem;
+  font-weight: 800;
+  letter-spacing: -.02em;
+}
+.gh-whatsapp-notice__content {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: .35rem;
+  padding-right: 1.25rem;
+}
+.gh-whatsapp-notice__title {
+  color: #562a33;
+  font-size: 1rem;
+  line-height: 1.3;
+}
+.gh-whatsapp-notice__message {
+  font-size: .9rem;
+  line-height: 1.45;
+}
+.gh-whatsapp-notice__action {
+  align-self: flex-start;
+  margin-top: .35rem;
+  color: #18864b;
+  font-size: .9rem;
+  font-weight: 800;
+  text-decoration: none;
+}
+.gh-whatsapp-notice__action:hover,
+.gh-whatsapp-notice__action:focus-visible {
+  color: #126d3c;
+  text-decoration: underline;
+}
+.gh-whatsapp-notice__close {
+  position: absolute;
+  top: .45rem;
+  right: .55rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #665a5d;
+  cursor: pointer;
+  font: inherit;
+  font-size: 1.5rem;
+  line-height: 1;
+}
+.gh-whatsapp-notice__close:hover,
+.gh-whatsapp-notice__close:focus-visible {
+  color: #18864b;
+}
+@media screen and (max-width: 479px) {
+  .gh-whatsapp-notice {
+    right: 1rem;
+    bottom: 1rem;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .gh-whatsapp-notice { transition: none; }
+}
+
+/* The header is fixed over the page. Pages that start with text instead of a
+   full-width hero image (articles, project pages) start below it. */
+.rt-navbar-outer-wrapper-v1 + .rt-hero-v5,
+.rt-navbar-outer-wrapper-v1 + .rt-hero-v8 { margin-top: 8rem; }

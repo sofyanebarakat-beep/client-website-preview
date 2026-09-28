@@ -7,6 +7,7 @@ License for every image: [Unsplash License](https://unsplash.com/license) (free 
 | Local image | Unsplash photo |
 | --- | --- |
 | `navbar-atelier-etincelles.webp` | https://unsplash.com/photos/MfWTZFau-DM |
+| `hero-atelier-forge.webp` | https://unsplash.com/photos/fsOKJe2eA0k |
 | `hero-forgeron-enclume.webp` | https://unsplash.com/photos/2MuZ23gkFKo |
 | `presentation-portail-fer-forge.webp` | https://unsplash.com/photos/lic-9CuniWE |
 | `mission-qualite-detail-fer-forge.webp` | https://unsplash.com/photos/wT24_J8pdp4 |
