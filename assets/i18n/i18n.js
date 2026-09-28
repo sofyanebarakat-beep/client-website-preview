@@ -267,10 +267,139 @@
     }
   };
 
+  var PROJECT_COPY = {
+    fr: {
+      detailsTitle: "Le projet en un coup d'œil",
+      need: "Besoin du client",
+      solution: "Solution proposée",
+      material: "Matériau",
+      finish: "Finition",
+      location: "Localisation",
+      duration: "Délai",
+      locationFallback: "Nice et Côte d'Azur",
+      durationFallback: "Défini après l'étude technique du chantier",
+      materialFallback: "Métal sélectionné selon les contraintes du projet",
+      finishFallback: "Finition adaptée à l'usage et à l'environnement",
+      galleryTitle: "Galerie du projet",
+      galleryHint: "Sélectionnez une photo pour l'afficher en plein écran.",
+      openImage: "Afficher cette photo en plein écran",
+      closeGallery: "Fermer la galerie",
+      previous: "Photo précédente",
+      next: "Photo suivante",
+      ctaTitle: "Vous souhaitez un projet similaire ?",
+      ctaText: "Parlez directement de votre besoin avec notre atelier de ferronnerie.",
+      whatsapp: "WhatsApp +33 7 69 87 11 08",
+      phone: "Appeler le +33 7 69 87 11 08",
+      quote: "Demander un devis",
+      quick: "Réponse rapide sur WhatsApp",
+      hours: "Atelier joignable du lundi au vendredi, de 8h à 18h",
+      similar: "Réalisations similaires",
+      beforeAfter: "Avant / Après",
+      trustTitle: "Les engagements de l'atelier",
+      preset: "Bonjour, je souhaite un projet similaire à cette réalisation : "
+    },
+    en: {
+      detailsTitle: "Project at a glance",
+      need: "Client requirement",
+      solution: "Proposed solution",
+      material: "Material",
+      finish: "Finish",
+      location: "Location",
+      duration: "Lead time",
+      locationFallback: "Nice and the French Riviera",
+      durationFallback: "Confirmed after the technical site assessment",
+      materialFallback: "Metal selected for the project's requirements",
+      finishFallback: "Finish suited to the use and environment",
+      galleryTitle: "Project gallery",
+      galleryHint: "Select a photo to view it full screen.",
+      openImage: "View this photo full screen",
+      closeGallery: "Close gallery",
+      previous: "Previous photo",
+      next: "Next photo",
+      ctaTitle: "Would you like a similar project?",
+      ctaText: "Discuss your requirements directly with our metalwork workshop.",
+      whatsapp: "WhatsApp +33 7 69 87 11 08",
+      phone: "Call +33 7 69 87 11 08",
+      quote: "Request a quote",
+      quick: "Quick response on WhatsApp",
+      hours: "Workshop available Monday to Friday, 8am–6pm",
+      similar: "Similar projects",
+      beforeAfter: "Before / After",
+      trustTitle: "Our workshop commitments",
+      preset: "Hello, I would like a project similar to this one: "
+    },
+    it: {
+      detailsTitle: "Il progetto in breve",
+      need: "Esigenza del cliente",
+      solution: "Soluzione proposta",
+      material: "Materiale",
+      finish: "Finitura",
+      location: "Località",
+      duration: "Tempi",
+      locationFallback: "Nizza e Costa Azzurra",
+      durationFallback: "Definiti dopo lo studio tecnico del cantiere",
+      materialFallback: "Metallo selezionato in base ai requisiti del progetto",
+      finishFallback: "Finitura adatta all'uso e all'ambiente",
+      galleryTitle: "Galleria del progetto",
+      galleryHint: "Seleziona una foto per visualizzarla a schermo intero.",
+      openImage: "Visualizza questa foto a schermo intero",
+      closeGallery: "Chiudi la galleria",
+      previous: "Foto precedente",
+      next: "Foto successiva",
+      ctaTitle: "Desideri un progetto simile?",
+      ctaText: "Parla direttamente delle tue esigenze con il nostro laboratorio.",
+      whatsapp: "WhatsApp +33 7 69 87 11 08",
+      phone: "Chiama +33 7 69 87 11 08",
+      quote: "Richiedi un preventivo",
+      quick: "Risposta rapida su WhatsApp",
+      hours: "Laboratorio disponibile dal lunedì al venerdì, 8:00–18:00",
+      similar: "Progetti simili",
+      beforeAfter: "Prima / Dopo",
+      trustTitle: "Gli impegni del laboratorio",
+      preset: "Buongiorno, vorrei un progetto simile a questa realizzazione: "
+    }
+  };
+
+  function isProjectPage() {
+    return PAGE_PATH.indexOf("realisations/") === 0 && PAGE_PATH !== "realisations/";
+  }
+
+  function projectTitle() {
+    var heading = document.querySelector("h1");
+    return heading ? heading.textContent.trim() : document.title.split("|")[0].trim();
+  }
+
+  function projectWhatsAppUrl(copy) {
+    return "https://wa.me/33769871108?text=" + encodeURIComponent(copy.preset + projectTitle() + " — " + window.location.href);
+  }
+
+  function trackContactClicks() {
+    document.addEventListener("click", function (event) {
+      var link = event.target.closest ? event.target.closest("a") : null;
+      if (!link) return;
+      var href = link.getAttribute("href") || "";
+      var method = null;
+      if (href.indexOf("wa.me/33769871108") !== -1) method = "whatsapp";
+      else if (href.indexOf("tel:+33769871108") === 0) method = "phone";
+      else if (href.indexOf("devis/") !== -1) method = "quote";
+      if (!method) return;
+      var detail = { method: method, pagePath: PAGE_PATH, pageTitle: document.title };
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({ event: "contact_click", contact_method: method, page_path: PAGE_PATH, page_title: document.title });
+      try { window.dispatchEvent(new CustomEvent("contact_click", { detail: detail })); } catch (error) { /* Legacy browser: dataLayer remains available. */ }
+    });
+  }
+
   function mountWhatsAppNotice() {
     if (document.querySelector(".gh-whatsapp-notice")) return;
 
+    try {
+      if (window.sessionStorage.getItem("gh-whatsapp-notice-shown") === "1") return;
+    } catch (error) { /* Storage can be unavailable in private browsing. */ }
+
     var copy = WHATSAPP_COPY[CURRENT] || WHATSAPP_COPY.fr;
+    var projectCopy = PROJECT_COPY[CURRENT] || PROJECT_COPY.fr;
+    var destination = isProjectPage() ? projectWhatsAppUrl(projectCopy) : "https://wa.me/33769871108?text=" + encodeURIComponent(copy.preset);
     var notice = document.createElement("aside");
     notice.className = "gh-whatsapp-notice";
     notice.setAttribute("role", "complementary");
@@ -281,7 +410,7 @@
       '<div class="gh-whatsapp-notice__content">' +
         '<strong class="gh-whatsapp-notice__title">' + copy.title + "</strong>" +
         '<span class="gh-whatsapp-notice__message">' + copy.message + "</span>" +
-        '<a class="gh-whatsapp-notice__action" href="https://wa.me/33769871108?text=' + encodeURIComponent(copy.preset) + '" target="_blank" rel="noopener">' + copy.action + "</a>" +
+        '<a class="gh-whatsapp-notice__action" href="' + destination + '" target="_blank" rel="noopener">' + copy.action + "</a>" +
       "</div>";
 
     notice.querySelector(".gh-whatsapp-notice__close").addEventListener("click", function () {
@@ -291,8 +420,197 @@
 
     document.body.appendChild(notice);
     window.setTimeout(function () {
-      if (document.body.contains(notice)) notice.classList.add("is-visible");
+      if (document.body.contains(notice)) {
+        notice.classList.add("is-visible");
+        try { window.sessionStorage.setItem("gh-whatsapp-notice-shown", "1"); } catch (error) { /* Optional enhancement. */ }
+      }
     }, 5500);
+  }
+
+  function findProjectImages() {
+    var selectors = [".rt-hero-main-image-wrapper img", ".rt-feature-image-wrapper img"];
+    var images = [];
+    selectors.forEach(function (selector) {
+      var image = document.querySelector(selector);
+      if (image && image.getAttribute("src") && images.indexOf(image) === -1) images.push(image);
+    });
+    return images;
+  }
+
+  function mountProjectGallery(copy, anchor) {
+    var images = findProjectImages();
+    if (!images.length) return;
+
+    var section = document.createElement("section");
+    section.className = "gh-project-gallery";
+    section.innerHTML = '<div class="rt-container w-container"><div class="gh-project-heading"><h2>' + copy.galleryTitle + '</h2><p>' + copy.galleryHint + '</p></div><div class="gh-project-gallery__grid"></div></div>';
+    var grid = section.querySelector(".gh-project-gallery__grid");
+
+    images.forEach(function (source, index) {
+      source.decoding = "async";
+      if (index > 0) source.loading = "lazy";
+      var button = document.createElement("button");
+      button.type = "button";
+      button.className = "gh-project-gallery__item";
+      button.setAttribute("aria-label", copy.openImage + " " + (index + 1));
+      var clone = source.cloneNode(true);
+      clone.removeAttribute("style");
+      clone.removeAttribute("data-w-id");
+      clone.loading = "lazy";
+      button.appendChild(clone);
+      button.addEventListener("click", function () { openLightbox(index); });
+      grid.appendChild(button);
+    });
+
+    var lightbox = document.createElement("div");
+    lightbox.className = "gh-lightbox";
+    lightbox.setAttribute("role", "dialog");
+    lightbox.setAttribute("aria-modal", "true");
+    lightbox.setAttribute("aria-label", copy.galleryTitle);
+    lightbox.innerHTML = '<button class="gh-lightbox__close" type="button" aria-label="' + copy.closeGallery + '">&times;</button><button class="gh-lightbox__nav gh-lightbox__nav--prev" type="button" aria-label="' + copy.previous + '">&#8249;</button><img class="gh-lightbox__image" alt=""><button class="gh-lightbox__nav gh-lightbox__nav--next" type="button" aria-label="' + copy.next + '">&#8250;</button><span class="gh-lightbox__count"></span>';
+    document.body.appendChild(lightbox);
+    var activeIndex = 0;
+    var closeButton = lightbox.querySelector(".gh-lightbox__close");
+
+    function showImage(index) {
+      activeIndex = (index + images.length) % images.length;
+      var source = images[activeIndex];
+      var target = lightbox.querySelector(".gh-lightbox__image");
+      target.src = source.currentSrc || source.src;
+      target.alt = source.alt || projectTitle();
+      lightbox.querySelector(".gh-lightbox__count").textContent = (activeIndex + 1) + " / " + images.length;
+    }
+    function openLightbox(index) {
+      showImage(index);
+      lightbox.classList.add("is-open");
+      document.body.classList.add("gh-lightbox-open");
+      closeButton.focus();
+    }
+    function closeLightbox() {
+      lightbox.classList.remove("is-open");
+      document.body.classList.remove("gh-lightbox-open");
+    }
+    closeButton.addEventListener("click", closeLightbox);
+    lightbox.querySelector(".gh-lightbox__nav--prev").addEventListener("click", function () { showImage(activeIndex - 1); });
+    lightbox.querySelector(".gh-lightbox__nav--next").addEventListener("click", function () { showImage(activeIndex + 1); });
+    lightbox.addEventListener("click", function (event) { if (event.target === lightbox) closeLightbox(); });
+    document.addEventListener("keydown", function (event) {
+      if (!lightbox.classList.contains("is-open")) return;
+      if (event.key === "Escape") closeLightbox();
+      else if (event.key === "ArrowLeft") showImage(activeIndex - 1);
+      else if (event.key === "ArrowRight") showImage(activeIndex + 1);
+    });
+
+    anchor.parentNode.insertBefore(section, anchor);
+
+    var beforeAfterImages = images.filter(function (image) { return /avant|après|before|after|prima|dopo/i.test(image.alt || ""); });
+    if (beforeAfterImages.length >= 2) {
+      var beforeAfter = document.createElement("div");
+      beforeAfter.className = "gh-before-after";
+      beforeAfter.innerHTML = "<h3>" + copy.beforeAfter + "</h3>";
+      beforeAfterImages.slice(0, 2).forEach(function (image) {
+        var clone = image.cloneNode(true);
+        clone.removeAttribute("style");
+        clone.loading = "lazy";
+        beforeAfter.appendChild(clone);
+      });
+      section.querySelector(".rt-container").appendChild(beforeAfter);
+    }
+  }
+
+  function sentenceMatching(text, expression, fallback) {
+    var sentences = text.split(/[.!?]+/);
+    for (var i = 0; i < sentences.length; i++) {
+      if (expression.test(sentences[i])) return sentences[i].trim();
+    }
+    return fallback;
+  }
+
+  function mountProjectSummary(copy, anchor) {
+    var overview = document.querySelector(".rt-project-overview-wrapper-v1 .w-richtext");
+    var paragraphs = overview ? overview.querySelectorAll("p") : [];
+    var fullText = overview ? overview.textContent.replace(/\s+/g, " ").trim() : "";
+    var description = document.querySelector('meta[name="description"]');
+    var locationSource = (description ? description.content : "") + " " + fullText;
+    var knownPlaces = ["Nice", "Antibes", "Cannes", "Mougins", "Monaco", "Saint-Paul-de-Vence", "Cagnes-sur-Mer", "Villefranche-sur-Mer"];
+    var location = copy.locationFallback;
+    for (var i = 0; i < knownPlaces.length; i++) if (locationSource.indexOf(knownPlaces[i]) !== -1) { location = knownPlaces[i]; break; }
+
+    var values = [
+      paragraphs[0] ? paragraphs[0].textContent.trim() : (description ? description.content : projectTitle()),
+      paragraphs[1] ? paragraphs[1].textContent.trim() : fullText,
+      sentenceMatching(fullText, /acier|aluminium|inox|fer|métal|metal/i, copy.materialFallback),
+      sentenceMatching(fullText, /thermola|galvani|peinture|patine|finition|laqu/i, copy.finishFallback),
+      location,
+      copy.durationFallback
+    ];
+    var labels = [copy.need, copy.solution, copy.material, copy.finish, copy.location, copy.duration];
+    var section = document.createElement("section");
+    section.className = "gh-project-summary";
+    section.innerHTML = '<div class="rt-container w-container"><h2>' + copy.detailsTitle + '</h2><div class="gh-project-summary__grid"></div></div>';
+    var grid = section.querySelector(".gh-project-summary__grid");
+    labels.forEach(function (label, index) {
+      var card = document.createElement("div");
+      card.className = "gh-project-summary__card";
+      var strong = document.createElement("strong");
+      var span = document.createElement("span");
+      strong.textContent = label;
+      span.textContent = values[index] || "—";
+      card.appendChild(strong);
+      card.appendChild(span);
+      grid.appendChild(card);
+    });
+    var commitments = document.querySelectorAll(".rt-project-scope-wrapper li");
+    if (commitments.length) {
+      var trust = document.createElement("div");
+      trust.className = "gh-project-trust";
+      trust.innerHTML = "<h3>" + copy.trustTitle + "</h3><ul></ul>";
+      var list = trust.querySelector("ul");
+      for (var j = 0; j < commitments.length; j++) {
+        var item = document.createElement("li");
+        item.textContent = commitments[j].textContent.trim();
+        list.appendChild(item);
+      }
+      section.querySelector(".rt-container").appendChild(trust);
+    }
+    anchor.parentNode.insertBefore(section, anchor);
+  }
+
+  function mountProjectCta(copy, anchor) {
+    var section = document.createElement("section");
+    section.className = "gh-project-cta";
+    section.innerHTML = '<div class="rt-container w-container"><div class="gh-project-cta__inner"><div><span class="gh-project-cta__badge">' + copy.quick + '</span><h2>' + copy.ctaTitle + '</h2><p>' + copy.ctaText + '</p><small>' + copy.hours + '</small></div><div class="gh-project-cta__actions"><a class="gh-project-cta__button gh-project-cta__button--whatsapp" target="_blank" rel="noopener">' + copy.whatsapp + '</a><a class="gh-project-cta__button" href="tel:+33769871108">' + copy.phone + '</a><a class="gh-project-cta__button gh-project-cta__button--quote" href="' + ROOT + 'devis/">' + copy.quote + '</a></div></div></div>';
+    section.querySelector(".gh-project-cta__button--whatsapp").href = projectWhatsAppUrl(copy);
+    anchor.parentNode.insertBefore(section, anchor);
+  }
+
+  function mountProjectMobileBar(copy) {
+    var bar = document.createElement("nav");
+    bar.className = "gh-project-mobile-bar";
+    bar.setAttribute("aria-label", copy.ctaTitle);
+    bar.innerHTML = '<a href="tel:+33769871108">' + copy.phone.replace(/ \+33.*/, "") + '</a><a class="gh-project-mobile-bar__whatsapp" target="_blank" rel="noopener">WhatsApp</a><a href="' + ROOT + 'devis/">' + copy.quote + '</a>';
+    bar.querySelector(".gh-project-mobile-bar__whatsapp").href = projectWhatsAppUrl(copy);
+    document.body.appendChild(bar);
+  }
+
+  function enhanceProjectPage() {
+    if (!isProjectPage()) return;
+    document.body.classList.add("gh-project-page");
+    var copy = PROJECT_COPY[CURRENT] || PROJECT_COPY.fr;
+    var anchor = document.querySelector(".rt-recent-post-v2") || document.querySelector(".rt-footer-v1");
+    if (!anchor) return;
+    mountProjectSummary(copy, anchor);
+    mountProjectGallery(copy, anchor);
+    mountProjectCta(copy, anchor);
+    mountProjectMobileBar(copy);
+
+    var similarHeading = anchor.querySelector("h2");
+    if (similarHeading) similarHeading.textContent = copy.similar;
+    var currentLinks = anchor.querySelectorAll('a[aria-current="page"]');
+    for (var i = 0; i < currentLinks.length; i++) {
+      var card = currentLinks[i].closest ? currentLinks[i].closest(".rt-portfolio-content-v2") : null;
+      if (card) card.style.display = "none";
+    }
   }
 
   function enhanceArticle() {
@@ -342,6 +660,8 @@
     injectStyles();
     mountSwitch();
     enhanceArticle();
+    enhanceProjectPage();
+    trackContactClicks();
     mountWhatsAppNotice();
   }
 
