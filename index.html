@@ -4,6 +4,11 @@
 <html data-wf-domain="flampt.webflow.io" data-wf-page="69a196b6902215f53ac6be9d" data-wf-site="69a196b4902215f53ac6be15" lang="fr">
 <head>
 <meta charset="utf-8"/>
+<script>
+if (window.location.pathname.endsWith('/index.html')) {
+  window.history.replaceState(null, '', window.location.pathname.slice(0, -10) + window.location.search + window.location.hash);
+}
+</script>
 <title>La Ferronnerie du Rouret | Ferronnerie sur mesure à Nice</title>
 <link href="https://ferronnerie-rouret.com/" rel="canonical"/>
 <meta content="Atelier de ferronnerie sur mesure à Nice : portails, garde-corps, clôtures, pergolas et escaliers. Devis gratuit sur la Côte d’Azur." name="description"/>
