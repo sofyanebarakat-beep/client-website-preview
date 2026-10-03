@@ -53,6 +53,7 @@ NON_PAGE_PREFIXES = ("sitemap.xml", "robots.txt")
 NO_PATH_PAGES = {"index.html", "404.html"}   # language switcher goes to the language home
 
 HEAD_START, HEAD_END = "<!-- i18n:head -->", "<!-- /i18n:head -->"
+URL_CLEAN_START, URL_CLEAN_END = "<!-- clean-url:script -->", "<!-- /clean-url:script -->"
 
 TAG_RE = r"<(?:[^>\"']|\"[^\"]*\"|'[^']*')*>"
 TOKEN = re.compile(
@@ -256,6 +257,7 @@ def rewrite_paths(src, page, pages_set, lang_dir_prefix):
 def normalise_base(src, page):
     """Strip everything this script adds so it can be re-added cleanly."""
     src = re.sub(re.escape(HEAD_START) + r".*?" + re.escape(HEAD_END) + r"\n?", "", src, flags=re.S)
+    src = re.sub(re.escape(URL_CLEAN_START) + r".*?" + re.escape(URL_CLEAN_END) + r"\n?", "", src, flags=re.S)
     src = re.sub(r'<input type="hidden" name="Langue"[^>]*/>', "", src)
     src = re.sub(r'<style id="i18n-early">.*?</style><script>.*?</script>\n?', "", src, flags=re.S)
     src = re.sub(r'<script src="[^"]*assets/i18n/translations\.js"[^>]*>\s*</script>\s*', "", src)
@@ -315,6 +317,18 @@ def head_block(page, lang, canon):
                 lines.append('<meta content="%s" property="og:locale:alternate"/>' % OG_LOCALE[l])
     lines.append(HEAD_END)
     return "\n".join(lines) + "\n"
+
+
+def clean_url_block():
+    """Keep static-host /index.html URLs out of the visitor's address bar."""
+    return """<!-- clean-url:script -->
+<script>
+if (window.location.pathname.endsWith('/index.html')) {
+  window.history.replaceState(null, '', window.location.pathname.slice(0, -10) + window.location.search + window.location.hash);
+}
+</script>
+<!-- /clean-url:script -->
+"""
 
 
 # ---------------------------------------------------------------- clean URLs
@@ -475,7 +489,7 @@ def render(base, page, lang, dictionary, pages_set, translators, targets=None):
     )
     if page in FR_ONLY:
         return doc
-    return doc.replace("</head>", head_block(page, lang, canon) + "</head>", 1)
+    return doc.replace("</head>", clean_url_block() + head_block(page, lang, canon) + "</head>", 1)
 
 
 # ---------------------------------------------------------------- sitemap

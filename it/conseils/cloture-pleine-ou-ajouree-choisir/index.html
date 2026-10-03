@@ -125,6 +125,13 @@
 .gh-read{font-size:.9rem;color:#374151}
 .gh-read::before{content:"·";margin-right:.75rem}
 </style>
+<!-- clean-url:script -->
+<script>
+if (window.location.pathname.endsWith('/index.html')) {
+  window.history.replaceState(null, '', window.location.pathname.slice(0, -10) + window.location.search + window.location.hash);
+}
+</script>
+<!-- /clean-url:script -->
 <!-- i18n:head -->
 <meta name="i18n-lang" content="it"/>
 <meta name="i18n-path" content="conseils/cloture-pleine-ou-ajouree-choisir/"/>
